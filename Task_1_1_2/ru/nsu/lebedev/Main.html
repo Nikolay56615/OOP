@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":9,"i1":9,"i2":9};
+var data = {"i0":9,"i1":9,"i2":9,"i3":9,"i4":9,"i5":9};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -87,14 +87,14 @@ loadScripts(document, 'script');</script>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
@@ -139,6 +139,57 @@ extends java.lang.Object</pre>
 <div class="summary">
 <ul class="blockList">
 <li class="blockList">
+<!-- ======== NESTED CLASS SUMMARY ======== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="nested.class.summary">
+<!--   -->
+</a>
+<h3>Nested Class Summary</h3>
+<table class="memberSummary">
+<caption><span>Nested Classes</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Class</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static class&nbsp;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
+<!-- =========== FIELD SUMMARY =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.summary">
+<!--   -->
+</a>
+<h3>Field Summary</h3>
+<table class="memberSummary">
+<caption><span>Fields</span><span class="tabEnd">&nbsp;</span></caption>
+<tr>
+<th class="colFirst" scope="col">Modifier and Type</th>
+<th class="colSecond" scope="col">Field</th>
+<th class="colLast" scope="col">Description</th>
+</tr>
+<tr class="altColor">
+<td class="colFirst"><code>static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#maximumDealerClearance">maximumDealerClearance</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+<tr class="rowColor">
+<td class="colFirst"><code>static int</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winCount">winCount</a></span></code></th>
+<td class="colLast">&nbsp;</td>
+</tr>
+</table>
+</li>
+</ul>
+</section>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <section>
 <ul class="blockList">
@@ -182,17 +233,42 @@ extends java.lang.Object</pre>
 </td>
 </tr>
 <tr id="i1" class="rowColor">
+<td class="colFirst"><code>static <a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#dealersTurn(ru.nsu.lebedev.Deck,java.util.List)">dealersTurn</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck,
+           java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;dealerHand)</code></th>
+<td class="colLast">
+<div class="block">The function at which the player's move occurs.</div>
+</td>
+</tr>
+<tr id="i2" class="altColor">
 <td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main()">main</a></span>()</code></th>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#main(java.lang.String%5B%5D)">main</a></span>&#8203;(java.lang.String[]&nbsp;args)</code></th>
 <td class="colLast">
 <div class="block">A function in which interim results and final results of the game are announced.</div>
 </td>
 </tr>
-<tr id="i2" class="altColor">
-<td class="colFirst"><code>static int</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playRound(int)">playRound</a></span>&#8203;(int&nbsp;round)</code></th>
+<tr id="i3" class="rowColor">
+<td class="colFirst"><code>static <a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playersTurn(ru.nsu.lebedev.Deck,java.util.List)">playersTurn</a></span>&#8203;(<a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck,
+           java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;playerHand)</code></th>
 <td class="colLast">
-<div class="block">Еhe function in which the main functionality of the game is implemented.</div>
+<div class="block">The function at which the player's move occurs.</div>
+</td>
+</tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>static <a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#playRound(int,ru.nsu.lebedev.Deck)">playRound</a></span>&#8203;(int&nbsp;round,
+         <a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck)</code></th>
+<td class="colLast">
+<div class="block">A function where cards are dealt and the game begins.</div>
+</td>
+</tr>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>static <a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a></code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#winChecking(java.util.List,java.util.List)">winChecking</a></span>&#8203;(java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;playerHand,
+           java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;dealerHand)</code></th>
+<td class="colLast">
+<div class="block">The function in which the winner is determined.</div>
 </td>
 </tr>
 </table>
@@ -212,6 +288,34 @@ extends java.lang.Object</pre>
 <div class="details">
 <ul class="blockList">
 <li class="blockList">
+<!-- ============ FIELD DETAIL =========== -->
+<section>
+<ul class="blockList">
+<li class="blockList"><a id="field.detail">
+<!--   -->
+</a>
+<h3>Field Detail</h3>
+<a id="winCount">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>winCount</h4>
+<pre>public static&nbsp;int winCount</pre>
+</li>
+</ul>
+<a id="maximumDealerClearance">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>maximumDealerClearance</h4>
+<pre>public static&nbsp;int maximumDealerClearance</pre>
+</li>
+</ul>
+</li>
+</ul>
+</section>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <section>
 <ul class="blockList">
@@ -238,30 +342,58 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
-<a id="main()">
+<a id="main(java.lang.String[])">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>main</h4>
-<pre class="methodSignature">public static&nbsp;void&nbsp;main()
-                 throws java.io.IOException</pre>
+<pre class="methodSignature">public static&nbsp;void&nbsp;main&#8203;(java.lang.String[]&nbsp;args)</pre>
 <div class="block">A function in which interim results and final results of the game are announced.</div>
-<dl>
-<dt><span class="throwsLabel">Throws:</span></dt>
-<dd><code>java.io.IOException</code></dd>
-</dl>
 </li>
 </ul>
-<a id="playRound(int)">
+<a id="playRound(int,ru.nsu.lebedev.Deck)">
 <!--   -->
 </a>
 <ul class="blockList">
 <li class="blockList">
 <h4>playRound</h4>
-<pre class="methodSignature">public static&nbsp;int&nbsp;playRound&#8203;(int&nbsp;round)</pre>
-<div class="block">Еhe function in which the main functionality of the game is implemented.
- The player's and dealer's moves, determining the victory in the rendezvous.</div>
+<pre class="methodSignature">public static&nbsp;<a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a>&nbsp;playRound&#8203;(int&nbsp;round,
+                                        <a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck)</pre>
+<div class="block">A function where cards are dealt and the game begins.</div>
+</li>
+</ul>
+<a id="playersTurn(ru.nsu.lebedev.Deck,java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>playersTurn</h4>
+<pre class="methodSignature">public static&nbsp;<a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a>&nbsp;playersTurn&#8203;(<a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck,
+                                          java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;playerHand)</pre>
+<div class="block">The function at which the player's move occurs.</div>
+</li>
+</ul>
+<a id="dealersTurn(ru.nsu.lebedev.Deck,java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>dealersTurn</h4>
+<pre class="methodSignature">public static&nbsp;<a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a>&nbsp;dealersTurn&#8203;(<a href="Deck.html" title="class in ru.nsu.lebedev">Deck</a>&nbsp;deck,
+                                          java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;dealerHand)</pre>
+<div class="block">The function at which the player's move occurs.</div>
+</li>
+</ul>
+<a id="winChecking(java.util.List,java.util.List)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>winChecking</h4>
+<pre class="methodSignature">public static&nbsp;<a href="Main.GameResult.html" title="enum in ru.nsu.lebedev">Main.GameResult</a>&nbsp;winChecking&#8203;(java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;playerHand,
+                                          java.util.List&lt;<a href="Card.html" title="class in ru.nsu.lebedev">Card</a>&gt;&nbsp;dealerHand)</pre>
+<div class="block">The function in which the winner is determined.</div>
 </li>
 </ul>
 <a id="calculateHandValue(java.util.List)">
@@ -324,14 +456,14 @@ extends java.lang.Object</pre>
 <div>
 <ul class="subNavList">
 <li>Summary:&nbsp;</li>
-<li>Nested&nbsp;|&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#nested.class.summary">Nested</a>&nbsp;|&nbsp;</li>
+<li><a href="#field.summary">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.summary">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.summary">Method</a></li>
 </ul>
 <ul class="subNavList">
 <li>Detail:&nbsp;</li>
-<li>Field&nbsp;|&nbsp;</li>
+<li><a href="#field.detail">Field</a>&nbsp;|&nbsp;</li>
 <li><a href="#constructor.detail">Constr</a>&nbsp;|&nbsp;</li>
 <li><a href="#method.detail">Method</a></li>
 </ul>
