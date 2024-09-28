@@ -1,0 +1,297 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="AutoImportSettings">
+    <option name="autoReloadType" value="SELECTIVE" />
+  </component>
+  <component name="ChangeListManager">
+    <list default="true" id="3719e863-3f93-4138-a210-c264f3a684ba" name="Changes" comment="" />
+    <option name="SHOW_DIALOG" value="false" />
+    <option name="HIGHLIGHT_CONFLICTS" value="true" />
+    <option name="HIGHLIGHT_NON_ACTIVE_CHANGELIST" value="false" />
+    <option name="LAST_RESOLUTION" value="IGNORE" />
+  </component>
+  <component name="ExternalProjectsData">
+    <projectState path="$PROJECT_DIR$">
+      <ProjectState />
+    </projectState>
+  </component>
+  <component name="ExternalProjectsManager">
+    <system id="GRADLE">
+      <state>
+        <task path="$PROJECT_DIR$">
+          <activation />
+        </task>
+        <projects_view />
+      </state>
+    </system>
+  </component>
+  <component name="FileTemplateManagerImpl">
+    <option name="RECENT_TEMPLATES">
+      <list>
+        <option value="JUnit5 Test Class" />
+        <option value="Class" />
+      </list>
+    </option>
+  </component>
+  <component name="Git.Settings">
+    <option name="RECENT_GIT_ROOT_PATH" value="$PROJECT_DIR$/.." />
+  </component>
+  <component name="GitHubPullRequestSearchHistory">{
+  &quot;lastFilter&quot;: {
+    &quot;state&quot;: &quot;OPEN&quot;,
+    &quot;assignee&quot;: &quot;Nikolay56615&quot;
+  }
+}</component>
+  <component name="GithubPullRequestsUISettings">{
+  &quot;selectedUrlAndAccountId&quot;: {
+    &quot;url&quot;: &quot;https://github.com/Nikolay56615/OOP&quot;,
+    &quot;accountId&quot;: &quot;6183cd6c-bc10-47a1-8ef6-0e8cb4806223&quot;
+  }
+}</component>
+  <component name="ProjectColorInfo">{
+  &quot;customColor&quot;: &quot;&quot;,
+  &quot;associatedIndex&quot;: 0
+}</component>
+  <component name="ProjectId" id="2m2qNUBScjLUr47VW3GKpfEtZkT" />
+  <component name="ProjectViewState">
+    <option name="hideEmptyMiddlePackages" value="true" />
+    <option name="showLibraryContents" value="true" />
+  </component>
+  <component name="PropertiesComponent"><![CDATA[{
+  "keyToString": {
+    "Application.Main.executor": "Run",
+    "Gradle.Build Task_1_1_2.executor": "Run",
+    "Gradle.CardTest.executor": "Run",
+    "Gradle.CardTest.testToString.executor": "Run",
+    "Gradle.DeckTest.executor": "Run",
+    "Gradle.MainTest.executor": "Run",
+    "Gradle.MainTest.testDealersTurn.executor": "Run",
+    "Gradle.MainTest.testMain.executor": "Run",
+    "Gradle.MainTest.testMain2.executor": "Run",
+    "Gradle.MainTest.testMainOutput.executor": "Run",
+    "Gradle.MainTest.testPlayRoundDealerWins.executor": "Run",
+    "Gradle.MainTest.testPlayRoundDraw.executor": "Run",
+    "Gradle.MainTest.testPlayerTurnNoBust.executor": "Run",
+    "Gradle.MainTest.testRoundOutcomeDealerWins.executor": "Run",
+    "Gradle.MainTest.testRoundOutcomePlayerWins.executor": "Run",
+    "Gradle.MainTest.testRoundOutcomeTie.executor": "Run",
+    "Gradle.MainTest.testToString.executor": "Run",
+    "Gradle.MainTest.testWhenDeckIsEnd.executor": "Run",
+    "Gradle.Task_1_1_2 [:ru.nsu.lebedev.Main.main()].executor": "Run",
+    "JUnit.MainTest and 2 more.executor": "Coverage",
+    "RunOnceActivity.ShowReadmeOnStart": "true",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
+    "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
+    "kotlin-language-version-configured": "true",
+    "last_opened_file_path": "C:/Users/Vladimir/OOP/Task_1_1_2",
+    "node.js.detected.package.eslint": "true",
+    "node.js.detected.package.tslint": "true",
+    "node.js.selected.package.eslint": "(autodetect)",
+    "node.js.selected.package.tslint": "(autodetect)",
+    "nodejs_package_manager_path": "npm",
+    "onboarding.tips.debug.path": "C:/Users/Vladimir/OOP/Task_1_1_2/src/main/java/ru/nsu/lebedev/Main.java",
+    "project.structure.last.edited": "Project",
+    "project.structure.proportion": "0.15",
+    "project.structure.side.proportion": "0.2",
+    "vue.rearranger.settings.migration": "true"
+  }
+}]]></component>
+  <component name="RecentsManager">
+    <key name="CreateTestDialog.Recents.Supers">
+      <recent name="" />
+    </key>
+    <key name="CreateTestDialog.RecentsKey">
+      <recent name="ru.nsu.lebedev" />
+    </key>
+  </component>
+  <component name="RunManager" selected="Gradle.MainTest.testMainOutput">
+    <configuration name="MainTest.testDealersTurn" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.lebedev.MainTest.testDealersTurn&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.testMainOutput" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.lebedev.MainTest.testMainOutput&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.testPlayRoundDraw" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.lebedev.MainTest.testPlayRoundDraw&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest.testToString" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+            <option value="--tests" />
+            <option value="&quot;ru.nsu.lebedev.MainTest.testToString&quot;" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
+    <configuration name="MainTest and 2 more" type="JUnit" factoryName="JUnit" temporary="true" nameIsGenerated="true">
+      <module name="Task_1_1_2.test" />
+      <option name="TEST_OBJECT" value="pattern" />
+      <patterns>
+        <pattern testClass="ru.nsu.lebedev.MainTest" />
+        <pattern testClass="ru.nsu.lebedev.CardTest" />
+        <pattern testClass="ru.nsu.lebedev.DeckTest" />
+      </patterns>
+      <method v="2">
+        <option name="Make" enabled="true" />
+      </method>
+    </configuration>
+    <recent_temporary>
+      <list>
+        <item itemvalue="Gradle.MainTest.testMainOutput" />
+        <item itemvalue="JUnit.MainTest and 2 more" />
+        <item itemvalue="Gradle.MainTest.testToString" />
+        <item itemvalue="Gradle.MainTest.testPlayRoundDraw" />
+        <item itemvalue="Gradle.MainTest.testDealersTurn" />
+      </list>
+    </recent_temporary>
+  </component>
+  <component name="SpellCheckerSettings" RuntimeDictionaries="0" Folders="0" CustomDictionaries="0" DefaultDictionary="application-level" UseSingleDictionary="true" transferred="true" />
+  <component name="TaskManager">
+    <task active="true" id="Default" summary="Default task">
+      <changelist id="3719e863-3f93-4138-a210-c264f3a684ba" name="Changes" comment="" />
+      <created>1726284981357</created>
+      <option name="number" value="Default" />
+      <option name="presentableId" value="Default" />
+      <updated>1726284981357</updated>
+      <workItem from="1726284982448" duration="1131000" />
+      <workItem from="1726286548880" duration="2363000" />
+      <workItem from="1726322571407" duration="3992000" />
+      <workItem from="1726332591636" duration="24000" />
+      <workItem from="1726332616885" duration="334000" />
+      <workItem from="1726332960290" duration="235000" />
+      <workItem from="1726333201965" duration="123000" />
+      <workItem from="1726333326758" duration="1010000" />
+      <workItem from="1726334355472" duration="2310000" />
+      <workItem from="1726377736409" duration="11985000" />
+      <workItem from="1726458144843" duration="11565000" />
+      <workItem from="1726736483025" duration="1041000" />
+      <workItem from="1726761083054" duration="6877000" />
+      <workItem from="1726768779899" duration="17000" />
+      <workItem from="1726768798320" duration="258000" />
+      <workItem from="1726769057920" duration="162000" />
+      <workItem from="1726769221065" duration="12000" />
+      <workItem from="1726769244024" duration="314000" />
+      <workItem from="1726769586532" duration="164000" />
+      <workItem from="1726769751979" duration="13000" />
+      <workItem from="1726769766764" duration="113000" />
+      <workItem from="1726769886470" duration="16000" />
+      <workItem from="1726840457197" duration="3374000" />
+      <workItem from="1726903400847" duration="12746000" />
+      <workItem from="1726937921632" duration="736000" />
+      <workItem from="1726991936429" duration="1963000" />
+      <workItem from="1727157831021" duration="8000" />
+      <workItem from="1727163405602" duration="2000" />
+      <workItem from="1727509662305" duration="241000" />
+      <workItem from="1727509956887" duration="105000" />
+      <workItem from="1727510071955" duration="100000" />
+    </task>
+    <servers />
+  </component>
+  <component name="TypeScriptGeneratedFilesManager">
+    <option name="version" value="3" />
+  </component>
+  <component name="Vcs.Log.Tabs.Properties">
+    <option name="TAB_STATES">
+      <map>
+        <entry key="MAIN">
+          <value>
+            <State />
+          </value>
+        </entry>
+      </map>
+    </option>
+  </component>
+  <component name="XDebuggerManager">
+    <breakpoint-manager>
+      <breakpoints>
+        <line-breakpoint enabled="true" type="java-line">
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/Main.java</url>
+          <line>185</line>
+          <option name="timeStamp" value="1" />
+        </line-breakpoint>
+      </breakpoints>
+    </breakpoint-manager>
+  </component>
+  <component name="com.intellij.coverage.CoverageDataManagerImpl">
+    <SUITE FILE_PATH="coverage/Task_1_1_2$MainTest.ic" NAME="MainTest Coverage Results" MODIFIED="1726933479647" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+    <SUITE FILE_PATH="coverage/Task_1_1_2$MainTest_and_2_more.ic" NAME="MainTest and 2 more Coverage Results" MODIFIED="1726937638044" SOURCE_PROVIDER="com.intellij.coverage.DefaultCoverageFileProvider" RUNNER="idea" COVERAGE_BY_TEST_ENABLED="false" COVERAGE_TRACING_ENABLED="true" />
+  </component>
+</project>
