@@ -6,7 +6,8 @@ import java.util.Map;
  * Class with subtraction realisation.
  */
 public class Sub extends Expression {
-    private Expression left, right;
+    private Expression left;
+    private Expression right;
 
     /**
      * Function with initialization.

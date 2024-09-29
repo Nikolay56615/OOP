@@ -41,7 +41,7 @@ public class Variable extends Expression {
      * Function with eval of variable.
      */
     @Override
-    public int eval(Map<String, Integer> var){
+    public int eval(Map<String, Integer> var) {
         return var.getOrDefault(variable, 0);
     }
 }

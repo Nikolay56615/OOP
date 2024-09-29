@@ -6,7 +6,8 @@ import java.util.Map;
  * Class with division realisation.
  */
 public class Div extends Expression {
-    private Expression left, right;
+    private Expression left;
+    private Expression right;
 
     /**
      * Function with initialization.
@@ -35,7 +36,8 @@ public class Div extends Expression {
     @Override
     public Expression derivative(String variable) {
         return new Div(
-            new Sub(new Mul(left.derivative(variable), right), new Mul(left, right.derivative(variable))),
+            new Sub(new Mul(left.derivative(variable), right),
+                new Mul(left, right.derivative(variable))),
             new Mul(right, right)
         );
     }
@@ -44,7 +46,7 @@ public class Div extends Expression {
      * Function with eval of division.
      */
     @Override
-    public int eval (Map<String, Integer> env) {
+    public int eval(Map<String, Integer> env) {
         return left.eval(env) / right.eval(env);
     }
 }

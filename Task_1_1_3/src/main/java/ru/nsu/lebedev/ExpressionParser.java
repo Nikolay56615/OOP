@@ -76,6 +76,8 @@ class ExpressionParser {
             case '/':
                 operands.push(new Div(left, right));
                 break;
+            default:
+                break;
         }
     }
 

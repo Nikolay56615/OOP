@@ -6,7 +6,8 @@ import java.util.Map;
  * Class with addition realisation.
  */
 public class Add extends Expression {
-    private Expression left, right;
+    private Expression left;
+    private Expression right;
 
     /**
      * Function with initialization.
