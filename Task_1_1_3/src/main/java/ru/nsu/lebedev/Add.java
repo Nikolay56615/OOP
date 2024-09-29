@@ -41,7 +41,7 @@ public class Add extends Expression {
      * Function with eval of addition.
      */
     @Override
-    public int eval (Map<String, Integer> env) {
+    public int eval(Map<String, Integer> env) {
         return left.eval(env) + right.eval(env);
     }
 }
