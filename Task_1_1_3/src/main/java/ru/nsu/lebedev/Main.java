@@ -1,20 +1,33 @@
 package ru.nsu.lebedev;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static int sum(int a, int b) {
-        return a + b;
-    }
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.print("Hello and welcome!");
+import java.util.HashMap;
+import java.util.Map;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+/**
+ * Main class for project.
+ */
+public class Main {
+
+    /**
+     * Function with observing of classes.
+     */
+    public static void main(String[] args) {
+        Expression e = new Add(new Add(new Number(3), new Mul(new Number(2),
+            new Variable("x"))), new Variable("yxx"));
+        System.out.print("Expression: ");
+        e.print(); // (3+(2*x))
+        Expression de = e.derivative("yxx");
+        System.out.println();
+        System.out.print("Derivative: ");
+        de.print(); // (0+((0*x)+(2*1)))
+        System.out.println();
+        Map<String, Integer> variables = new HashMap<>();
+        variables.put("x", 10);
+        System.out.println("Evaluation: " + e.eval("x = 10; yxx = 13"));  // 36
+        System.out.println("Evaluation: " + e.eval(variables));  // 23
+        e = ExpressionParser.parse("(3+2)*x + 1 * 2"); // (((3+2)*x)+(1*2))
+        e.print();
+        variables = new HashMap<>();
+        System.out.println("Evaluation: " + e.eval(variables));  // 2
     }
 }
