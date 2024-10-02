@@ -18,15 +18,20 @@ public class Div extends Expression {
     }
 
     /**
+     * A method for formating div.
+     */
+    @Override
+    public String toString() {
+        return "(" + left.toString() + "/"
+                + right.toString() + ")";
+    }
+
+    /**
      * Function with printing division.
      */
     @Override
     public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("/");
-        right.print();
-        System.out.print(")");
+        System.out.print(this);
     }
 
     /**

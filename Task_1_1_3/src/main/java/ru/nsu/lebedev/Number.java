@@ -16,11 +16,19 @@ public class Number extends Expression {
     }
 
     /**
+     * A method for formating constant.
+     */
+    @Override
+    public String toString() {
+        return String.valueOf(value);
+    }
+
+    /**
      * Function with printing constant.
      */
     @Override
     public void print() {
-        System.out.print(value);
+        System.out.print(this);
     }
 
     /**

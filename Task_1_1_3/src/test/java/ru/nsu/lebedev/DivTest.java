@@ -34,25 +34,21 @@ public class DivTest {
 
     @Test
     void derivativeDiv() throws Exception {
-        final PrintStream originalOut = System.out;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
         Expression de = div.derivative("x");
-        System.out.println();
-        System.out.print("Derivative: ");
-        de.print();
-        String output = outputStream.toString();
-        assertTrue(output.contains("Derivative: (((0*x)-(5*1))/(x*x))"));
-        System.setOut(originalOut);
+        assertEquals("(((0*x)-(5*1))/(x*x))", de.toString());
     }
 
     @Test
     void evalDivAndDerivative() throws Exception {
+        assertEquals(0, div.eval("x = 10"));
+    }
+
+    @Test
+    void evalDerivative() throws Exception {
         Expression de = div.derivative("x");
         Map<String, Integer> variables = new HashMap<>();
         variables.put("x", 10);
         assertEquals(0, de.eval(variables));
-        assertEquals(0, div.eval("x = 10"));
     }
 }
 

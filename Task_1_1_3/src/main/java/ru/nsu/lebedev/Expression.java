@@ -3,24 +3,42 @@ package ru.nsu.lebedev;
 import java.util.HashMap;
 import java.util.Map;
 
-// Абстрактный класс для всех выражений
+/**
+ * An abstract class for all expressions.
+ */
 abstract class Expression {
-    // Метод для печати выражения
+
+    /**
+     * A method for printing an expression.
+     */
     public abstract void print();
 
-    // Метод для дифференцирования выражения по заданной переменной
+    /**
+     * A method for formating an expression.
+     */
+    public abstract String toString();
+
+    /**
+     * A method for differentiating an expression by a given variable.
+     */
     public abstract Expression derivative(String variable);
 
-    // Метод для вычисления значения выражения при подстановке переменных
+    /**
+     * A method for calculating the value of a expression when substituting variables.
+     */
     public abstract int eval(Map<String, Integer> variables);
 
-    // Метод для парсинга строки и вызова eval с картой переменных
+    /**
+     * A method for parsing a string and calling eval with a variable map.
+     */
     public int eval(String variables) {
         Map<String, Integer> varMap = parseVariables(variables);
         return eval(varMap);
     }
 
-    // Метод для парсинга строки с переменными
+    /**
+     * Method for parsing a string with variables
+     */
     private Map<String, Integer> parseVariables(String input) {
         Map<String, Integer> variables = new HashMap<>();
         String[] assignments = input.split(";");

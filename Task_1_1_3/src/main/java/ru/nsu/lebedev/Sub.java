@@ -18,6 +18,14 @@ public class Sub extends Expression {
     }
 
     /**
+     * A method for formating sub.
+     */
+    @Override
+    public String toString() {
+        return "(" + left.toString() + "-" + right.toString() + ")";
+    }
+
+    /**
      * Function with printing subtraction.
      */
     @Override

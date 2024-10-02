@@ -16,11 +16,19 @@ public class Variable extends Expression {
     }
 
     /**
+     * A method for formating variable.
+     */
+    @Override
+    public String toString() {
+        return variable;
+    }
+
+    /**
      * Function with printing variable.
      */
     @Override
     public void print() {
-        System.out.print(variable);
+        System.out.print(this);
     }
 
     /**

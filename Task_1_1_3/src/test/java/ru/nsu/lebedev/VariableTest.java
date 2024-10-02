@@ -34,20 +34,17 @@ public class VariableTest {
 
     @Test
     void derivativeVariable() throws Exception {
-        final PrintStream originalOut = System.out;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
         Expression de = variable.derivative("x");
-        System.out.println();
-        System.out.print("Derivative: ");
-        de.print();
-        String output = outputStream.toString();
-        assertTrue(output.contains("Derivative: 1"));
-        System.setOut(originalOut);
+        assertEquals("1", de.toString());
     }
 
     @Test
-    void evalVariableAndDerivative() throws Exception {
+    void evalVariable() throws Exception {
+        assertEquals(10, variable.eval("x = 10"));
+    }
+
+    @Test
+    void evalDerivative() throws Exception {
         Expression de = variable.derivative("x");
         Map<String, Integer> variables = new HashMap<>();
         variables.put("x", 10);
@@ -56,7 +53,6 @@ public class VariableTest {
         variables = new HashMap<>();
         variables.put("x", 10);
         assertEquals(0, de.eval(variables));
-        assertEquals(10, variable.eval("x = 10"));
     }
 }
 

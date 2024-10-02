@@ -1,9 +1,7 @@
 package ru.nsu.lebedev;
 
-import static org.junit.jupiter.api.Assertions.assertTrue;
+import static org.junit.jupiter.api.Assertions.assertEquals;
 
-import java.io.ByteArrayOutputStream;
-import java.io.PrintStream;
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -21,14 +19,8 @@ public class ExpressionParserTest {
 
     @Test
     void printExpressionParser() throws Exception {
-        final PrintStream originalOut = System.out;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
         expression = ExpressionParser.parse("(3+2)*x + 1 * 2");
-        expression.print();
-        String output = outputStream.toString();
-        assertTrue(output.contains("(((3+2)*x)+(1*2))"));
-        System.setOut(originalOut);
+        assertEquals("(((3+2)*x)+(1*2))", expression.toString());
     }
 }
 

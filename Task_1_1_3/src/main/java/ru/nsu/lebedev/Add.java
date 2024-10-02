@@ -18,15 +18,19 @@ public class Add extends Expression {
     }
 
     /**
+     * A method for formating add.
+     */
+    @Override
+    public String toString() {
+        return "(" + left.toString() + "+" + right.toString() + ")";
+    }
+
+    /**
      * Function with printing addition.
      */
     @Override
     public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("+");
-        right.print();
-        System.out.print(")");
+        System.out.println(this);
     }
 
     /**

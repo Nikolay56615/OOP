@@ -34,25 +34,21 @@ public class MulTest {
 
     @Test
     void derivativeMul() throws Exception {
-        final PrintStream originalOut = System.out;
-        ByteArrayOutputStream outputStream = new ByteArrayOutputStream();
-        System.setOut(new PrintStream(outputStream));
         Expression de = mul.derivative("x");
-        System.out.println();
-        System.out.print("Derivative: ");
-        de.print();
-        String output = outputStream.toString();
-        assertTrue(output.contains("Derivative: ((0*x)+(5*1))"));
-        System.setOut(originalOut);
+        assertEquals("((0*x)+(5*1))", de.toString());
     }
 
     @Test
-    void evalMulAndDerivative() throws Exception {
+    void evalMul() throws Exception {
+        assertEquals(50, mul.eval("x = 10"));
+    }
+
+    @Test
+    void evalDerivative() throws Exception {
         Expression de = mul.derivative("x");
         Map<String, Integer> variables = new HashMap<>();
         variables.put("x", 10);
         assertEquals(5, de.eval(variables));
-        assertEquals(50, mul.eval("x = 10"));
     }
 }
 

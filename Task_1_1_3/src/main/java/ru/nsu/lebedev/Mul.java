@@ -18,15 +18,19 @@ public class Mul extends Expression {
     }
 
     /**
+     * A method for formating mul.
+     */
+    @Override
+    public String toString() {
+        return "(" + left.toString() + "*" + right.toString() + ")";
+    }
+
+    /**
      * Function with printing multiplication.
      */
     @Override
     public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("*");
-        right.print();
-        System.out.print(")");
+        System.out.println(this);
     }
 
     /**
