@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -186,7 +186,9 @@ extends java.lang.Object</pre>
 <tr id="i1" class="rowColor">
 <td class="colFirst"><code>int</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#eval(java.lang.String)">eval</a></span>&#8203;(java.lang.String&nbsp;variables)</code></th>
-<td class="colLast">&nbsp;</td>
+<td class="colLast">
+<div class="block">A method for parsing a string and calling eval with a variable map.</div>
+</td>
 </tr>
 <tr id="i2" class="altColor">
 <td class="colFirst"><code>int</code></td>
@@ -202,13 +204,20 @@ extends java.lang.Object</pre>
 <div class="block">Function with printing constant.</div>
 </td>
 </tr>
+<tr id="i4" class="altColor">
+<td class="colFirst"><code>java.lang.String</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#toString()">toString</a></span>()</code></th>
+<td class="colLast">
+<div class="block">A method for formating constant.</div>
+</td>
+</tr>
 </table>
 <ul class="blockList">
 <li class="blockList"><a id="methods.inherited.from.class.java.lang.Object">
 <!--   -->
 </a>
 <h3>Methods inherited from class&nbsp;java.lang.Object</h3>
-<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, toString, wait, wait, wait</code></li>
+<code>clone, equals, finalize, getClass, hashCode, notify, notifyAll, wait, wait, wait</code></li>
 </ul>
 </li>
 </ul>
@@ -246,6 +255,16 @@ extends java.lang.Object</pre>
 <!--   -->
 </a>
 <h3>Method Detail</h3>
+<a id="toString()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>toString</h4>
+<pre class="methodSignature">public&nbsp;java.lang.String&nbsp;toString()</pre>
+<div class="block">A method for formating constant.</div>
+</li>
+</ul>
 <a id="print()">
 <!--   -->
 </a>
@@ -283,6 +302,7 @@ extends java.lang.Object</pre>
 <li class="blockList">
 <h4>eval</h4>
 <pre class="methodSignature">public&nbsp;int&nbsp;eval&#8203;(java.lang.String&nbsp;variables)</pre>
+<div class="block">A method for parsing a string and calling eval with a variable map.</div>
 </li>
 </ul>
 </li>
