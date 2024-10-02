@@ -37,7 +37,7 @@ abstract class Expression {
     }
 
     /**
-     * Method for parsing a string with variables
+     * Method for parsing a string with variables.
      */
     private Map<String, Integer> parseVariables(String input) {
         Map<String, Integer> variables = new HashMap<>();
