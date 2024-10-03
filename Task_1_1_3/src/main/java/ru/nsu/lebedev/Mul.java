@@ -26,14 +26,6 @@ public class Mul extends Expression {
     }
 
     /**
-     * Function with printing multiplication.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of multiplication.
      * By rule: (f * g)' = f' * g + f * g'.
      */

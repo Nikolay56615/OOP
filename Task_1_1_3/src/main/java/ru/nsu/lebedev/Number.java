@@ -24,14 +24,6 @@ public class Number extends Expression {
     }
 
     /**
-     * Function with printing constant.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of constant.
      */
     @Override

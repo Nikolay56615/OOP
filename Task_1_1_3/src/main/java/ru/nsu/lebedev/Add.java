@@ -26,14 +26,6 @@ public class Add extends Expression {
     }
 
     /**
-     * Function with printing addition.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of addition.
      */
     @Override

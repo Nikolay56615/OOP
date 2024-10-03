@@ -24,14 +24,6 @@ public class Variable extends Expression {
     }
 
     /**
-     * Function with printing variable.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of variable.
      * by rule1: The derivative of the variable by itself is 1.
      * by rule2: The derivative of another variable is 0.

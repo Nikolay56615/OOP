@@ -27,14 +27,6 @@ public class Div extends Expression {
     }
 
     /**
-     * Function with printing division.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of division.
      * By rule: (f / g)' = (f' * g - f * g') / g^2.
      */

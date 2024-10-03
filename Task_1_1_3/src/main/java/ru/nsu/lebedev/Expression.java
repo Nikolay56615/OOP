@@ -11,6 +11,7 @@ abstract class Expression {
      * Function for printing.
      */
     public void print() {
+        System.out.println(this);
     }
 
     /**

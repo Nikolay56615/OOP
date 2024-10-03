@@ -26,14 +26,6 @@ public class Sub extends Expression {
     }
 
     /**
-     * Function with printing subtraction.
-     */
-    @Override
-    public void print() {
-        System.out.print(this);
-    }
-
-    /**
      * Function with derivative of subtraction.
      */
     @Override
