@@ -30,11 +30,7 @@ public class Sub extends Expression {
      */
     @Override
     public void print() {
-        System.out.print("(");
-        left.print();
-        System.out.print("-");
-        right.print();
-        System.out.print(")");
+        System.out.print(this);
     }
 
     /**

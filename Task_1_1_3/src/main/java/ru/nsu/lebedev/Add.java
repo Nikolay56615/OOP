@@ -30,7 +30,7 @@ public class Add extends Expression {
      */
     @Override
     public void print() {
-        System.out.println(this);
+        System.out.print(this);
     }
 
     /**

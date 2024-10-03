@@ -7,15 +7,16 @@ import java.util.Map;
  * An abstract class for all expressions.
  */
 abstract class Expression {
-
     /**
-     * A method for printing an expression.
+     * Function for printing.
      */
-    public abstract void print();
+    public void print() {
+    }
 
     /**
      * A method for formating an expression.
      */
+    @Override
     public abstract String toString();
 
     /**

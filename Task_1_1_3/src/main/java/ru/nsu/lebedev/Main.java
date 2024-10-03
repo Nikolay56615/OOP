@@ -27,6 +27,7 @@ public class Main {
         System.out.println("Evaluation: " + expression.eval(variables));  // 23
         expression = ExpressionParser.parse("(3+2)*x + 1 * 2"); // (((3+2)*x)+(1*2))
         expression.print();
+        System.out.println();
         variables = new HashMap<>();
         System.out.println("Evaluation: " + expression.eval(variables));  // 2
     }
