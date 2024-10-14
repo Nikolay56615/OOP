@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.graph","l":"Main"}]
+typeSearchIndex = [{"p":"ru.nsu.lebedev.graph","l":"AdjacentMatrixGraph"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.graph","l":"Edge"},{"p":"ru.nsu.lebedev.graph","l":"Graph"},{"p":"ru.nsu.lebedev.graph","l":"IncidenceMatrixGraph"},{"p":"ru.nsu.lebedev.graph","l":"Main"},{"p":"ru.nsu.lebedev.graph","l":"Vertex"}]
