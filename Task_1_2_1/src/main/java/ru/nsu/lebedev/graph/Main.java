@@ -1,20 +1,22 @@
 package ru.nsu.lebedev.graph;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static int sum(int a, int b) {
-        return a + b;
-    }
-    public static void main(String[] args) {
-        //TIP Press <shortcut actionId="ShowIntentionActions"/> with your caret at the highlighted text
-        // to see how IntelliJ IDEA suggests fixing it.
-        System.out.printf("Hello and welcome!");
+import java.util.List;
 
-        for (int i = 1; i <= 5; i++) {
-            //TIP Press <shortcut actionId="Debug"/> to start debugging your code. We have set one <icon src="AllIcons.Debugger.Db_set_breakpoint"/> breakpoint
-            // for you, but you can always add more by pressing <shortcut actionId="ToggleLineBreakpoint"/>.
-            System.out.println("i = " + i);
-        }
+/**
+ * Main class.
+ */
+public class Main {
+    /**
+     * Main function.
+     */
+    public static void main(String[] args) {
+        AdjacentMatrixGraph<String> graph1 = new AdjacentMatrixGraph<>();
+        IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>();
+        Graph.readDataForGraphFromFile(graph1, "file.txt");
+        Graph.readDataForGraphFromFile(graph2, "file.txt");
+        List<String> sorted1 = graph1.topSort("A");
+        List<String> sorted2 = graph2.topSort("A");
+        System.out.println("Topological Sort1: " + sorted1);
+        System.out.println("Topological Sort2: " + sorted2);
     }
 }
