@@ -14,6 +14,9 @@ import org.junit.jupiter.api.Test;
 public class AdjacentListGraphTest {
     private Graph<String> graph;
 
+    /**
+     * Function for creating default graph.
+     */
     @BeforeEach
     public void setUp() throws Exception {
         graph = new AdjacentListGraph<>();
@@ -70,7 +73,8 @@ public class AdjacentListGraphTest {
 
     @Test
     void getVerticesAdjacentListGraph() throws Exception {
-        assertEquals(new ArrayList<>(Arrays.asList("A", "B", "C", "D", "E", "F")), graph.getVertices());
+        assertEquals(new ArrayList<>(
+                Arrays.asList("A", "B", "C", "D", "E", "F")), graph.getVertices());
     }
 
     @Test

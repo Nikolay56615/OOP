@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +14,12 @@ import org.junit.jupiter.api.Test;
 public class EdgeTest {
     private Edge<String> edge;
 
+    /**
+     * Function for creating default edge.
+     */
     @BeforeEach
     public void setUp() throws Exception {
-        edge = new Edge<String> ("A", "B", 5.0);
+        edge = new Edge<String>("A", "B", 5.0);
     }
 
     @Test
@@ -52,7 +54,7 @@ public class EdgeTest {
 
     @Test
     void equalsEdge() {
-        Edge<String> edge2 = new Edge<String> ("A", "C", 7.0);
+        Edge<String> edge2 = new Edge<String>("A", "C", 7.0);
         assertNotEquals(edge, edge2);
     }
 

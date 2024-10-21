@@ -5,7 +5,6 @@ import static org.junit.jupiter.api.Assertions.assertNotEquals;
 
 import java.io.ByteArrayInputStream;
 import java.io.InputStream;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -15,9 +14,12 @@ import org.junit.jupiter.api.Test;
 public class VertexTest {
     private Vertex<String> vertex;
 
+    /**
+     * Function for creating default vertex.
+     */
     @BeforeEach
     public void setUp() throws Exception {
-        vertex = new Vertex<> ("A");
+        vertex = new Vertex<>("A");
     }
 
     @Test
@@ -36,7 +38,7 @@ public class VertexTest {
 
     @Test
     void equalsVertex() {
-        Vertex<String> vertex2 = new Vertex<> ("C");
+        Vertex<String> vertex2 = new Vertex<>("C");
         assertNotEquals(vertex, vertex2);
     }
 
