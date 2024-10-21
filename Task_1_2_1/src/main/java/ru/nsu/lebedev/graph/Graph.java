@@ -36,6 +36,15 @@ public interface Graph<T> {
     Vertex<T> removeVertex(T value);
 
     /**
+     * Edge getter.
+     *
+     * @param a first vertex value
+     * @param b second vertex value
+     * @return edge (a, b) if it exists and `null` otherwise
+     */
+    Edge<T> getEdge(T a, T b);
+
+    /**
      * Edge creation.
      * Creates edge (a,b) with specified weight if edge (a,b) doesn't exist.
      * Creates vertices `a` and `b` if they don't exist
@@ -57,39 +66,37 @@ public interface Graph<T> {
     Edge<T> removeEdge(T a, T b);
 
     /**
-     * Edge getter.
-     *
-     * @param a first vertex value
-     * @param b second vertex value
-     * @return edge (a, b) if it exists and `null` otherwise
-     */
-    Edge<T> getEdge(T a, T b);
-
-    /**
-     * Topological sorter.
-     *
-     * @param start vertex of started
-     * @return list of vertices in topological sort
-     */
-    List<T> topSort(T start);
-
-    /**
      * Method for reading graph's data from file.
      *
      * @param graph graph upcasted to Graph class.
      * @param filename file with data.
+     * @param reader type of realization if interface VertexReader.
      */
-    static void readDataForGraphFromFile(Graph<String> graph, String filename) {
-        try (FileReader reader = new FileReader(filename)) {
+    static <T> void readDataForGraphFromFile(Graph<T> graph, String filename, VertexReader<T> reader) {
+        try (FileReader fileReader = new FileReader(filename)) {
             char[] buf = new char[50000];
-            int len = reader.read(buf);
+            int len = fileReader.read(buf);
             var strings = String.copyValueOf(buf, 0, len).split("\r?\n");
             for (var string : strings) {
-                var edgeData = string.split(" ");
-                graph.addEdge(edgeData[0], edgeData[1], Double.parseDouble(edgeData[2]));
+                reader.readVertex(graph, string);
             }
         } catch (IOException e) {
             throw new RuntimeException(e);
         }
     }
+
+    /**
+     * Method for getting vertices.
+     *
+     * @return list of all vertices of the graph
+     */
+    List<T> getVertices();
+
+    /**
+     * Method for getting vertices.
+     *
+     * @param vertex of graph.
+     * @return a list of neighbors for the passed vertex.
+     */
+    List<T> getAdjacentVertices(T vertex);
 }

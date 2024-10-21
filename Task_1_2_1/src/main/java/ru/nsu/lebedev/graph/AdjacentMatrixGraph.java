@@ -1,6 +1,10 @@
 package ru.nsu.lebedev.graph;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Adjacency Matrix Graph class implementation.
@@ -88,45 +92,6 @@ public class AdjacentMatrixGraph<T> implements Graph<T> {
         return null;
     }
 
-    @Override
-    public List<T> topSort(T start) {
-        List<T> sortedMap = new ArrayList<>();
-        Set<T> visited = new HashSet<>();
-        Deque<T> stack = new ArrayDeque<>();
-        for (T vertex : vertices.keySet()) {
-            if (!visited.contains(vertex)) {
-                dfs(vertex, visited, stack);
-            }
-        }
-        while (!stack.isEmpty()) {
-            T vertex = stack.pop();
-            sortedMap.add(vertex);
-        }
-        return sortedMap;
-    }
-
-    /**
-     * DFS method for graph.
-     *
-     * @param vertex vertex of search
-     * @param visited list of visited vertices
-     * @param stack topological sort stack
-     */
-    private void dfs(T vertex, Set<T> visited, Deque<T> stack) {
-        visited.add(vertex);
-        int index = vertexIndex.get(vertex);
-        for (int i = 0; i < adjMatrix.get(index).size(); i++) {
-            Double weight = adjMatrix.get(index).get(i);
-            if (weight != null) {
-                T adjacentVertex = getVertexByIndex(i);
-                if (!visited.contains(adjacentVertex)) {
-                    dfs(adjacentVertex, visited, stack);
-                }
-            }
-        }
-        stack.push(vertex);
-    }
-
     /**
      * Getter of vertex by index.
      *
@@ -140,5 +105,22 @@ public class AdjacentMatrixGraph<T> implements Graph<T> {
             }
         }
         return null;
+    }
+
+    @Override
+    public List<T> getVertices() {
+        return new ArrayList<>(vertices.keySet());
+    }
+
+    @Override
+    public List<T> getAdjacentVertices(T vertex) {
+        List<T> adjacentVertices = new ArrayList<>();
+        int index = vertexIndex.get(vertex);
+        for (int i = 0; i < adjMatrix.get(index).size(); i++) {
+            if (adjMatrix.get(index).get(i) != null) {
+                adjacentVertices.add(getVertexByIndex(i));
+            }
+        }
+        return adjacentVertices;
     }
 }

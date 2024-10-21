@@ -1,6 +1,10 @@
 package ru.nsu.lebedev.graph;
 
-import java.util.*;
+import java.util.Map;
+import java.util.HashMap;
+import java.util.List;
+import java.util.ArrayList;
+import java.util.Collections;
 
 /**
  * Incidence Matrix Graph class implementation.
@@ -46,6 +50,16 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
     }
 
     @Override
+    public Edge<T> getEdge(T a, T b) {
+        for (Map.Entry<Edge<T>, Double> edge : edges) {
+            if (edge.getKey().getFrom().equals(a) && edge.getKey().getTo().equals(b)) {
+                return edge.getKey();
+            }
+        }
+        return null;
+    }
+
+    @Override
     public void addEdge(T a, T b, double weight) {
         addVertex(a);
         addVertex(b);
@@ -75,55 +89,22 @@ public class IncidenceMatrixGraph<T> implements Graph<T> {
         return null;
     }
 
-
     @Override
-    public Edge<T> getEdge(T a, T b) {
-        for (Map.Entry<Edge<T>, Double> edge : edges) {
-            if (edge.getKey().getFrom().equals(a) && edge.getKey().getTo().equals(b)) {
-                return edge.getKey();
-            }
-        }
-        return null;
+    public List<T> getVertices() {
+        return new ArrayList<>(vertices.keySet());
     }
 
     @Override
-    public List<T> topSort(T start) {
-        List<T> sortedMap = new ArrayList<>();
-        Set<T> visited = new HashSet<>();
-        Deque<T> stack = new ArrayDeque<>();
-        for (T vertex : vertices.keySet()) {
-            if (!visited.contains(vertex)) {
-                dfs(vertex, visited, stack);
-            }
-        }
-        while (!stack.isEmpty()) {
-            T vertex = stack.pop();
-            sortedMap.add(vertex);
-        }
-        return sortedMap;
-    }
-
-    /**
-     * DFS method for graph.
-     *
-     * @param vertex vertex of search
-     * @param visited list of visited vertices
-     * @param stack topological sort stack
-     */
-    private void dfs(T vertex, Set<T> visited, Deque<T> stack) {
-        visited.add(vertex);
+    public List<T> getAdjacentVertices(T vertex) {
+        List<T> adjacentVertices = new ArrayList<>();
         int index = vertexIndex.get(vertex);
         for (int i = 0; i < edges.size(); i++) {
             Double weight = incMatrix.get(index).get(i);
             if (weight != null && weight > 0) {
-                Edge<T> edge = edges.get(i).getKey();
-                T adjacentVertex = edge.getTo();
-                if (!visited.contains(adjacentVertex)) {
-                    dfs(adjacentVertex, visited, stack);
-                }
+                adjacentVertices.add(edges.get(i).getKey().getTo());
             }
         }
-        stack.push(vertex);
+        return adjacentVertices;
     }
 }
 

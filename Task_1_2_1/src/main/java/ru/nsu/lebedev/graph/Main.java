@@ -12,11 +12,17 @@ public class Main {
     public static void main(String[] args) {
         AdjacentMatrixGraph<String> graph1 = new AdjacentMatrixGraph<>();
         IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>();
-        Graph.readDataForGraphFromFile(graph1, "file.txt");
-        Graph.readDataForGraphFromFile(graph2, "file.txt");
-        List<String> sorted1 = graph1.topSort("A");
-        List<String> sorted2 = graph2.topSort("A");
-        System.out.println("Topological Sort1: " + sorted1);
-        System.out.println("Topological Sort2: " + sorted2);
+        AdjacentListGraph<String> graph3 = new AdjacentListGraph<>();
+        DefaultVertexReader reader = new DefaultVertexReader();
+        Graph.readDataForGraphFromFile(graph1, "file.txt", reader);
+        Graph.readDataForGraphFromFile(graph2, "file.txt", reader);
+        Graph.readDataForGraphFromFile(graph3, "file.txt", reader);
+        TopologicalSort<String> topSort = new TopologicalSort<>();
+        List<String> sorted1 = topSort.sort(graph1);
+        List<String> sorted2 = topSort.sort(graph2);
+        List<String> sorted3 = topSort.sort(graph3);
+        System.out.println(sorted1);
+        System.out.println(sorted2);
+        System.out.println(sorted3);
     }
 }
