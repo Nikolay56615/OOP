@@ -363,13 +363,16 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <h4>readDataForGraphFromFile</h4>
 <pre class="methodSignature">static&nbsp;&lt;T&gt;&nbsp;void&nbsp;readDataForGraphFromFile&#8203;(<a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;T&gt;&nbsp;graph,
                                          java.lang.String&nbsp;filename,
-                                         <a href="VertexReader.html" title="interface in ru.nsu.lebedev.graph">VertexReader</a>&lt;T&gt;&nbsp;reader)</pre>
+                                         <a href="VertexReader.html" title="interface in ru.nsu.lebedev.graph">VertexReader</a>&lt;T&gt;&nbsp;reader)
+                                  throws java.io.IOException</pre>
 <div class="block">Method for reading graph's data from file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>graph</code> - graph upcasted to Graph class.</dd>
 <dd><code>filename</code> - file with data.</dd>
 <dd><code>reader</code> - type of realization if interface VertexReader.</dd>
+<dt><span class="throwsLabel">Throws:</span></dt>
+<dd><code>java.io.IOException</code></dd>
 </dl>
 </li>
 </ul>
