@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10};
+var data = {"i0":10,"i1":10,"i2":10,"i3":10,"i4":10,"i5":10,"i6":10,"i7":10};
 var tabs = {65535:["t0","All Methods"],2:["t2","Instance Methods"],8:["t4","Concrete Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -201,6 +201,13 @@ implements <a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph<
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAdjacentVertices(T)">getAdjacentVertices</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;vertex)</code></th>
+<td class="colLast">
+<div class="block">Method for getting vertices.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(T,T)">getEdge</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;a,
        <a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;b)</code></th>
@@ -208,14 +215,21 @@ implements <a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph<
 <div class="block">Edge getter.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.lebedev.graph">Vertex</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(T)">getVertex</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Vertex getter.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertices()">getVertices</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Method for getting vertices.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(T,T)">removeEdge</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;a,
           <a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;b)</code></th>
@@ -223,18 +237,11 @@ implements <a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph<
 <div class="block">Edge removing.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.lebedev.graph">Vertex</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(T)">removeVertex</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Vertex removing.</div>
-</td>
-</tr>
-<tr id="i6" class="altColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#topSort(T)">topSort</a></span>&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;start)</code></th>
-<td class="colLast">
-<div class="block">Topological sorter.</div>
 </td>
 </tr>
 </table>
@@ -415,24 +422,41 @@ implements <a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph<
 </dl>
 </li>
 </ul>
-<a id="topSort(java.lang.Object)">
+<a id="getVertices()">
 <!--   -->
-</a><a id="topSort(T)">
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getVertices</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;&nbsp;getVertices()</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="Graph.html#getVertices()">Graph</a></code></span></div>
+<div class="block">Method for getting vertices.</div>
+<dl>
+<dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
+<dd><code><a href="Graph.html#getVertices()">getVertices</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list of all vertices of the graph</dd>
+</dl>
+</li>
+</ul>
+<a id="getAdjacentVertices(java.lang.Object)">
+<!--   -->
+</a><a id="getAdjacentVertices(T)">
 <!--   -->
 </a>
 <ul class="blockListLast">
 <li class="blockList">
-<h4>topSort</h4>
-<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;&nbsp;topSort&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;start)</pre>
-<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="Graph.html#topSort(T)">Graph</a></code></span></div>
-<div class="block">Topological sorter.</div>
+<h4>getAdjacentVertices</h4>
+<pre class="methodSignature">public&nbsp;java.util.List&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;&nbsp;getAdjacentVertices&#8203;(<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&nbsp;vertex)</pre>
+<div class="block"><span class="descfrmTypeLabel">Description copied from interface:&nbsp;<code><a href="Graph.html#getAdjacentVertices(T)">Graph</a></code></span></div>
+<div class="block">Method for getting vertices.</div>
 <dl>
 <dt><span class="overrideSpecifyLabel">Specified by:</span></dt>
-<dd><code><a href="Graph.html#topSort(T)">topSort</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></dd>
+<dd><code><a href="Graph.html#getAdjacentVertices(T)">getAdjacentVertices</a></code>&nbsp;in interface&nbsp;<code><a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;<a href="AdjacentMatrixGraph.html" title="type parameter in AdjacentMatrixGraph">T</a>&gt;</code></dd>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>start</code> - vertex of started</dd>
+<dd><code>vertex</code> - of graph.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>list of vertices in topological sort</dd>
+<dd>a list of neighbors for the passed vertex.</dd>
 </dl>
 </li>
 </ul>

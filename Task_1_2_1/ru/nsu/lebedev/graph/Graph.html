@@ -27,7 +27,7 @@
     catch(err) {
     }
 //-->
-var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":1,"i5":6,"i6":6,"i7":6};
+var data = {"i0":6,"i1":6,"i2":6,"i3":6,"i4":6,"i5":6,"i6":1,"i7":6,"i8":6};
 var tabs = {65535:["t0","All Methods"],1:["t1","Static Methods"],2:["t2","Instance Methods"],4:["t3","Abstract Methods"]};
 var altColor = "altColor";
 var rowColor = "rowColor";
@@ -127,7 +127,7 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 <dl>
 <dt>All Known Implementing Classes:</dt>
-<dd><code><a href="AdjacentMatrixGraph.html" title="class in ru.nsu.lebedev.graph">AdjacentMatrixGraph</a></code>, <code><a href="IncidenceMatrixGraph.html" title="class in ru.nsu.lebedev.graph">IncidenceMatrixGraph</a></code></dd>
+<dd><code><a href="AdjacentListGraph.html" title="class in ru.nsu.lebedev.graph">AdjacentListGraph</a></code>, <code><a href="AdjacentMatrixGraph.html" title="class in ru.nsu.lebedev.graph">AdjacentMatrixGraph</a></code>, <code><a href="IncidenceMatrixGraph.html" title="class in ru.nsu.lebedev.graph">IncidenceMatrixGraph</a></code></dd>
 </dl>
 <hr>
 <pre>public interface <span class="typeNameLabel">Graph&lt;T&gt;</span></pre>
@@ -169,6 +169,13 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </td>
 </tr>
 <tr id="i2" class="altColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getAdjacentVertices(T)">getAdjacentVertices</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;vertex)</code></th>
+<td class="colLast">
+<div class="block">Method for getting vertices.</div>
+</td>
+</tr>
+<tr id="i3" class="rowColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getEdge(T,T)">getEdge</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;a,
        <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;b)</code></th>
@@ -176,22 +183,30 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Edge getter.</div>
 </td>
 </tr>
-<tr id="i3" class="rowColor">
+<tr id="i4" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.lebedev.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertex(T)">getVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Vertex getter.</div>
 </td>
 </tr>
-<tr id="i4" class="altColor">
-<td class="colFirst"><code>static void</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readDataForGraphFromFile(ru.nsu.lebedev.graph.Graph,java.lang.String)">readDataForGraphFromFile</a></span>&#8203;(<a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;java.lang.String&gt;&nbsp;graph,
-                        java.lang.String&nbsp;filename)</code></th>
+<tr id="i5" class="rowColor">
+<td class="colFirst"><code>java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#getVertices()">getVertices</a></span>()</code></th>
+<td class="colLast">
+<div class="block">Method for getting vertices.</div>
+</td>
+</tr>
+<tr id="i6" class="altColor">
+<td class="colFirst"><code>static &lt;T&gt;&nbsp;void</code></td>
+<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#readDataForGraphFromFile(ru.nsu.lebedev.graph.Graph,java.lang.String,ru.nsu.lebedev.graph.VertexReader)">readDataForGraphFromFile</a></span>&#8203;(<a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;T&gt;&nbsp;graph,
+                        java.lang.String&nbsp;filename,
+                        <a href="VertexReader.html" title="interface in ru.nsu.lebedev.graph">VertexReader</a>&lt;T&gt;&nbsp;reader)</code></th>
 <td class="colLast">
 <div class="block">Method for reading graph's data from file.</div>
 </td>
 </tr>
-<tr id="i5" class="rowColor">
+<tr id="i7" class="rowColor">
 <td class="colFirst"><code><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeEdge(T,T)">removeEdge</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;a,
           <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;b)</code></th>
@@ -199,18 +214,11 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 <div class="block">Edge removing.</div>
 </td>
 </tr>
-<tr id="i6" class="altColor">
+<tr id="i8" class="altColor">
 <td class="colFirst"><code><a href="Vertex.html" title="class in ru.nsu.lebedev.graph">Vertex</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#removeVertex(T)">removeVertex</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;value)</code></th>
 <td class="colLast">
 <div class="block">Vertex removing.</div>
-</td>
-</tr>
-<tr id="i7" class="rowColor">
-<td class="colFirst"><code>java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;</code></td>
-<th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#topSort(T)">topSort</a></span>&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;start)</code></th>
-<td class="colLast">
-<div class="block">Topological sorter.</div>
 </td>
 </tr>
 </table>
@@ -284,6 +292,26 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
+<a id="getEdge(java.lang.Object,java.lang.Object)">
+<!--   -->
+</a><a id="getEdge(T,T)">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getEdge</h4>
+<pre class="methodSignature"><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getEdge&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;a,
+                <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;b)</pre>
+<div class="block">Edge getter.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>a</code> - first vertex value</dd>
+<dd><code>b</code> - second vertex value</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>edge (a, b) if it exists and `null` otherwise</dd>
+</dl>
+</li>
+</ul>
 <a id="addEdge(java.lang.Object,java.lang.Object,double)">
 <!--   -->
 </a><a id="addEdge(T,T,double)">
@@ -327,57 +355,53 @@ $('.navPadding').css('padding-top', $('.fixedNav').css("height"));
 </dl>
 </li>
 </ul>
-<a id="getEdge(java.lang.Object,java.lang.Object)">
-<!--   -->
-</a><a id="getEdge(T,T)">
+<a id="readDataForGraphFromFile(ru.nsu.lebedev.graph.Graph,java.lang.String,ru.nsu.lebedev.graph.VertexReader)">
 <!--   -->
 </a>
 <ul class="blockList">
-<li class="blockList">
-<h4>getEdge</h4>
-<pre class="methodSignature"><a href="Edge.html" title="class in ru.nsu.lebedev.graph">Edge</a>&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getEdge&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;a,
-                <a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;b)</pre>
-<div class="block">Edge getter.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>a</code> - first vertex value</dd>
-<dd><code>b</code> - second vertex value</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>edge (a, b) if it exists and `null` otherwise</dd>
-</dl>
-</li>
-</ul>
-<a id="topSort(java.lang.Object)">
-<!--   -->
-</a><a id="topSort(T)">
-<!--   -->
-</a>
-<ul class="blockList">
-<li class="blockList">
-<h4>topSort</h4>
-<pre class="methodSignature">java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;topSort&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;start)</pre>
-<div class="block">Topological sorter.</div>
-<dl>
-<dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>start</code> - vertex of started</dd>
-<dt><span class="returnLabel">Returns:</span></dt>
-<dd>list of vertices in topological sort</dd>
-</dl>
-</li>
-</ul>
-<a id="readDataForGraphFromFile(ru.nsu.lebedev.graph.Graph,java.lang.String)">
-<!--   -->
-</a>
-<ul class="blockListLast">
 <li class="blockList">
 <h4>readDataForGraphFromFile</h4>
-<pre class="methodSignature">static&nbsp;void&nbsp;readDataForGraphFromFile&#8203;(<a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;java.lang.String&gt;&nbsp;graph,
-                                     java.lang.String&nbsp;filename)</pre>
+<pre class="methodSignature">static&nbsp;&lt;T&gt;&nbsp;void&nbsp;readDataForGraphFromFile&#8203;(<a href="Graph.html" title="interface in ru.nsu.lebedev.graph">Graph</a>&lt;T&gt;&nbsp;graph,
+                                         java.lang.String&nbsp;filename,
+                                         <a href="VertexReader.html" title="interface in ru.nsu.lebedev.graph">VertexReader</a>&lt;T&gt;&nbsp;reader)</pre>
 <div class="block">Method for reading graph's data from file.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>graph</code> - graph upcasted to Graph class.</dd>
 <dd><code>filename</code> - file with data.</dd>
+<dd><code>reader</code> - type of realization if interface VertexReader.</dd>
+</dl>
+</li>
+</ul>
+<a id="getVertices()">
+<!--   -->
+</a>
+<ul class="blockList">
+<li class="blockList">
+<h4>getVertices</h4>
+<pre class="methodSignature">java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getVertices()</pre>
+<div class="block">Method for getting vertices.</div>
+<dl>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>list of all vertices of the graph</dd>
+</dl>
+</li>
+</ul>
+<a id="getAdjacentVertices(java.lang.Object)">
+<!--   -->
+</a><a id="getAdjacentVertices(T)">
+<!--   -->
+</a>
+<ul class="blockListLast">
+<li class="blockList">
+<h4>getAdjacentVertices</h4>
+<pre class="methodSignature">java.util.List&lt;<a href="Graph.html" title="type parameter in Graph">T</a>&gt;&nbsp;getAdjacentVertices&#8203;(<a href="Graph.html" title="type parameter in Graph">T</a>&nbsp;vertex)</pre>
+<div class="block">Method for getting vertices.</div>
+<dl>
+<dt><span class="paramLabel">Parameters:</span></dt>
+<dd><code>vertex</code> - of graph.</dd>
+<dt><span class="returnLabel">Returns:</span></dt>
+<dd>a list of neighbors for the passed vertex.</dd>
 </dl>
 </li>
 </ul>
