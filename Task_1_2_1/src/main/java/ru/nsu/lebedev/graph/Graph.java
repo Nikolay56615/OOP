@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.graph;
 
+import java.io.BufferedReader;
 import java.io.FileReader;
 import java.io.IOException;
 import java.util.List;
@@ -73,16 +74,12 @@ public interface Graph<T> {
      * @param reader type of realization if interface VertexReader.
      */
     static <T> void readDataForGraphFromFile(Graph<T> graph, String filename,
-                                             VertexReader<T> reader) {
-        try (FileReader fileReader = new FileReader(filename)) {
-            char[] buf = new char[50000];
-            int len = fileReader.read(buf);
-            var strings = String.copyValueOf(buf, 0, len).split("\r?\n");
-            for (var string : strings) {
-                reader.readVertex(graph, string);
+                                             VertexReader<T> reader) throws IOException {
+        try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
+            String line;
+            while ((line = br.readLine()) != null) {
+                reader.readVertex(graph, line);
             }
-        } catch (IOException e) {
-            throw new RuntimeException(e);
         }
     }
 

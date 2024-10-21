@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.graph;
 
+import java.io.IOException;
 import java.util.List;
 
 /**
@@ -9,7 +10,7 @@ public class Main {
     /**
      * Main function.
      */
-    public static void main(String[] args) {
+    public static void main(String[] args) throws IOException {
         AdjacentMatrixGraph<String> graph1 = new AdjacentMatrixGraph<>();
         IncidenceMatrixGraph<String> graph2 = new IncidenceMatrixGraph<>();
         AdjacentListGraph<String> graph3 = new AdjacentListGraph<>();
