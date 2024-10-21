@@ -73,13 +73,15 @@ public interface Graph<T> {
      * @param filename file with data.
      * @param reader type of realization if interface VertexReader.
      */
-    static <T> void readDataForGraphFromFile(Graph<T> graph, String filename,
-                                             VertexReader<T> reader) throws IOException {
+    static <T> void readDataForGraphFromFile(Graph<T> graph,
+                                             String filename, VertexReader<T> reader) throws GraphDataReadException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
                 reader.readVertex(graph, line);
             }
+        } catch (IOException e) {
+            throw new GraphDataReadException("Error reading graph data from file: " + filename, e);
         }
     }
 
