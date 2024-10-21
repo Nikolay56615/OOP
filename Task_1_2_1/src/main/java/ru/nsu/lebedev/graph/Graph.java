@@ -72,7 +72,8 @@ public interface Graph<T> {
      * @param filename file with data.
      * @param reader type of realization if interface VertexReader.
      */
-    static <T> void readDataForGraphFromFile(Graph<T> graph, String filename, VertexReader<T> reader) {
+    static <T> void readDataForGraphFromFile(Graph<T> graph, String filename,
+                                             VertexReader<T> reader) {
         try (FileReader fileReader = new FileReader(filename)) {
             char[] buf = new char[50000];
             int len = fileReader.read(buf);
