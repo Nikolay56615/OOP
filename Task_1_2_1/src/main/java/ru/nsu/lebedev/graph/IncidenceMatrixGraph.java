@@ -1,10 +1,10 @@
 package ru.nsu.lebedev.graph;
 
-import java.util.Map;
 import java.util.HashMap;
 import java.util.List;
 import java.util.ArrayList;
 import java.util.Collections;
+import java.util.Map;
 
 /**
  * Incidence Matrix Graph class implementation.
