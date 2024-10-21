@@ -2,9 +2,8 @@ package ru.nsu.lebedev.graph;
 
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
-import org.junit.jupiter.api.Test;
-
 import java.io.IOException;
+import org.junit.jupiter.api.Test;
 
 /**
  * Class for testing Main class.
