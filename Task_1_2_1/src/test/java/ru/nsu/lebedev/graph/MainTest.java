@@ -4,12 +4,14 @@ import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import org.junit.jupiter.api.Test;
 
+import java.io.IOException;
+
 /**
  * Class for testing Main class.
  */
 class MainTest {
     @Test
-    void callMain() {
+    void callMain() throws IOException {
         Main.main(new String[]{});
         assertTrue(true);
     }
