@@ -75,7 +75,7 @@ public interface Graph<T> {
      */
     static <T> void readDataForGraphFromFile(Graph<T> graph,
                                              String filename, VertexReader<T> reader)
-    throws IOException {
+        throws IOException {
         try (BufferedReader br = new BufferedReader(new FileReader(filename))) {
             String line;
             while ((line = br.readLine()) != null) {
