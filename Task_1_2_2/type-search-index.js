@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.hashtable","l":"Main"}]
+typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.hashtable","l":"Dict"},{"p":"ru.nsu.lebedev.hashtable","l":"HashTable"},{"p":"ru.nsu.lebedev.hashtable","l":"Main"}]
