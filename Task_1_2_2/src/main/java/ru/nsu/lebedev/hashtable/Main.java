@@ -7,6 +7,8 @@ package ru.nsu.lebedev.hashtable;
 public class Main {
     /**
      * Main function.
+     *
+     * @param args for specified parameters.
      */
     public static void main(String[] args) {
         HashTable<String, Number> hashTable = new HashTable<>();

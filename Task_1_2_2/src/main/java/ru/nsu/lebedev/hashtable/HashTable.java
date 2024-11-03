@@ -54,13 +54,13 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     }
 
     /**
-     * Method for resize hashtable if size * 2 >= capacity.
+     * Method for resize hashtable if size * 2 bigger than capacity.
      */
     @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = capacity * 2;
-        K[] oldKeys = keys;
-        V[] oldValues = values;
+        final K[] oldKeys = keys;
+        final V[] oldValues = values;
         keys = (K[]) new Object[newCapacity];
         values = (V[]) new Object[newCapacity];
         capacity = newCapacity;
@@ -123,15 +123,15 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
         int index = hash(key);
         while (keys[index] != null) {
             if (Objects.equals(keys[index], key)) {
-                V oldValue = values[index];
+                final V oldValue = values[index];
                 values[index] = null;
                 keys[index] = null;
                 size--;
                 modCount++;
                 index = (index + 1) % capacity;
                 while (keys[index] != null) {
-                    K tempKey = keys[index];
-                    V tempValue = values[index];
+                    final K tempKey = keys[index];
+                    final V tempValue = values[index];
                     keys[index] = null;
                     values[index] = null;
                     size--;
@@ -166,6 +166,7 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     /**
      * Method for checking key existence in hashtable.
      *
+     * @param key exist.
      * @return True or False.
      */
     public boolean containsKey(K key) {
