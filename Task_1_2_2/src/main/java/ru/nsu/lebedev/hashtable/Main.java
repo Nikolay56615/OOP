@@ -1,12 +1,13 @@
 package ru.nsu.lebedev.hashtable;
 
-//TIP To <b>Run</b> code, press <shortcut actionId="Run"/> or
-// click the <icon src="AllIcons.Actions.Execute"/> icon in the gutter.
-public class Main {
-    public static int sum(int a, int b) {
-        return a + b;
-    }
 
+/**
+ * Main class.
+ */
+public class Main {
+    /**
+     * Main function.
+     */
     public static void main(String[] args) {
         HashTable<String, Number> hashTable = new HashTable<>();
         hashTable.put("one", 1);
@@ -19,5 +20,8 @@ public class Main {
         hashTable.put("one", 1);
         hashTable.put("two", 2);
         System.out.println(hashTable);
+        for (HashTableEntry<String, Number> entry : hashTable) {
+            System.out.println(entry);
+        }
     }
 }

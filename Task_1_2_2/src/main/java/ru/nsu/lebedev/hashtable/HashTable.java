@@ -1,6 +1,7 @@
 package ru.nsu.lebedev.hashtable;
 
 import java.util.Iterator;
+import java.util.NoSuchElementException;
 import java.util.Objects;
 import java.util.ConcurrentModificationException;
 
@@ -10,7 +11,7 @@ import java.util.ConcurrentModificationException;
  * @param <K> type of key.
  * @param <V> type of value.
  */
-public class HashTable<K, V> implements Iterable<Dict<K, V>> {
+public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     private static final int DEFAULT_CAPACITY = 16;
     private int capacity;
     private int size;
@@ -18,6 +19,10 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
     private K[] keys;
     private V[] values;
 
+    /**
+     * Initial method for hashtable.
+     */
+    @SuppressWarnings("unchecked")
     public HashTable() {
         this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
@@ -26,10 +31,20 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         this.values = (V[]) new Object[DEFAULT_CAPACITY];
     }
 
+    /**
+     * Method for creating hash key.
+     *
+     * @param key key for value.
+     * @return hash of key or 0 if key doesn't have value.
+     */
     private int hash(K key) {
         return (key == null) ? 0 : Math.abs(key.hashCode()) % capacity;
     }
 
+    /**
+     * Method for clear hashtable.
+     */
+    @SuppressWarnings("unchecked")
     void clear() {
         size = 0;
         capacity = DEFAULT_CAPACITY;
@@ -38,6 +53,10 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         values = (V[]) new Object[DEFAULT_CAPACITY];
     }
 
+    /**
+     * Method for resize hashtable if size * 2 >= capacity.
+     */
+    @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = capacity * 2;
         K[] oldKeys = keys;
@@ -53,6 +72,12 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         }
     }
 
+    /**
+     * Method for resize hashtable if size * 2 >= capacity.
+     *
+     * @param key new key.
+     * @param value new value.
+     */
     public void put(K key, V value) {
         if (size * 2 >= capacity) {
             resize();
@@ -71,6 +96,12 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         modCount++;
     }
 
+    /**
+     * Method for getting value from hashtable[key].
+     *
+     * @param key key.
+     * @return hashtable[key] or null if it doesn't exist.
+     */
     public V get(K key) {
         int index = hash(key);
         while (keys[index] != null) {
@@ -82,6 +113,12 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         return null;
     }
 
+    /**
+     * Method for remove key and value from hashtable.
+     *
+     * @param key key that will be deleted.
+     * @return oldValue that was remove or null if it doesn't exist.
+     */
     public V remove(K key) {
         int index = hash(key);
         while (keys[index] != null) {
@@ -108,40 +145,96 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         return null;
     }
 
+    /**
+     * Method for getting size of hashtable.
+     *
+     * @return size.
+     */
     public int size() {
         return size;
     }
 
+    /**
+     * Method for getting capacity of hashtable.
+     *
+     * @return capacity.
+     */
+    public int capacity() {
+        return capacity;
+    }
+
+    /**
+     * Method for checking key existence in hashtable.
+     *
+     * @return True or False.
+     */
     public boolean containsKey(K key) {
         return get(key) != null;
     }
 
+    /**
+     * Method for updating the value by key.
+     *
+     * @param key old key.
+     * @param value new value.
+     */
     public void update(K key, V value) {
         if (containsKey(key)) {
             put(key, value);
         }
     }
 
-    public boolean equals(HashTable<K, V> other) {
-        if (size != other.size) {
+    /**
+     * Method for checking equality of two hashtable.
+     *
+     * @param o other hashtable.
+     * @return True or False.
+     */
+    @Override
+    @SuppressWarnings("unchecked")
+    public boolean equals(Object o) {
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
+        HashTable<K, V> other = (HashTable<K, V>) o;
+        if (this.size != other.size || this.hashCodeAll() != other.hashCodeAll()) {
             return false;
         }
         for (int i = 0; i < capacity; i++) {
             if (keys[i] != null) {
                 V value = other.get(keys[i]);
-                if (Objects.equals(values[i], value)) {
-                    return true;
+                if (!Objects.equals(values[i], value)) {
+                    return false;
                 }
             }
         }
         return true;
     }
 
+    /**
+     * Method for getting hash of all values of hashtable.
+     *
+     * @return hash of hashtable.
+     */
+    private int hashCodeAll() {
+        int hash = 0;
+        for (int i = 0; i < capacity; i++) {
+            if (keys[i] != null) {
+                hash += Objects.hashCode(keys[i]) ^ Objects.hashCode(values[i]);
+            }
+        }
+        return hash;
+    }
+
+    /**
+     * Method for getting string representation of the hash table.
+     *
+     * @return string representation.
+     */
     @Override
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
         boolean first = true;
-        for (Dict<K, V> dict : this) {
+        for (HashTableEntry<K, V> dict : this) {
             if (!first) {
                 sb.append(", ");
             }
@@ -152,15 +245,28 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
         return sb.toString();
     }
 
+    /**
+     * Iterator of hashtable.
+     *
+     * @return pointer to new iterator class of hashtable.
+     */
     @Override
-    public Iterator<Dict<K, V>> iterator() {
+    public Iterator<HashTableEntry<K, V>> iterator() {
         return new HashTableIterator();
     }
 
-    private class HashTableIterator implements Iterator<Dict<K, V>> {
+    /**
+     * Class realization of iterator for hashtable.
+     */
+    private class HashTableIterator implements Iterator<HashTableEntry<K, V>> {
         private int currentIndex = 0;
-        private int expectedModCount = modCount;
+        private final int expectedModCount = modCount;
 
+        /**
+         * Method for checking existence of next element of hashtable.
+         *
+         * @return True or False.
+         */
         @Override
         public boolean hasNext() {
             while (currentIndex < capacity && keys[currentIndex] == null) {
@@ -169,12 +275,20 @@ public class HashTable<K, V> implements Iterable<Dict<K, V>> {
             return currentIndex < capacity;
         }
 
+        /**
+         * Method for getting next element of hashtable.
+         *
+         * @return True or False.
+         */
         @Override
-        public Dict<K, V> next() {
+        public HashTableEntry<K, V> next() {
             if (modCount != expectedModCount) {
                 throw new ConcurrentModificationException();
             }
-            Dict<K, V> entry = new Dict<>(keys[currentIndex], values[currentIndex]);
+            if (!hasNext()) {
+                throw new NoSuchElementException();
+            }
+            HashTableEntry<K, V> entry = new HashTableEntry<>(keys[currentIndex], values[currentIndex]);
             currentIndex++;
             return entry;
         }

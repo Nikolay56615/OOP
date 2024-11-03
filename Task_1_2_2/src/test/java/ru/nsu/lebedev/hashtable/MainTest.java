@@ -1,13 +1,17 @@
 package ru.nsu.lebedev.hashtable;
 
+import static org.junit.jupiter.api.Assertions.assertTrue;
+
+import java.io.IOException;
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
-
+/**
+ * Class for testing Main class.
+ */
 class MainTest {
-
     @Test
-    void test() {
-        assertEquals(5, Main.sum(5, 0));
+    void callMain() throws IOException {
+        Main.main(new String[]{});
+        assertTrue(true);
     }
 }
