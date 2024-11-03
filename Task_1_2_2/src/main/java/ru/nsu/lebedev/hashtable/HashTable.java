@@ -1,9 +1,9 @@
 package ru.nsu.lebedev.hashtable;
 
+import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
 import java.util.Objects;
-import java.util.ConcurrentModificationException;
 
 /**
  * Class hashtable with methods support a full set of operations.
@@ -193,8 +193,12 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     @Override
     @SuppressWarnings("unchecked")
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         HashTable<K, V> other = (HashTable<K, V>) o;
         if (this.size != other.size || this.hashCodeAll() != other.hashCodeAll()) {
             return false;
@@ -288,7 +292,8 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
             if (!hasNext()) {
                 throw new NoSuchElementException();
             }
-            HashTableEntry<K, V> entry = new HashTableEntry<>(keys[currentIndex], values[currentIndex]);
+            HashTableEntry<K, V> entry =
+                    new HashTableEntry<>(keys[currentIndex], values[currentIndex]);
             currentIndex++;
             return entry;
         }

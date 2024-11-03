@@ -1,15 +1,14 @@
 package ru.nsu.lebedev.hashtable;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
-import static org.junit.jupiter.api.Assertions.assertNotEquals;
-import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertThrows;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
-
 import org.junit.jupiter.api.BeforeEach;
 import org.junit.jupiter.api.Test;
 
@@ -24,7 +23,7 @@ public class HashTableTest {
      * Function for creating default hashtable and iterator.
      */
     @BeforeEach
-    public void setUp(){
+    public void setUp() {
         hashTable = new HashTable<>();
         hashTable.put("one", 1);
         iterator = hashTable.iterator();

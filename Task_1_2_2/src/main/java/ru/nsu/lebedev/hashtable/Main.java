@@ -13,8 +13,8 @@ public class Main {
         hashTable.put("one", 1);
         hashTable.update("one", 1.0);
         System.out.println(hashTable.get("one"));
-        var remove_value = hashTable.remove("one");
-        System.out.println(remove_value);
+        var removeValue = hashTable.remove("one");
+        System.out.println(removeValue);
         System.out.println(hashTable.get("one"));
         System.out.println(hashTable);
         hashTable.put("one", 1);
