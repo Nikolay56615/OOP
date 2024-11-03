@@ -73,7 +73,7 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     }
 
     /**
-     * Method for resize hashtable if size * 2 >= capacity.
+     * Method for resize hashtable if size * 2 bigger than capacity.
      *
      * @param key new key.
      * @param value new value.
