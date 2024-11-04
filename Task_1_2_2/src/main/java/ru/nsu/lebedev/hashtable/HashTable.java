@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.hashtable;
 
+import java.util.ArrayList;
 import java.util.ConcurrentModificationException;
 import java.util.Iterator;
 import java.util.NoSuchElementException;
@@ -16,19 +17,29 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     private int capacity;
     private int size;
     private int modCount;
-    private K[] keys;
-    private V[] values;
+    private ArrayList<K> keys;
+    private ArrayList<V> values;
 
     /**
      * Initial method for hashtable.
      */
-    @SuppressWarnings("unchecked")
     public HashTable() {
         this.capacity = DEFAULT_CAPACITY;
         this.size = 0;
         this.modCount = 0;
-        this.keys = (K[]) new Object[DEFAULT_CAPACITY];
-        this.values = (V[]) new Object[DEFAULT_CAPACITY];
+        this.keys = new ArrayList<>(capacity);
+        this.values = new ArrayList<>(capacity);
+        initializeLists(capacity);
+    }
+
+    /**
+     * Initial method for lists of keys and values.
+     */
+    private void initializeLists(int capacity) {
+        for (int i = 0; i < capacity; i++) {
+            keys.add(null);
+            values.add(null);
+        }
     }
 
     /**
@@ -44,36 +55,36 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     /**
      * Method for clear hashtable.
      */
-    @SuppressWarnings("unchecked")
     void clear() {
         size = 0;
         capacity = DEFAULT_CAPACITY;
         modCount = 0;
-        keys = (K[]) new Object[DEFAULT_CAPACITY];
-        values = (V[]) new Object[DEFAULT_CAPACITY];
+        keys.clear();
+        values.clear();
+        initializeLists(capacity);
     }
 
     /**
      * Method for resize hashtable if size * 2 bigger than capacity.
      */
-    @SuppressWarnings("unchecked")
     private void resize() {
         int newCapacity = capacity * 2;
-        final K[] oldKeys = keys;
-        final V[] oldValues = values;
-        keys = (K[]) new Object[newCapacity];
-        values = (V[]) new Object[newCapacity];
+        final ArrayList<K> oldKeys = keys;
+        final ArrayList<V> oldValues = values;
+        keys = new ArrayList<>(newCapacity);
+        values = new ArrayList<>(newCapacity);
+        initializeLists(newCapacity);
         capacity = newCapacity;
         size = 0;
-        for (int i = 0; i < oldKeys.length; i++) {
-            if (oldKeys[i] != null) {
-                put(oldKeys[i], oldValues[i]);
+        for (int i = 0; i < oldKeys.size(); i++) {
+            if (oldKeys.get(i) != null) {
+                put(oldKeys.get(i), oldValues.get(i));
             }
         }
     }
 
     /**
-     * Method for resize hashtable if size * 2 bigger than capacity.
+     * Method for adding key and value to the hashtable.
      *
      * @param key new key.
      * @param value new value.
@@ -83,15 +94,15 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
             resize();
         }
         int index = hash(key);
-        while (keys[index] != null) {
-            if (Objects.equals(keys[index], key)) {
-                values[index] = value;
+        while (keys.get(index) != null) {
+            if (Objects.equals(keys.get(index), key)) {
+                values.set(index, value);
                 return;
             }
             index = (index + 1) % capacity;
         }
-        keys[index] = key;
-        values[index] = value;
+        keys.set(index, key);
+        values.set(index, value);
         size++;
         modCount++;
     }
@@ -104,9 +115,9 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
      */
     public V get(K key) {
         int index = hash(key);
-        while (keys[index] != null) {
-            if (key.equals(keys[index])) {
-                return values[index];
+        while (keys.get(index) != null) {
+            if (key.equals(keys.get(index))) {
+                return values.get(index);
             }
             index = (index + 1) % capacity;
         }
@@ -117,23 +128,23 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
      * Method for remove key and value from hashtable.
      *
      * @param key key that will be deleted.
-     * @return oldValue that was remove or null if it doesn't exist.
+     * @return oldValue that was removed or null if it doesn't exist.
      */
     public V remove(K key) {
         int index = hash(key);
-        while (keys[index] != null) {
-            if (Objects.equals(keys[index], key)) {
-                final V oldValue = values[index];
-                values[index] = null;
-                keys[index] = null;
+        while (keys.get(index) != null) {
+            if (Objects.equals(keys.get(index), key)) {
+                final V oldValue = values.get(index);
+                values.set(index, null);
+                keys.set(index, null);
                 size--;
                 modCount++;
                 index = (index + 1) % capacity;
-                while (keys[index] != null) {
-                    final K tempKey = keys[index];
-                    final V tempValue = values[index];
-                    keys[index] = null;
-                    values[index] = null;
+                while (keys.get(index) != null) {
+                    final K tempKey = keys.get(index);
+                    final V tempValue = values.get(index);
+                    keys.set(index, null);
+                    values.set(index, null);
                     size--;
                     put(tempKey, tempValue);
                     index = (index + 1) % capacity;
@@ -166,7 +177,7 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     /**
      * Method for checking key existence in hashtable.
      *
-     * @param key exist.
+     * @param key the key.
      * @return True or False.
      */
     public boolean containsKey(K key) {
@@ -192,7 +203,6 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
      * @return True or False.
      */
     @Override
-    @SuppressWarnings("unchecked")
     public boolean equals(Object o) {
         if (this == o) {
             return true;
@@ -205,9 +215,11 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
             return false;
         }
         for (int i = 0; i < capacity; i++) {
-            if (keys[i] != null) {
-                V value = other.get(keys[i]);
-                if (!Objects.equals(values[i], value)) {
+            K key = keys.get(i);
+            if (key != null) {
+                V value = values.get(i);
+                Object otherValue = other.get(key);
+                if (!Objects.equals(value, otherValue)) {
                     return false;
                 }
             }
@@ -223,8 +235,8 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     private int hashCodeAll() {
         int hash = 0;
         for (int i = 0; i < capacity; i++) {
-            if (keys[i] != null) {
-                hash += Objects.hashCode(keys[i]) ^ Objects.hashCode(values[i]);
+            if (keys.get(i) != null) {
+                hash += Objects.hashCode(keys.get(i)) ^ Objects.hashCode(values.get(i));
             }
         }
         return hash;
@@ -239,11 +251,11 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
     public String toString() {
         StringBuilder sb = new StringBuilder("{");
         boolean first = true;
-        for (HashTableEntry<K, V> dict : this) {
+        for (HashTableEntry<K, V> entry : this) {
             if (!first) {
                 sb.append(", ");
             }
-            sb.append(dict.key).append(" = ").append(dict.value);
+            sb.append(entry.key).append(" = ").append(entry.value);
             first = false;
         }
         sb.append("}");
@@ -274,7 +286,7 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
          */
         @Override
         public boolean hasNext() {
-            while (currentIndex < capacity && keys[currentIndex] == null) {
+            while (currentIndex < capacity && keys.get(currentIndex) == null) {
                 currentIndex++;
             }
             return currentIndex < capacity;
@@ -294,7 +306,7 @@ public class HashTable<K, V> implements Iterable<HashTableEntry<K, V>> {
                 throw new NoSuchElementException();
             }
             HashTableEntry<K, V> entry =
-                    new HashTableEntry<>(keys[currentIndex], values[currentIndex]);
+                    new HashTableEntry<>(keys.get(currentIndex), values.get(currentIndex));
             currentIndex++;
             return entry;
         }
