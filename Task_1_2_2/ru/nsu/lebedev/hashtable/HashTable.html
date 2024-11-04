@@ -226,7 +226,7 @@ implements java.lang.Iterable&lt;<a href="HashTableEntry.html" title="class in r
 <th class="colSecond" scope="row"><code><span class="memberNameLink"><a href="#put(K,V)">put</a></span>&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
    <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</code></th>
 <td class="colLast">
-<div class="block">Method for resize hashtable if size * 2 bigger than capacity.</div>
+<div class="block">Method for adding key and value to the hashtable.</div>
 </td>
 </tr>
 <tr id="i6" class="altColor">
@@ -319,7 +319,7 @@ implements java.lang.Iterable&lt;<a href="HashTableEntry.html" title="class in r
 <h4>put</h4>
 <pre class="methodSignature">public&nbsp;void&nbsp;put&#8203;(<a href="HashTable.html" title="type parameter in HashTable">K</a>&nbsp;key,
                 <a href="HashTable.html" title="type parameter in HashTable">V</a>&nbsp;value)</pre>
-<div class="block">Method for resize hashtable if size * 2 bigger than capacity.</div>
+<div class="block">Method for adding key and value to the hashtable.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - new key.</dd>
@@ -359,7 +359,7 @@ implements java.lang.Iterable&lt;<a href="HashTableEntry.html" title="class in r
 <dt><span class="paramLabel">Parameters:</span></dt>
 <dd><code>key</code> - key that will be deleted.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
-<dd>oldValue that was remove or null if it doesn't exist.</dd>
+<dd>oldValue that was removed or null if it doesn't exist.</dd>
 </dl>
 </li>
 </ul>
@@ -403,7 +403,7 @@ implements java.lang.Iterable&lt;<a href="HashTableEntry.html" title="class in r
 <div class="block">Method for checking key existence in hashtable.</div>
 <dl>
 <dt><span class="paramLabel">Parameters:</span></dt>
-<dd><code>key</code> - exist.</dd>
+<dd><code>key</code> - the key.</dd>
 <dt><span class="returnLabel">Returns:</span></dt>
 <dd>True or False.</dd>
 </dl>
