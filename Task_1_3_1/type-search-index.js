@@ -1,1 +1,1 @@
-typeSearchIndex = [{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.stringfinder","l":"Main"}]
+typeSearchIndex = [{"p":"ru.nsu.lebedev.stringfinder","l":"AbstractStringFinder"},{"l":"All Classes","url":"allclasses-index.html"},{"p":"ru.nsu.lebedev.stringfinder","l":"Main"},{"p":"ru.nsu.lebedev.stringfinder","l":"StringFinder"}]
