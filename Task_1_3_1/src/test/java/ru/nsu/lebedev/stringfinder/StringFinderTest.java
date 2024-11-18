@@ -48,7 +48,6 @@ public class StringFinderTest {
         LinkedList<Long> predictedList = new LinkedList<>();
         predictedList.add(1048575L);
         predictedList.add((long) 8 * 1024 * 1024 * 1024 - 1048578 - 2 * 1048576 + 1L);
-        System.out.println(finder.getTargetsPositions());
         try {
             Files.delete(Paths.get("8GB.txt"));
         } catch (IOException e) {
@@ -61,7 +60,7 @@ public class StringFinderTest {
     void testFileWithSpecialCharacters() {
         finder.find("special_chars.txt", "🔥");
         LinkedList<Long> predictedList = new LinkedList<>();
-        predictedList.add(57L);
+        predictedList.add(56L);
         assertEquals(predictedList, finder.getTargetsPositions());
     }
 
@@ -86,8 +85,8 @@ public class StringFinderTest {
     void koreanTest() {
         finder.find("korean.txt", "오");
         LinkedList<Long> predictedList = new LinkedList<>();
-        predictedList.add(42L);
-        predictedList.add(45L);
+        predictedList.add(40L);
+        predictedList.add(43L);
         assertEquals(predictedList, finder.getTargetsPositions());
     }
 

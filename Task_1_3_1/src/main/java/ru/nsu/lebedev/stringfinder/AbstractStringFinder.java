@@ -105,7 +105,7 @@ public abstract class AbstractStringFinder {
                 reader = null;
             }
         } catch (IOException e) {
-            throw new RuntimeException("Error closing file", e);
+            throw new RuntimeException(e);
         }
     }
 
