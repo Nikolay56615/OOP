@@ -16,7 +16,7 @@ import java.util.LinkedList;
  */
 public abstract class AbstractStringFinder {
     static final int CAPACITY = 1048576; // 1 MB
-    static final int FALSEVALUE = -1;
+    static final int FALSE_VALUE = -1;
     private boolean loggingEnabled = true;
     protected StringBuilder buffer = new StringBuilder();
     protected BufferedReader reader = null;
@@ -119,12 +119,12 @@ public abstract class AbstractStringFinder {
         int readCharsCount;
         try {
             readCharsCount = reader.read(charBuffer);
-            if (readCharsCount == FALSEVALUE) {
+            if (readCharsCount == FALSE_VALUE) {
                 return readCharsCount;
             }
         } catch (IOException e) {
             log("Error reading segment: " + e.getMessage());
-            return FALSEVALUE;
+            return FALSE_VALUE;
         }
         if (buffer.length() > 0) {
             buffer.delete(0, buffer.length());
