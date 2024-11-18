@@ -26,6 +26,7 @@ public class StringFinder extends AbstractStringFinder {
                 bufferIndex = buffer.indexOf(searchTarget, bufferIndex + 1);
             }
             previousSegmentPostfix = buffer.substring(bufferLength - targetLength + 1);
+            bufferLength = buffer.length();
             filePosition += bufferLength - previousSegmentPostfix.length();
         }
     }

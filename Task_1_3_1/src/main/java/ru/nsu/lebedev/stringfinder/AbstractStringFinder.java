@@ -17,6 +17,7 @@ import java.util.LinkedList;
 public abstract class AbstractStringFinder {
     static final int CAPACITY = 1048576; // 1 MB
     static final int FALSEVALUE = -1;
+    private boolean loggingEnabled = true;
     protected StringBuilder buffer = new StringBuilder();
     protected BufferedReader reader = null;
     protected String searchTarget = "";
@@ -29,55 +30,68 @@ public abstract class AbstractStringFinder {
     }
 
     /**
-     * Opens a file from the resources folder for reading.
-     * The file is accessed using the class loader and a BufferedReader
-     * with UTF-8 encoding is created for reading its contents.
+     * Enables or disables logging.
      *
-     * @param filename the relative path to the file in the resources folder
-     * @return true if the file was successfully opened; false otherwise
+     * @param enabled true to enable logging; false to disable
      */
-    private boolean openFileFromResources(String filename) {
-        try (InputStream resourceInputStream =
-                     getClass().getClassLoader().getResourceAsStream(filename)) {
-            if (resourceInputStream == null) {
-                System.err.println("Resource file not found: " + filename);
-                return false;
-            }
-            InputStreamReader inputStreamReader =
-                    new InputStreamReader(resourceInputStream, StandardCharsets.UTF_8);
-            reader = new BufferedReader(inputStreamReader, CAPACITY);
-            return true;
-        } catch (Exception e) {
-            System.err.println("Error opening file from resources: " + e.getMessage());
-            return false;
+    public void setLoggingEnabled(boolean enabled) {
+        this.loggingEnabled = enabled;
+    }
+
+    /**
+     * Logs a message to the console if logging is enabled.
+     *
+     * @param message the message to log
+     */
+    private void log(String message) {
+        if (loggingEnabled) {
+            System.err.println(message);
         }
     }
 
     /**
-     * Opens a file for reading from the specified path and saves a BufferedReader
-     * with UTF-8 encoding to read the file by using inputStreamReader.
+     * Opens a file for reading.
+     * Tries to open the file from the filesystem first, and if not found,
+     * tries to open it from resources.
      *
-     * @param filename path to the file for searching
-     * @return true if the file was opened successfully
+     * @param filename path to the file
+     * @return true if the file was successfully opened false otherwise
      */
     private boolean openFile(String filename) {
-        FileInputStream fileInputStream = null;
+        if (tryOpenFile(filename, false)) {
+            return true;
+        }
+        return tryOpenFile(filename, true);
+    }
+
+    /**
+     * Openning a file either from the filesystem or from the resources folder.
+     *
+     * @param filename path to the file
+     * @param fromResources if true, tries to open the file from the resources folder;
+     *                      if false, tries to open it from the filesystem.
+     * @return true if the file was successfully opened false otherwise
+     */
+    private boolean tryOpenFile(String filename, boolean fromResources) {
         try {
-            fileInputStream = new FileInputStream(filename);
-            InputStreamReader inputStreamReader = new InputStreamReader(fileInputStream, StandardCharsets.UTF_8);
+            InputStream inputStream;
+
+            if (fromResources) {
+                inputStream = getClass().getClassLoader().getResourceAsStream(filename);
+                if (inputStream == null) {
+                    log("Resource file not found: " + filename);
+                    return false;
+                }
+            } else {
+                inputStream = new FileInputStream(filename);
+            }
+
+            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             reader = new BufferedReader(inputStreamReader, CAPACITY);
             return true;
         } catch (FileNotFoundException e) {
-            System.err.println("File not found: " + filename); // Уточнение ошибки
+            log("File not found: " + filename);
             return false;
-        } finally {
-            if (fileInputStream != null) {
-                try {
-                    fileInputStream.close();
-                } catch (IOException e) {
-                    System.err.println("Error closing file stream: " + e.getMessage());
-                }
-            }
         }
     }
 
@@ -104,17 +118,17 @@ public abstract class AbstractStringFinder {
      */
     protected int readSegment() {
         char[] charBuffer = new char[CAPACITY];
-        int readCharsCount = 0;
+        int readCharsCount;
         try {
             readCharsCount = reader.read(charBuffer);
             if (readCharsCount == FALSEVALUE) {
                 return readCharsCount;
             }
         } catch (IOException e) {
-            System.err.println("Error reading segment" + e);
+            log("Error reading segment: " + e.getMessage());
             return FALSEVALUE;
         }
-        if (!buffer.isEmpty()) {
+        if (buffer.length() > 0) {
             buffer.delete(0, buffer.length());
         }
         buffer.append(charBuffer, 0, readCharsCount);
@@ -130,23 +144,18 @@ public abstract class AbstractStringFinder {
      * @param target substring to search for
      */
     public void find(String filename, String target) {
+        if (target == null || target.isEmpty()) {
+            log("Empty or null target string.");
+            return;
+        }
         setSearchTarget(target);
         targetsPositions.clear();
-        boolean isOpened = false;
-        try {
-            isOpened = openFileFromResources(filename);
-            if (!isOpened) {
-                isOpened = openFile(filename);
-            }
-            if (!isOpened) {
-                return;
-            }
-            findingSubstring();
-        } finally {
-            if (isOpened) {
-                closeFile();
-            }
+        boolean isOpened = openFile(filename);
+        if (!isOpened) {
+            return;
         }
+        findingSubstring();
+        closeFile();
     }
 
     /**

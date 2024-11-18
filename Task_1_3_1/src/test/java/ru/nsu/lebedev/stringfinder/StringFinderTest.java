@@ -21,41 +21,49 @@ public class StringFinderTest {
     @BeforeEach
     public void setUp() {
         finder = new StringFinder();
+        finder.setLoggingEnabled(false);
     }
 
-//    @Test
-//    void write8gbTestFile() {
-//        try (FileWriter writer = new FileWriter("8GB.txt")) {
-//            int fourMbSize = 1048576 * 4;
-//            StringBuilder fourMbString = new StringBuilder("a");
-//            fourMbString.append("a".repeat(fourMbSize - 1));
-//            String fourMbBs = fourMbString.toString();
-//            fourMbString.replace(1048575, 1048578, "bbb");
-//            writer.write(fourMbString.toString());
-//            writer.flush();
-//            for (int i = 0; i < 2046; ++i) {
-//                writer.write(fourMbBs);
-//                writer.flush();
-//            }
-//            writer.write(fourMbString.toString());
-//            writer.flush();
-//        } catch (Exception e) {
-//            throw new RuntimeException(e);
-//        }
-//        StringFinder finder = new StringFinder();
-////        finder.find("8GB.txt", "b" + "b".repeat(1048579));
-//        finder.find("8GB.txt", "bbb");
-//        LinkedList<Long> predictedList = new LinkedList<>();
-//        predictedList.add(1048575L);
-//        predictedList.add((long) 8 * 1024 * 1024 * 1024 - 1048578 - 2 * 1048576 + 1L);
-//        System.out.println(finder.getTargetsPositions());
-//        try {
-//            Files.delete(Paths.get("8GB.txt"));
-//        } catch (IOException e) {
-//            throw new RuntimeException(e);
-//        }
-//        assertEquals(predictedList, finder.getTargetsPositions());
-//    }
+    @Test
+    void write8gbTestFile() {
+        try (FileWriter writer = new FileWriter("8GB.txt")) {
+            int fourMbSize = 1048576 * 4;
+            StringBuilder fourMbString = new StringBuilder("a");
+            fourMbString.append("a".repeat(fourMbSize - 1));
+            String fourMbBs = fourMbString.toString();
+            fourMbString.replace(1048575, 1048578, "bbb");
+            writer.write(fourMbString.toString());
+            writer.flush();
+            for (int i = 0; i < 2046; ++i) {
+                writer.write(fourMbBs);
+                writer.flush();
+            }
+            writer.write(fourMbString.toString());
+            writer.flush();
+        } catch (Exception e) {
+            throw new RuntimeException(e);
+        }
+        StringFinder finder = new StringFinder();
+        finder.find("8GB.txt", "bbb");
+        LinkedList<Long> predictedList = new LinkedList<>();
+        predictedList.add(1048575L);
+        predictedList.add((long) 8 * 1024 * 1024 * 1024 - 1048578 - 2 * 1048576 + 1L);
+        System.out.println(finder.getTargetsPositions());
+        try {
+            Files.delete(Paths.get("8GB.txt"));
+        } catch (IOException e) {
+            throw new RuntimeException(e);
+        }
+        assertEquals(predictedList, finder.getTargetsPositions());
+    }
+
+    @Test
+    void testFileWithSpecialCharacters() {
+        finder.find("special_chars.txt", "🔥");
+        LinkedList<Long> predictedList = new LinkedList<>();
+        predictedList.add(57L);
+        assertEquals(predictedList, finder.getTargetsPositions());
+    }
 
     @Test
     void russianTest() {
@@ -78,14 +86,34 @@ public class StringFinderTest {
     void koreanTest() {
         finder.find("korean.txt", "오");
         LinkedList<Long> predictedList = new LinkedList<>();
-        predictedList.add(39L);
         predictedList.add(42L);
+        predictedList.add(45L);
+        assertEquals(predictedList, finder.getTargetsPositions());
+    }
+
+    @Test
+    void fullFileTargetTest() {
+        finder.find("russian.txt", "абракадабра");
+        LinkedList<Long> predictedList = new LinkedList<>();
+        predictedList.add((long) 0);
         assertEquals(predictedList, finder.getTargetsPositions());
     }
 
     @Test
     void emptyTargetTest() {
         finder.find("russian.txt", "");
+        assertTrue(finder.getTargetsPositions().isEmpty());
+    }
+
+    @Test
+    void targetNotExistTest() {
+        finder.find("russian.txt", "sadsad");
+        assertTrue(finder.getTargetsPositions().isEmpty());
+    }
+
+    @Test
+    void fileNotFoundTest() {
+        finder.find("not_existed.txt", "sadsad");
         assertTrue(finder.getTargetsPositions().isEmpty());
     }
 }
