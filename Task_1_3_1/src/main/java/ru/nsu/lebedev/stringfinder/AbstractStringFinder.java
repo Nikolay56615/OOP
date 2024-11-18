@@ -75,7 +75,6 @@ public abstract class AbstractStringFinder {
     private boolean tryOpenFile(String filename, boolean fromResources) {
         try {
             InputStream inputStream;
-
             if (fromResources) {
                 inputStream = getClass().getClassLoader().getResourceAsStream(filename);
                 if (inputStream == null) {
@@ -85,8 +84,8 @@ public abstract class AbstractStringFinder {
             } else {
                 inputStream = new FileInputStream(filename);
             }
-
-            InputStreamReader inputStreamReader = new InputStreamReader(inputStream, StandardCharsets.UTF_8);
+            InputStreamReader inputStreamReader =
+                    new InputStreamReader(inputStream, StandardCharsets.UTF_8);
             reader = new BufferedReader(inputStreamReader, CAPACITY);
             return true;
         } catch (FileNotFoundException e) {
@@ -113,8 +112,7 @@ public abstract class AbstractStringFinder {
      * Reads a segment of text from the file.
      * Reads characters from the file up to the CAPACITY value.
      *
-     * @return the number of characters read or -1 if the end of
-     * the file is reached
+     * @return the number of characters read or -1 if end of file
      */
     protected int readSegment() {
         char[] charBuffer = new char[CAPACITY];
