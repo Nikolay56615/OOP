@@ -26,9 +26,33 @@ public class StudentTest {
     }
 
     @Test
+    void testHashCodeStudents() {
+        var student2 = new Student("Nikolay", "Alexandrian", "Dunant");
+        assertNotEquals(student.hashCode(), student2.hashCode());
+    }
+
+    @Test
+    void testHashCodeCreditBooks() {
+        var student2 = new Student("Nikolay", "Alexandrian", "Dunant");
+        assertNotEquals(student.getCreditBook().hashCode(), student2.getCreditBook().hashCode());
+    }
+
+    @Test
+    void testStringStudents() {
+        var student2 = new Student("Nikolay", "Alexandrian", "Dunant");
+        assertEquals(student.toString(), student2.toString());
+    }
+
+    @Test
+    void testStringCreditBooks() {
+        var student2 = new Student("Nikolay", "Alexandrian", "Dunant");
+        assertNotEquals(student.getCreditBook().toString(), student2.getCreditBook().toString());
+    }
+
+    @Test
     void testStudentChange() {
-        var s2 = new Student("Nikolay", "Alexandrian", "Dunant");
-        assertNotEquals(student, s2);
+        var student2 = new Student("Nikolay", "Alexandrian", "Dunant");
+        assertNotEquals(student, student2);
     }
 
     @Test
