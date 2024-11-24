@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.examination;
 
+import java.util.stream.Collectors;
 import java.util.HashMap;
 import java.util.HashSet;
 import java.util.Set;
@@ -31,8 +32,9 @@ public class StudentCreditBook extends CreditBook {
             return false;
         }
         var lastTwoSemestersGrades = getGrades().stream()
-                .filter(grade -> grade.getSemester() == currentSemester || grade.getSemester() == currentSemester - 1)
-                .toList();
+                .filter(grade -> grade.getSemester()
+                        == currentSemester || grade.getSemester() == currentSemester - 1)
+                .collect(Collectors.toList());
         boolean hasUnsatisfactoryExams = lastTwoSemestersGrades.stream()
                 .filter(grade -> grade.getDisciplineType() == DisciplineType.EXAM)
                 .anyMatch(grade -> grade.getValue() == Grade.MIN_VALUE);
