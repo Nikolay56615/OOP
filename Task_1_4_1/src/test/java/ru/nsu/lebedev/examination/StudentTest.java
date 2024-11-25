@@ -217,4 +217,27 @@ public class StudentTest {
         student.finishSemester();
         assertFalse(student.getCreditBook().canObtainRedDiploma());
     }
+
+    @Test
+    void testAverageGradeAcrossTwoSemesters() {
+        student.getCreditBook().addGrade(5,
+                AcademicDiscipline.OBJECT_ORIENTED_PROGRAMMING);
+        student.finishSemester();
+        student.getCreditBook().addGrade(4,
+                AcademicDiscipline.OBJECT_ORIENTED_PROGRAMMING);
+        student.finishSemester();
+        double averageGrade = student.getCreditBook().averageGrade();
+        assertEquals(4.5, averageGrade);
+    }
+
+    @Test
+    void testRedDiplomaEligibilityWithDisciplineAcrossTwoSemesters() {
+        student.getCreditBook().addGrade(5,
+                AcademicDiscipline.FINAL_THESIS);
+        student.finishSemester();
+        student.getCreditBook().addGrade(4,
+                AcademicDiscipline.FINAL_THESIS);
+        student.finishSemester();
+        assertFalse(student.getCreditBook().canObtainRedDiploma());
+    }
 }
