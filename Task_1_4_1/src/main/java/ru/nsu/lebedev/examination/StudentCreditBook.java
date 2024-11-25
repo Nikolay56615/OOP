@@ -50,14 +50,14 @@ public class StudentCreditBook extends CreditBook {
      * @return set of last Academic Grades set
      */
     private Set<Grade> getLastAcademicGrades() {
-        HashMap<AcademicDiscipline, Grade> lastGrades = new HashMap<>();
-        for (var grade : getGrades()) {
-            Grade prevGrade = lastGrades.putIfAbsent(grade.getAcademicDiscipline(), grade);
-            if (prevGrade != null && grade.isAwardedLaterThan(prevGrade)) {
-                lastGrades.replace(grade.getAcademicDiscipline(), prevGrade, grade);
-            }
-        }
-        return new HashSet<>(lastGrades.values());
+        return new HashSet<>(getGrades().stream()
+                .collect(Collectors.toMap(
+                        Grade::getAcademicDiscipline,
+                        grade -> grade,
+                        (existing, replacement) ->
+                                replacement.isAwardedLaterThan(existing) ? replacement : existing
+                ))
+                .values());
     }
 
     /**
@@ -67,17 +67,18 @@ public class StudentCreditBook extends CreditBook {
      */
     public boolean canObtainRedDiploma() {
         var lastGrades = getLastAcademicGrades();
-        double avg = 0;
-        for (var grade : lastGrades) {
-            if (grade.getValue() <= 3) {
-                return false;
-            }
-            if (grade.getAcademicDiscipline().equals(AcademicDiscipline.FINAL_THESIS)
-                    && grade.getValue() < Grade.MAX_VALUE) {
-                return false;
-            }
-            avg += grade.getValue();
+        boolean hasFailingGrade = lastGrades.stream()
+                .anyMatch(grade -> grade.getValue() <= 3);
+        boolean hasNonMaxThesisGrade = lastGrades.stream()
+                .anyMatch(grade -> grade.getAcademicDiscipline()
+                        .equals(AcademicDiscipline.FINAL_THESIS)
+                        && grade.getValue() < Grade.MAX_VALUE);
+        if (hasFailingGrade || hasNonMaxThesisGrade) {
+            return false;
         }
+        double avg = lastGrades.stream()
+                .mapToDouble(Grade::getValue)
+                .sum();
         avg += (AcademicDiscipline.values().length - lastGrades.size()) * 5;
         avg /= AcademicDiscipline.values().length;
         return avg >= MIN_AVG_FOR_RED_DIPLOMA;

@@ -61,7 +61,7 @@ public abstract class CreditBook {
      *
      * @return the grades
      */
-    public Set<Grade> getGrades() {
+    Set<Grade> getGrades() {
         return grades;
     }
 
