@@ -22,6 +22,21 @@ public class DivTest {
     }
 
     @Test
+    void simplifyDivByZeroNumerator() {
+        Expression div = new Div(new Number(0), new Variable("x"));
+        assertEquals("0", div.simplify().toString(),
+                "Division with 0 numerator should simplify to 0.");
+    }
+
+    @Test
+    void simplifyDivByOne() {
+        Expression div = new Div(new Variable("x"), new Number(1));
+        assertEquals("x", div.simplify().toString(),
+                "Division by 1 should simplify to the numerator.");
+    }
+
+
+    @Test
     void printDiv() throws Exception {
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

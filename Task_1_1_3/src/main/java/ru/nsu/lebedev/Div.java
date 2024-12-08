@@ -18,6 +18,28 @@ public class Div extends Expression {
     }
 
     /**
+     * Rule a: Evaluate if both sides are numbers.
+     *
+     * @return simplify Expression.
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplifiedLeft = left.simplify();
+        Expression simplifiedRight = right.simplify();
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int result = simplifiedLeft.eval(Map.of()) / simplifiedRight.eval(Map.of());
+            return new Number(result);
+        }
+        if (simplifiedRight instanceof Number && simplifiedRight.eval(Map.of()) == 1) {
+            return simplifiedLeft;
+        }
+        if (simplifiedLeft instanceof Number && simplifiedLeft.eval(Map.of()) == 0) {
+            return new Number(0);
+        }
+        return new Div(simplifiedLeft, simplifiedRight);
+    }
+
+    /**
      * A method for formating div.
      */
     @Override
