@@ -16,6 +16,16 @@ public class Variable extends Expression {
     }
 
     /**
+     * A variable cannot be simplified further, so it returns itself.
+     *
+     * @return Variable.
+     */
+    @Override
+    public Expression simplify() {
+        return new Variable(variable);
+    }
+
+    /**
      * A method for formating variable.
      */
     @Override

@@ -39,6 +39,11 @@ abstract class Expression {
     }
 
     /**
+     * A method for simplifying the expression based on specific rules.
+     */
+    public abstract Expression simplify();
+
+    /**
      * Method for parsing a string with variables.
      */
     private Map<String, Integer> parseVariables(String input) {

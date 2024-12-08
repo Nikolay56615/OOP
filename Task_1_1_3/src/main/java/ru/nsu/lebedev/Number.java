@@ -16,6 +16,16 @@ public class Number extends Expression {
     }
 
     /**
+     * A number is already in its simplest form, so it returns itself.
+     *
+     * @return Number.
+     */
+    @Override
+    public Expression simplify() {
+        return new Number(value);
+    }
+
+    /**
      * A method for formating constant.
      */
     @Override

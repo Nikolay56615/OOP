@@ -18,6 +18,28 @@ public class Add extends Expression {
     }
 
     /**
+     * Rule a: Evaluate if both sides are numbers.
+     *
+     * @return simplify Expression.
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplifiedLeft = left.simplify();
+        Expression simplifiedRight = right.simplify();
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int result = simplifiedLeft.eval(Map.of()) + simplifiedRight.eval(Map.of());
+            return new Number(result);
+        }
+        if (simplifiedLeft instanceof Number && ((Number) simplifiedLeft).eval(Map.of()) == 0) {
+            return simplifiedRight;
+        }
+        if (simplifiedRight instanceof Number && ((Number) simplifiedRight).eval(Map.of()) == 0) {
+            return simplifiedLeft;
+        }
+        return new Add(simplifiedLeft, simplifiedRight);
+    }
+
+    /**
      * A method for formating add.
      */
     @Override

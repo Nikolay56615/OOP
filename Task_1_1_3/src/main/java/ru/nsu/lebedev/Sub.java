@@ -18,6 +18,26 @@ public class Sub extends Expression {
     }
 
     /**
+     * Rule a: Evaluate if both sides are numbers.
+     * Rule d: Subtracting two identical expressions results in 0.
+     *
+     * @return simplify Expression.
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplifiedLeft = left.simplify();
+        Expression simplifiedRight = right.simplify();
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int result = simplifiedLeft.eval(Map.of()) - simplifiedRight.eval(Map.of());
+            return new Number(result);
+        }
+        if (simplifiedLeft.equals(simplifiedRight)) {
+            return new Number(0);
+        }
+        return new Sub(simplifiedLeft, simplifiedRight);
+    }
+
+    /**
      * A method for formating sub.
      */
     @Override

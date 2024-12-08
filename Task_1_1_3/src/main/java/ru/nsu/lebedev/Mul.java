@@ -18,6 +18,35 @@ public class Mul extends Expression {
     }
 
     /**
+     * Rule a: Evaluate if both sides are numbers.
+     * Rule b: Multiplication by 0 results in 0.
+     * Rule c: Multiplication by 1 results in the other operand.
+     *
+     * @return simplify Expression.
+     */
+    @Override
+    public Expression simplify() {
+        Expression simplifiedLeft = left.simplify();
+        Expression simplifiedRight = right.simplify();
+        if (simplifiedLeft instanceof Number && simplifiedRight instanceof Number) {
+            int result = simplifiedLeft.eval(Map.of()) * simplifiedRight.eval(Map.of());
+            return new Number(result);
+        }
+        if (simplifiedLeft instanceof Number && simplifiedLeft.eval(Map.of()) == 0
+                ||
+                simplifiedRight instanceof Number && simplifiedRight.eval(Map.of()) == 0) {
+            return new Number(0);
+        }
+        if (simplifiedLeft instanceof Number && simplifiedLeft.eval(Map.of()) == 1) {
+            return simplifiedRight;
+        }
+        if (simplifiedRight instanceof Number && simplifiedRight.eval(Map.of()) == 1) {
+            return simplifiedLeft;
+        }
+        return new Mul(simplifiedLeft, simplifiedRight);
+    }
+
+    /**
      * A method for formating mul.
      */
     @Override

@@ -22,6 +22,20 @@ public class MulTest {
     }
 
     @Test
+    void simplifyMulByZero() {
+        Expression mul = new Mul(new Number(5), new Number(0));
+        assertEquals("0", mul.simplify().toString(),
+                "Multiplication by 0 should simplify to 0.");
+    }
+
+    @Test
+    void simplifyMulByOne() {
+        Expression mul = new Mul(new Variable("x"), new Number(1));
+        assertEquals("x", mul.simplify().toString(),
+                "Multiplication by 1 should simplify to the variable.");
+    }
+
+    @Test
     void printMul() throws Exception {
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

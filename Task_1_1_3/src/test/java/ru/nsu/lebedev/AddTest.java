@@ -22,6 +22,20 @@ public class AddTest {
     }
 
     @Test
+    void simplifyAddConstants() {
+        Expression add = new Add(new Number(2), new Number(3));
+        assertEquals("5", add.simplify().toString(),
+                "Addition of constants should simplify to their sum.");
+    }
+
+    @Test
+    void simplifyAddWithVariable() {
+        Expression add = new Add(new Variable("x"), new Number(0));
+        assertEquals("x", add.simplify().toString(),
+                "Adding 0 to a variable should simplify to the variable.");
+    }
+
+    @Test
     void printAdd() throws Exception {
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

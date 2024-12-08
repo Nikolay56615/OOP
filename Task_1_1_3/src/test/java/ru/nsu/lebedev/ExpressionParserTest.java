@@ -22,6 +22,13 @@ public class ExpressionParserTest {
         expression = ExpressionParser.parse("(3+2)*x + 1 * 2");
         assertEquals("(((3+2)*x)+(1*2))", expression.toString());
     }
+
+    @Test
+    void printExpressionParser2() throws Exception {
+        String input = "2 + 3 * x - 5 / y";
+        Expression expression = ExpressionParser.parse(input);
+        assertEquals("((2+(3*x))-(5/y))", expression.toString());
+    }
 }
 
 

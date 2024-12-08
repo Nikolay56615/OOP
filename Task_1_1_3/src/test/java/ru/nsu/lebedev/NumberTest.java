@@ -1,6 +1,7 @@
 package ru.nsu.lebedev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -19,6 +20,12 @@ public class NumberTest {
     @BeforeEach
     public void setUp() throws Exception {
         number = new Number(5);
+    }
+
+    @Test
+    void simplifyNumber() {
+        assertNotEquals(number, number.simplify(),
+                "Number should simplify to itself (dif obj).");
     }
 
     @Test

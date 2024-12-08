@@ -22,6 +22,20 @@ public class SubTest {
     }
 
     @Test
+    void testSimplifySubEqualExpressions() {
+        Expression sub = new Sub(new Number(5), new Number(5));
+        assertEquals("0", sub.simplify().toString(),
+                "Subtraction of equal expressions should simplify to 0.");
+    }
+
+    @Test
+    void testSimplifySubWithConstants() {
+        Expression sub = new Sub(new Number(7), new Number(2));
+        assertEquals("5", sub.simplify().toString(),
+                "Subtraction of constants should simplify to their difference.");
+    }
+
+    @Test
     void printSub() throws Exception {
         final PrintStream originalOut = System.out;
         ByteArrayOutputStream outputStream = new ByteArrayOutputStream();

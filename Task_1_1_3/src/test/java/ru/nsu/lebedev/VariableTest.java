@@ -1,6 +1,7 @@
 package ru.nsu.lebedev;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.assertNotEquals;
 import static org.junit.jupiter.api.Assertions.assertTrue;
 
 import java.io.ByteArrayOutputStream;
@@ -19,6 +20,12 @@ public class VariableTest {
     @BeforeEach
     public void setUp() throws Exception {
         variable = new Variable("x");
+    }
+
+    @Test
+    void testSimplifyVariable() {
+        assertNotEquals(variable, variable.simplify(),
+                "Variable should simplify to itself.");
     }
 
     @Test
