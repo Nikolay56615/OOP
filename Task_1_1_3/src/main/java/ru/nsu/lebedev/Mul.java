@@ -32,7 +32,8 @@ public class Mul extends Expression {
             int result = simplifiedLeft.eval(Map.of()) * simplifiedRight.eval(Map.of());
             return new Number(result);
         }
-        if (simplifiedLeft instanceof Number && simplifiedLeft.eval(Map.of()) == 0 ||
+        if (simplifiedLeft instanceof Number && simplifiedLeft.eval(Map.of()) == 0
+                ||
                 simplifiedRight instanceof Number && simplifiedRight.eval(Map.of()) == 0) {
             return new Number(0);
         }
