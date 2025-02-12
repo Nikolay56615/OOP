@@ -1,0 +1,1 @@
+typeSearchIndex = [{"l":"All Classes and Interfaces","u":"allclasses-index.html"},{"p":"ru.nsu.lebedev.primes","l":"Main"},{"p":"ru.nsu.lebedev.primes","l":"ParallelStreamsUnprimeChecker"},{"p":"ru.nsu.lebedev.primes","l":"SequentialUnprimeChecker"},{"p":"ru.nsu.lebedev.primes","l":"ThreadUnprimeChecker"},{"p":"ru.nsu.lebedev.primes","l":"UnprimeChecker"}];updateSearchResults();
