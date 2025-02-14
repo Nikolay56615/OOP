@@ -24,13 +24,20 @@ public abstract class UnprimeChecker {
      * 0, 1, and negative numbers are not prime.
      * 2 and 3 are prime.
      * Exclude even numbers and multiples of 3.
+     *
      * @param number The number to check.
      * @return true if the number is not prime.
      */
     protected static boolean isNumUnprime(int number) {
-        if (number < 2) return true;
-        if (number == 2 || number == 3) return false;
-        if (number % 2 == 0 || number % 3 == 0) return true;
+        if (number < 2) {
+            return true;
+        }
+        if (number == 2 || number == 3) {
+            return false;
+        }
+        if (number % 2 == 0 || number % 3 == 0) {
+            return true;
+        }
         for (int i = 5; i * i <= number; i += 6) {
             if (number % i == 0 || number % (i + 2) == 0) {
                 return true;

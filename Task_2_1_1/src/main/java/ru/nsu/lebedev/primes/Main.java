@@ -21,13 +21,13 @@ public class Main {
             tests.add(LARGE_COMPOSITE_NUMBER);
         }
         UnprimeChecker[] checkers = new UnprimeChecker[]{
-                new SequentialUnprimeChecker(),
-                new ParallelStreamsUnprimeChecker(),
-                new ThreadUnprimeChecker(1),
-                new ThreadUnprimeChecker(2),
-                new ThreadUnprimeChecker(4),
-                new ThreadUnprimeChecker(8),
-                new ThreadUnprimeChecker(16)
+            new SequentialUnprimeChecker(),
+            new ParallelStreamsUnprimeChecker(),
+            new ThreadUnprimeChecker(1),
+            new ThreadUnprimeChecker(2),
+            new ThreadUnprimeChecker(4),
+            new ThreadUnprimeChecker(8),
+            new ThreadUnprimeChecker(16)
         };
         try (FileOutputStream fos = new FileOutputStream("result.csv");
              OutputStreamWriter writer = new OutputStreamWriter(fos)) {
