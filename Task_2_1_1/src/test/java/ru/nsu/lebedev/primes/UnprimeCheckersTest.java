@@ -42,7 +42,7 @@ public class UnprimeCheckersTest {
     @ArgumentsSource(UnprimeCheckersProvider.class)
     void exampleTest2(UnprimeChecker checker) {
         Integer[] array = {20319251, 6997901, 6997927, 6997937, 17858849, 6997967,
-                6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
+            6998009, 6998029, 6998039, 20165149, 6998051, 6998053};
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(array));
         checker.setNumbers(list);
         Assertions.assertFalse(checker.isAnyUnprime());
@@ -95,7 +95,7 @@ public class UnprimeCheckersTest {
 
     @ParameterizedTest
     @ArgumentsSource(UnprimeCheckersProvider.class)
-    void NegativeAsUnprimeTest(UnprimeChecker checker) {
+    void negativeAsUnprimeTest(UnprimeChecker checker) {
         Integer[] array = {-2, -3, -4, -5, -7};
         ArrayList<Integer> list = new ArrayList<>(Arrays.asList(array));
         checker.setNumbers(list);
