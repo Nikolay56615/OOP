@@ -57,7 +57,8 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html#add(T,long)" class="member-name-link">add(T, long)</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a></dt>
 <dd>
-<div class="block">Adds an element to the queue with a timeout, waiting up to the specified time for space to become available.</div>
+<div class="block">Adds an element to the queue with a timeout, waiting
+ up to the specified time for space to become available.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:B">B</h2>
@@ -161,10 +162,6 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Returns a hash code value for this object.</div>
 </dd>
-<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#hasNotFinished()" class="member-name-link">hasNotFinished()</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
-<dd>
-<div class="block">Checks if the pizzeria has not finished its work day.</div>
-</dd>
 </dl>
 <h2 class="title" id="I:I">I</h2>
 <dl class="index">
@@ -175,6 +172,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html#isEmpty()" class="member-name-link">isEmpty()</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a></dt>
 <dd>
 <div class="block">Unreliable, reliable only for a moment after returning data.</div>
+</dd>
+<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#isOpen()" class="member-name-link">isOpen()</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
+<dd>
+<div class="block">Checks if the pizzeria has not finished its work day.</div>
 </dd>
 </dl>
 <h2 class="title" id="I:J">J</h2>
@@ -204,7 +205,8 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" class="type-name-link" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&gt; - Class in <a href="ru/nsu/lebedev/pizzeria/package-summary.html">ru.nsu.lebedev.pizzeria</a></dt>
 <dd>
-<div class="block">MyBlockingQueue is a custom implementation of a blocking queue using ReentrantLock and Conditions.</div>
+<div class="block">MyBlockingQueue is a custom implementation of a blocking queue
+ using ReentrantLock and Conditions.</div>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html#%3Cinit%3E(int)" class="member-name-link">MyBlockingQueue(int)</a> - Constructor for class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a></dt>
 <dd>
@@ -242,13 +244,14 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/Order.html" class="type-name-link" title="class in ru.nsu.lebedev.pizzeria">Order</a> - Record Class in <a href="ru/nsu/lebedev/pizzeria/package-summary.html">ru.nsu.lebedev.pizzeria</a></dt>
 <dd>
-<div class="block">Record class representing an order in the pizzeria system, implementing JsonSerializable for JSON serialization.</div>
+<div class="block">Record class representing an order in the pizzeria
+ system, implementing JsonSerializable for JSON serialization.</div>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/Order.html#%3Cinit%3E(java.lang.String,int)" class="member-name-link">Order(String, int)</a> - Constructor for record class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a></dt>
 <dd>
 <div class="block">Creates an instance of a <code>Order</code> record class.</div>
 </dd>
-<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#ORDER_WAITING_MS" class="member-name-link">ORDER_WAITING_MS</a> - Static variable in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
+<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#ORDER_TIMEOUT_MS" class="member-name-link">ORDER_TIMEOUT_MS</a> - Static variable in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/Setup.html#orders()" class="member-name-link">orders()</a> - Method in record class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Setup.html" title="class in ru.nsu.lebedev.pizzeria">Setup</a></dt>
 <dd>
@@ -287,12 +290,14 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html#poll()" class="member-name-link">poll()</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a></dt>
 <dd>
-<div class="block">Retrieves and removes the head of the queue, waiting if empty until an element is added
+<div class="block">Retrieves and removes the head of the queue, waiting
+ if empty until an element is added
  or the queue is closed.</div>
 </dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html#poll(long)" class="member-name-link">poll(long)</a> - Method in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a></dt>
 <dd>
-<div class="block">Retrieves and removes the head of the queue with a timeout, waiting up to the specified time
+<div class="block">Retrieves and removes the head of the queue with a timeout,
+ waiting up to the specified time
  for an element to become available.</div>
 </dd>
 </dl>
@@ -366,7 +371,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor.</div>
 </dd>
-<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#TIME_MS_QUANTUM" class="member-name-link">TIME_MS_QUANTUM</a> - Static variable in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
+<dt><a href="ru/nsu/lebedev/pizzeria/Pizzeria.html#TIME_STEP_MS" class="member-name-link">TIME_STEP_MS</a> - Static variable in class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Pizzeria.html" title="class in ru.nsu.lebedev.pizzeria">Pizzeria</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru/nsu/lebedev/pizzeria/Baker.html#toString()" class="member-name-link">toString()</a> - Method in record class ru.nsu.lebedev.pizzeria.<a href="ru/nsu/lebedev/pizzeria/Baker.html" title="class in ru.nsu.lebedev.pizzeria">Baker</a></dt>
 <dd>

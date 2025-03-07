@@ -80,17 +80,23 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">MyBlockingQueue&lt;T&gt;</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">MyBlockingQueue is a custom implementation of a blocking queue using ReentrantLock and Conditions.
+<div class="block">MyBlockingQueue is a custom implementation of a blocking queue
+ using ReentrantLock and Conditions.
  <p>
  SOLID principles applied:
- - <strong>Single Responsibility Principle</strong>: The class manages thread-safe access to the queue.
- - <strong>Open/Closed Principle</strong>: It can be extended with new features without modifying its core behavior.
+ - <strong>Single Responsibility Principle</strong>:
+ The class manages thread-safe access to the queue.
+ - <strong>Open/Closed Principle</strong>:
+ It can be extended with new features without modifying its core behavior.
  <p>
  Key conditions:
- - notEmpty: Signals threads waiting to poll an element that the queue is no longer empty.
- - notFull: Signals threads waiting to add an element that space is available.
+ - notEmpty: Signals threads waiting to poll an element
+ that the queue is no longer empty.
+ - notFull: Signals threads waiting to add an element
+ that space is available.
  <p>
- The lock is used to ensure that checking conditions and performing queue operations happen atomically.</div>
+ The lock is used to ensure that checking conditions and
+ performing queue operations happen atomically.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -133,7 +139,8 @@ loadScripts(document, 'script');</script>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#add(T,long)" class="member-name-link">add</a><wbr>(<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&nbsp;element,
  long&nbsp;timeoutMs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Adds an element to the queue with a timeout, waiting up to the specified time for space to become available.</div>
+<div class="block">Adds an element to the queue with a timeout, waiting
+ up to the specified time for space to become available.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#close()" class="member-name-link">close</a>()</code></div>
@@ -158,13 +165,15 @@ loadScripts(document, 'script');</script>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#poll()" class="member-name-link">poll</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves and removes the head of the queue, waiting if empty until an element is added
+<div class="block">Retrieves and removes the head of the queue, waiting
+ if empty until an element is added
  or the queue is closed.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#poll(long)" class="member-name-link">poll</a><wbr>(long&nbsp;timeoutMs)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves and removes the head of the queue with a timeout, waiting up to the specified time
+<div class="block">Retrieves and removes the head of the queue with a timeout,
+ waiting up to the specified time
  for an element to become available.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
@@ -278,11 +287,14 @@ loadScripts(document, 'script');</script>
 <h3>poll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&gt;</span>&nbsp;<span class="element-name">poll</span>()
                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block">Retrieves and removes the head of the queue, waiting if empty until an element is added
- or the queue is closed. If the queue is closed and empty, returns Optional.empty().</div>
+<div class="block">Retrieves and removes the head of the queue, waiting
+ if empty until an element is added
+ or the queue is closed. If the queue is closed and
+ empty, returns Optional.empty().</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>an Optional containing the head element, or Optional.empty() if the queue is closed and empty.</dd>
+<dd>an Optional containing the head element,
+ or Optional.empty() if the queue is closed and empty.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if interrupted while waiting.</dd>
 </dl>
@@ -293,13 +305,16 @@ loadScripts(document, 'script');</script>
 <h3>poll</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/Optional.html" title="class or interface in java.util" class="external-link">Optional</a>&lt;<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&gt;</span>&nbsp;<span class="element-name">poll</span><wbr><span class="parameters">(long&nbsp;timeoutMs)</span>
                  throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block">Retrieves and removes the head of the queue with a timeout, waiting up to the specified time
- for an element to become available. If the queue is closed and empty, returns Optional.empty().</div>
+<div class="block">Retrieves and removes the head of the queue with a timeout,
+ waiting up to the specified time
+ for an element to become available. If the queue is closed
+ and empty, returns Optional.empty().</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>timeoutMs</code> - the maximum time to wait in milliseconds.</dd>
 <dt>Returns:</dt>
-<dd>an Optional containing the head element, or Optional.empty() if the queue is closed and empty or timeout occurs.</dd>
+<dd>an Optional containing the head element, or
+ Optional.empty() if the queue is closed and empty or timeout occurs.</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if interrupted while waiting.</dd>
 </dl>
@@ -327,7 +342,8 @@ loadScripts(document, 'script');</script>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">add</span><wbr><span class="parameters">(<a href="MyBlockingQueue.html" title="type parameter in MyBlockingQueue">T</a>&nbsp;element,
  long&nbsp;timeoutMs)</span>
             throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></span></div>
-<div class="block">Adds an element to the queue with a timeout, waiting up to the specified time for space to become available.
+<div class="block">Adds an element to the queue with a timeout, waiting
+ up to the specified time for space to become available.
  Throws IllegalStateException if the queue is closed.</div>
 <dl class="notes">
 <dt>Parameters:</dt>

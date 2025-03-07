@@ -83,9 +83,9 @@ loadScripts(document, 'script');</script>
 implements <a href="TerminableEmployee.html" title="interface in ru.nsu.lebedev.pizzeria">TerminableEmployee</a></span></div>
 <div class="block">RunnableCourier represents a courier running in its own thread.
  <p>
- The courier repeatedly attempts to fill its trunk by polling orders from the warehouse queue.
+ The courier repeatedly attempts to fill its trunk by polling orders from the stock queue.
  Then, it delivers orders (simulated with a delay based on order deliveryTime).
- In case of delivery errors, undelivered orders are returned to the newOrders queue.</div>
+ In case of delivery errors, undelivered orders are returned to the pendingOrders queue.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -98,8 +98,8 @@ implements <a href="TerminableEmployee.html" title="interface in ru.nsu.lebedev.
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
 <div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(ru.nsu.lebedev.pizzeria.Courier,ru.nsu.lebedev.pizzeria.MyBlockingQueue,ru.nsu.lebedev.pizzeria.MyBlockingQueue)" class="member-name-link">ThreadCourier</a><wbr>(<a href="Courier.html" title="class in ru.nsu.lebedev.pizzeria">Courier</a>&nbsp;courierData,
- <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;newOrders,
- <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;warehouse)</code></div>
+ <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;pendingOrders,
+ <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;stock)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructor.</div>
 </div>
@@ -148,14 +148,14 @@ implements <a href="TerminableEmployee.html" title="interface in ru.nsu.lebedev.
 <section class="detail" id="&lt;init&gt;(ru.nsu.lebedev.pizzeria.Courier,ru.nsu.lebedev.pizzeria.MyBlockingQueue,ru.nsu.lebedev.pizzeria.MyBlockingQueue)">
 <h3>ThreadCourier</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">ThreadCourier</span><wbr><span class="parameters">(<a href="Courier.html" title="class in ru.nsu.lebedev.pizzeria">Courier</a>&nbsp;courierData,
- <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;newOrders,
- <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;warehouse)</span></div>
+ <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;pendingOrders,
+ <a href="MyBlockingQueue.html" title="class in ru.nsu.lebedev.pizzeria">MyBlockingQueue</a>&lt;<a href="Order.html" title="class in ru.nsu.lebedev.pizzeria">Order</a>&gt;&nbsp;stock)</span></div>
 <div class="block">Constructor.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>courierData</code> - data about the courier</dd>
-<dd><code>newOrders</code> - queue with new orders (for returning undelivered orders)</dd>
-<dd><code>warehouse</code> - warehouse queue containing orders ready for delivery</dd>
+<dd><code>pendingOrders</code> - queue with pending orders (for returning undelivered orders)</dd>
+<dd><code>stock</code> - stock queue containing orders ready for delivery</dd>
 </dl>
 </section>
 </li>
@@ -184,8 +184,8 @@ implements <a href="TerminableEmployee.html" title="interface in ru.nsu.lebedev.
 <h3>run</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">run</span>()</div>
 <div class="block">Main loop for the courier thread.
- Continues filling trunk and delivering orders until signaled to finish
- and the warehouse becomes empty.</div>
+ Continues filling vehicle and delivering orders until signaled to finish
+ and the stock becomes empty.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html#run()" title="class or interface in java.lang" class="external-link">run</a></code>&nbsp;in interface&nbsp;<code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Runnable.html" title="class or interface in java.lang" class="external-link">Runnable</a></code></dd>

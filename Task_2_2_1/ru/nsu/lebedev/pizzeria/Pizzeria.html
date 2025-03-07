@@ -95,10 +95,10 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="table-header col-second">Field</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color"><code>static final long</code></div>
-<div class="col-second even-row-color"><code><a href="#ORDER_WAITING_MS" class="member-name-link">ORDER_WAITING_MS</a></code></div>
+<div class="col-second even-row-color"><code><a href="#ORDER_TIMEOUT_MS" class="member-name-link">ORDER_TIMEOUT_MS</a></code></div>
 <div class="col-last even-row-color">&nbsp;</div>
 <div class="col-first odd-row-color"><code>static final long</code></div>
-<div class="col-second odd-row-color"><code><a href="#TIME_MS_QUANTUM" class="member-name-link">TIME_MS_QUANTUM</a></code></div>
+<div class="col-second odd-row-color"><code><a href="#TIME_STEP_MS" class="member-name-link">TIME_STEP_MS</a></code></div>
 <div class="col-last odd-row-color">&nbsp;</div>
 </div>
 </section>
@@ -111,9 +111,9 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(long,java.lang.String,java.lang.String)" class="member-name-link">Pizzeria</a><wbr>(long&nbsp;timeForClosing,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;setupLoadPath,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;setupSavePath)</code></div>
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(long,java.lang.String,java.lang.String)" class="member-name-link">Pizzeria</a><wbr>(long&nbsp;workDuration,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configLoadPath,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configSavePath)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructor.</div>
 </div>
@@ -132,7 +132,7 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#hasNotFinished()" class="member-name-link">hasNotFinished</a>()</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isOpen()" class="member-name-link">isOpen</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Checks if the pizzeria has not finished its work day.</div>
 </div>
@@ -159,28 +159,28 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h2>Field Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="TIME_MS_QUANTUM">
-<h3>TIME_MS_QUANTUM</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">TIME_MS_QUANTUM</span></div>
+<section class="detail" id="TIME_STEP_MS">
+<h3>TIME_STEP_MS</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">TIME_STEP_MS</span></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
-<li><a href="../../../../constant-values.html#ru.nsu.lebedev.pizzeria.Pizzeria.TIME_MS_QUANTUM">Constant Field Values</a></li>
+<li><a href="../../../../constant-values.html#ru.nsu.lebedev.pizzeria.Pizzeria.TIME_STEP_MS">Constant Field Values</a></li>
 </ul>
 </dd>
 </dl>
 </section>
 </li>
 <li>
-<section class="detail" id="ORDER_WAITING_MS">
-<h3>ORDER_WAITING_MS</h3>
-<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">ORDER_WAITING_MS</span></div>
+<section class="detail" id="ORDER_TIMEOUT_MS">
+<h3>ORDER_TIMEOUT_MS</h3>
+<div class="member-signature"><span class="modifiers">public static final</span>&nbsp;<span class="return-type">long</span>&nbsp;<span class="element-name">ORDER_TIMEOUT_MS</span></div>
 <dl class="notes">
 <dt>See Also:</dt>
 <dd>
 <ul class="see-list">
-<li><a href="../../../../constant-values.html#ru.nsu.lebedev.pizzeria.Pizzeria.ORDER_WAITING_MS">Constant Field Values</a></li>
+<li><a href="../../../../constant-values.html#ru.nsu.lebedev.pizzeria.Pizzeria.ORDER_TIMEOUT_MS">Constant Field Values</a></li>
 </ul>
 </dd>
 </dl>
@@ -197,22 +197,21 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <li>
 <section class="detail" id="&lt;init&gt;(long,java.lang.String,java.lang.String)">
 <h3>Pizzeria</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Pizzeria</span><wbr><span class="parameters">(long&nbsp;timeForClosing,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;setupLoadPath,
- <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;setupSavePath)</span>
-         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a>,
-<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></span></div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">Pizzeria</span><wbr><span class="parameters">(long&nbsp;workDuration,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configLoadPath,
+ <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;configSavePath)</span>
+         throws <span class="exceptions"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></span></div>
 <div class="block">Constructor.
  <br>
  Loads data from the specified load path and initializes internal data.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>timeForClosing</code> - time in conventional units</dd>
-<dd><code>setupLoadPath</code> - path to initialize json setup</dd>
-<dd><code>setupSavePath</code> - path for final json setup</dd>
+<dd><code>workDuration</code> - time in conventional units</dd>
+<dd><code>configLoadPath</code> - path to initialize JSON setup</dd>
+<dd><code>configSavePath</code> - path for final JSON setup</dd>
 <dt>Throws:</dt>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - when any error occurs while parsing input json setup</dd>
-<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - when input json setup has some illegal data</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/IOException.html" title="class or interface in java.io" class="external-link">IOException</a></code> - if any error occurs while parsing the input JSON setup</dd>
+<dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/IllegalArgumentException.html" title="class or interface in java.lang" class="external-link">IllegalArgumentException</a></code> - if the input JSON setup contains invalid data</dd>
 </dl>
 </section>
 </li>
@@ -225,9 +224,9 @@ implements <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base
 <h2>Method Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="hasNotFinished()">
-<h3>hasNotFinished</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">hasNotFinished</span>()</div>
+<section class="detail" id="isOpen()">
+<h3>isOpen</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isOpen</span>()</div>
 <div class="block">Checks if the pizzeria has not finished its work day.</div>
 <dl class="notes">
 <dt>Returns:</dt>
