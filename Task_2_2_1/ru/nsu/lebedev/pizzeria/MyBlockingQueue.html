@@ -82,19 +82,16 @@ loadScripts(document, 'script');</script>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">MyBlockingQueue is a custom implementation of a blocking queue
  using ReentrantLock and Conditions.
- <p>
  SOLID principles applied:
  - <strong>Single Responsibility Principle</strong>:
  The class manages thread-safe access to the queue.
  - <strong>Open/Closed Principle</strong>:
  It can be extended with new features without modifying its core behavior.
- <p>
  Key conditions:
  - notEmpty: Signals threads waiting to poll an element
  that the queue is no longer empty.
  - notFull: Signals threads waiting to add an element
  that space is available.
- <p>
  The lock is used to ensure that checking conditions and
  performing queue operations happen atomically.</div>
 </section>
@@ -293,8 +290,7 @@ loadScripts(document, 'script');</script>
  empty, returns Optional.empty().</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>an Optional containing the head element,
- or Optional.empty() if the queue is closed and empty.</dd>
+<dd>an Optional containing the head element, or Optional.empty().</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if interrupted while waiting.</dd>
 </dl>
@@ -313,8 +309,7 @@ loadScripts(document, 'script');</script>
 <dt>Parameters:</dt>
 <dd><code>timeoutMs</code> - the maximum time to wait in milliseconds.</dd>
 <dt>Returns:</dt>
-<dd>an Optional containing the head element, or
- Optional.empty() if the queue is closed and empty or timeout occurs.</dd>
+<dd>an Optional containing the head element, or Optional.empty().</dd>
 <dt>Throws:</dt>
 <dd><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/InterruptedException.html" title="class or interface in java.lang" class="external-link">InterruptedException</a></code> - if interrupted while waiting.</dd>
 </dl>
