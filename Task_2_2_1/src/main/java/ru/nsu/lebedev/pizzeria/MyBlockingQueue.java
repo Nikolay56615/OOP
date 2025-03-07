@@ -10,19 +10,16 @@ import java.util.concurrent.locks.ReentrantLock;
 /**
  * MyBlockingQueue is a custom implementation of a blocking queue
  * using ReentrantLock and Conditions.
- * <p>
  * SOLID principles applied:
  * - <strong>Single Responsibility Principle</strong>:
  * The class manages thread-safe access to the queue.
  * - <strong>Open/Closed Principle</strong>:
  * It can be extended with new features without modifying its core behavior.
- * <p>
  * Key conditions:
  * - notEmpty: Signals threads waiting to poll an element
  * that the queue is no longer empty.
  * - notFull: Signals threads waiting to add an element
  * that space is available.
- * <p>
  * The lock is used to ensure that checking conditions and
  * performing queue operations happen atomically.
  *
@@ -128,8 +125,7 @@ public class MyBlockingQueue<T> {
      * or the queue is closed. If the queue is closed and
      * empty, returns Optional.empty().
      *
-     * @return an Optional containing the head element,
-     * or Optional.empty() if the queue is closed and empty.
+     * @return an Optional containing the head element, or Optional.empty().
      * @throws InterruptedException if interrupted while waiting.
      */
     public Optional<T> poll() throws InterruptedException {
@@ -157,8 +153,7 @@ public class MyBlockingQueue<T> {
      * and empty, returns Optional.empty().
      *
      * @param timeoutMs the maximum time to wait in milliseconds.
-     * @return an Optional containing the head element, or
-     * Optional.empty() if the queue is closed and empty or timeout occurs.
+     * @return an Optional containing the head element, or Optional.empty().
      * @throws InterruptedException if interrupted while waiting.
      */
     public Optional<T> poll(long timeoutMs) throws InterruptedException {

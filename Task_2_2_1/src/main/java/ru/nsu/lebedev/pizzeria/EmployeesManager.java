@@ -7,7 +7,6 @@ import java.util.concurrent.TimeUnit;
 
 /**
  * EmployeesManager is responsible for managing a list of pizzeria employees.
- * <p>
  * SOLID principles applied:
  * <strong>Single Responsibility Principle:</strong>
  * This class is solely responsible for managing the lifecycle
