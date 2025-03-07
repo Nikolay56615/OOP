@@ -6,7 +6,6 @@ package ru.nsu.lebedev.pizzeria;
  * This interface ensures that any employee can be signaled to finish their work.
  * It supports the <strong>Dependency Inversion Principle</strong> by allowing higher-level modules
  * to work with employees via this abstraction.
- * </p>
  */
 public interface TerminableEmployee extends Runnable {
     /**

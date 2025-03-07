@@ -9,12 +9,10 @@ import java.util.concurrent.TimeUnit;
  * EmployeesManager is responsible for managing a list of pizzeria employees.
  * <p>
  * SOLID principles applied:
- * <ul>
- *   <li><strong>Single Responsibility Principle:</strong> This class is solely responsible for managing the lifecycle of employees.</li>
- *   <li><strong>Dependency Inversion Principle:</strong> It works with employees via the TerminableEmployee interface.</li>
- *   <li><strong>Open/Closed Principle:</strong> New employee types can be added without modifying this class.</li>
- * </ul>
- * </p>
+ * <strong>Single Responsibility Principle:</strong> This class is solely responsible for managing the lifecycle
+ * of employees.
+ * <strong>Dependency Inversion Principle:</strong> It works with employees via the TerminableEmployee interface.
+ * <strong>Open/Closed Principle:</strong> New employee types can be added without modifying this class.
  */
 public class EmployeesManager<T extends TerminableEmployee> {
     private final ArrayList<T> employees;

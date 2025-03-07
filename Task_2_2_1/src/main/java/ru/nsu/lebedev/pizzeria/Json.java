@@ -12,11 +12,9 @@ import java.nio.charset.StandardCharsets;
  * This class follows the <strong>Single Responsibility Principle</strong> by focusing solely on JSON conversion.
  * Moreover, by relying on the abstract marker interface {@code Serializable},
  * it observes the <strong>Dependency Inversion Principle</strong>.
- * </p>
  *
  * <p>
  * Note: The parameter type {@code Serializable} is a marker interface used to indicate that an object for JSON.
- * </p>
  */
 public final class Json {
     /**
