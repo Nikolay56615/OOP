@@ -2,7 +2,6 @@ package ru.nsu.lebedev.pizzeria;
 
 /**
  * RunnableBaker represents a baker running in its own thread.
- * <p>
  * The baker continuously attempts to accept new orders from the pendingOrders queue,
  * simulates cooking (using a delay), and then adds the cooked order to the storageQueue.
  */
@@ -63,20 +62,20 @@ public class ThreadBaker implements TerminableEmployee {
         try {
             Thread.sleep((long) bakerInfo.cookingTime() * Pizzeria.TIME_STEP_MS);
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerInfo.name() +
-                " interrupted while processing order " + activeOrder.id() + ": " + e.getMessage());
+            System.out.println("Baker " + bakerInfo.name()
+                + " interrupted while processing order " + activeOrder.id() + ": " + e.getMessage());
             hasError = true;
         }
         if (!hasError) {
             System.out.println("Baker " + bakerInfo.name() + " processed order " + activeOrder.id());
             try {
                 storageQueue.add(activeOrder);
-                System.out.println("Baker " + bakerInfo.name() +
-                    " placed order " + activeOrder.id() + " in storage queue");
+                System.out.println("Baker " + bakerInfo.name()
+                    + " placed order " + activeOrder.id() + " in storage queue");
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerInfo.name() +
-                    " interrupted while adding order " +
-                    activeOrder.id() + " to storage queue: " + e.getMessage());
+                System.out.println("Baker " + bakerInfo.name()
+                    + " interrupted while adding order "
+                    + activeOrder.id() + " to storage queue: " + e.getMessage());
                 hasError = true;
             } catch (IllegalStateException e) {
                 System.out.println("Baker " + bakerInfo.name()

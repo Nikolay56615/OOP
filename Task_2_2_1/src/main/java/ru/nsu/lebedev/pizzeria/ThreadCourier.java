@@ -5,7 +5,6 @@ import java.util.Optional;
 
 /**
  * RunnableCourier represents a courier running in its own thread.
- * <p>
  * The courier repeatedly attempts to fill its trunk by polling orders from the stock queue.
  * Then, it delivers orders (simulated with a delay based on order deliveryTime).
  * In case of delivery errors, undelivered orders are returned to the pendingOrders queue.

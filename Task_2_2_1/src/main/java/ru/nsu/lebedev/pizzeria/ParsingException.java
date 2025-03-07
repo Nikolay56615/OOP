@@ -17,6 +17,7 @@ public class ParsingException extends IOException {
     /**
      * Constructs a new ParsingException with the specified cause.
      * The cause is an exception produced by JsonParse - MismatchedInputException.
+     *
      * @param cause the underlying exception that caused the parsing error
      */
     public ParsingException(Throwable cause) {
