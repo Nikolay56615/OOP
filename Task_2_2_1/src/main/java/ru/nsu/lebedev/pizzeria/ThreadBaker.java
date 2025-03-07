@@ -45,8 +45,8 @@ public class ThreadBaker implements TerminableEmployee {
             }
             activeOrder = optionalOrder.get();
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerInfo.name() +
-                " interrupted while fetching order: " + e.getMessage());
+            System.out.println("Baker " + bakerInfo.name()
+                + " interrupted while fetching order: " + e.getMessage());
             return false;
         }
         System.out.println("Baker " + bakerInfo.name() + " fetched order " + activeOrder.id());
@@ -79,9 +79,10 @@ public class ThreadBaker implements TerminableEmployee {
                     activeOrder.id() + " to storage queue: " + e.getMessage());
                 hasError = true;
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerInfo.name() +
-                    " cannot place order " +
-                    activeOrder.id() + " in storage queue (queue closed): " + e.getMessage());
+                System.out.println("Baker " + bakerInfo.name()
+                    + " cannot place order "
+                    + activeOrder.id() + " in storage queue (queue closed): "
+                    + e.getMessage());
                 hasError = true;
             }
         }
@@ -89,12 +90,12 @@ public class ThreadBaker implements TerminableEmployee {
             try {
                 pendingOrders.add(activeOrder);
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerInfo.name() +
-                    " interrupted while returning failed order "
+                System.out.println("Baker " + bakerInfo.name()
+                    + " interrupted while returning failed order "
                     + activeOrder.id() + ": " + e.getMessage());
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerInfo.name() +
-                    " cannot return failed order " + activeOrder.id()
+                System.out.println("Baker " + bakerInfo.name()
+                    + " cannot return failed order " + activeOrder.id()
                     + " (queue closed): " + e.getMessage());
             }
         }
