@@ -63,11 +63,13 @@ public class ThreadBaker implements TerminableEmployee {
             Thread.sleep((long) bakerInfo.cookingTime() * Pizzeria.TIME_STEP_MS);
         } catch (InterruptedException e) {
             System.out.println("Baker " + bakerInfo.name()
-                + " interrupted while processing order " + activeOrder.id() + ": " + e.getMessage());
+                + " interrupted while processing order "
+                + activeOrder.id() + ": " + e.getMessage());
             hasError = true;
         }
         if (!hasError) {
-            System.out.println("Baker " + bakerInfo.name() + " processed order " + activeOrder.id());
+            System.out.println("Baker " + bakerInfo.name()
+                + " processed order " + activeOrder.id());
             try {
                 storageQueue.add(activeOrder);
                 System.out.println("Baker " + bakerInfo.name()
