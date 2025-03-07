@@ -8,17 +8,23 @@ import java.util.concurrent.locks.Condition;
 import java.util.concurrent.locks.ReentrantLock;
 
 /**
- * MyBlockingQueue is a custom implementation of a blocking queue using ReentrantLock and Conditions.
+ * MyBlockingQueue is a custom implementation of a blocking queue
+ * using ReentrantLock and Conditions.
  * <p>
  * SOLID principles applied:
- * - <strong>Single Responsibility Principle</strong>: The class manages thread-safe access to the queue.
- * - <strong>Open/Closed Principle</strong>: It can be extended with new features without modifying its core behavior.
+ * - <strong>Single Responsibility Principle</strong>:
+ * The class manages thread-safe access to the queue.
+ * - <strong>Open/Closed Principle</strong>:
+ * It can be extended with new features without modifying its core behavior.
  * <p>
  * Key conditions:
- * - notEmpty: Signals threads waiting to poll an element that the queue is no longer empty.
- * - notFull: Signals threads waiting to add an element that space is available.
+ * - notEmpty: Signals threads waiting to poll an element
+ * that the queue is no longer empty.
+ * - notFull: Signals threads waiting to add an element
+ * that space is available.
  * <p>
- * The lock is used to ensure that checking conditions and performing queue operations happen atomically.
+ * The lock is used to ensure that checking conditions and
+ * performing queue operations happen atomically.
  *
  * @param <T> the type of elements held in this queue.
  */
@@ -117,10 +123,13 @@ public class MyBlockingQueue<T> {
     }
 
     /**
-     * Retrieves and removes the head of the queue, waiting if empty until an element is added
-     * or the queue is closed. If the queue is closed and empty, returns Optional.empty().
+     * Retrieves and removes the head of the queue, waiting
+     * if empty until an element is added
+     * or the queue is closed. If the queue is closed and
+     * empty, returns Optional.empty().
      *
-     * @return an Optional containing the head element, or Optional.empty() if the queue is closed and empty.
+     * @return an Optional containing the head element,
+     * or Optional.empty() if the queue is closed and empty.
      * @throws InterruptedException if interrupted while waiting.
      */
     public Optional<T> poll() throws InterruptedException {
@@ -142,11 +151,14 @@ public class MyBlockingQueue<T> {
     }
 
     /**
-     * Retrieves and removes the head of the queue with a timeout, waiting up to the specified time
-     * for an element to become available. If the queue is closed and empty, returns Optional.empty().
+     * Retrieves and removes the head of the queue with a timeout,
+     * waiting up to the specified time
+     * for an element to become available. If the queue is closed
+     * and empty, returns Optional.empty().
      *
      * @param timeoutMs the maximum time to wait in milliseconds.
-     * @return an Optional containing the head element, or Optional.empty() if the queue is closed and empty or timeout occurs.
+     * @return an Optional containing the head element, or
+     * Optional.empty() if the queue is closed and empty or timeout occurs.
      * @throws InterruptedException if interrupted while waiting.
      */
     public Optional<T> poll(long timeoutMs) throws InterruptedException {
@@ -198,7 +210,8 @@ public class MyBlockingQueue<T> {
     }
 
     /**
-     * Adds an element to the queue with a timeout, waiting up to the specified time for space to become available.
+     * Adds an element to the queue with a timeout, waiting
+     * up to the specified time for space to become available.
      * Throws IllegalStateException if the queue is closed.
      *
      * @param element the element to add.

@@ -56,7 +56,8 @@ public class EmployeesManager<T extends TerminableEmployee> {
      * @param unit    the time unit of the timeout argument
      * @throws InterruptedException if interrupted while waiting
      */
-    public void shutdownAndAwaitTermination(long timeout, TimeUnit unit) throws InterruptedException {
+    public void shutdownAndAwaitTermination(long timeout, TimeUnit unit)
+            throws InterruptedException {
         executor.shutdown();
         if (!executor.awaitTermination(timeout, unit)) {
             executor.shutdownNow();

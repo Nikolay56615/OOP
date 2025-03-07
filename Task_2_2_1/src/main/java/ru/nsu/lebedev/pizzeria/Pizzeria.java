@@ -13,43 +13,43 @@ import java.util.concurrent.TimeUnit;
  * Pizzeria class for managing the pizzeria's operations and thread launching.
  */
 public class Pizzeria implements Runnable {
-    public static final long TIME_MS_QUANTUM = 100; // One time step in pizzeria's world
-    public static final long ORDER_WAITING_MS = 1000; // Waiting time for orders in milliseconds
+    public static final long TIME_STEP_MS = 100;
+    public static final long ORDER_TIMEOUT_MS = 1000;
 
-    private final long timeForClosing;
-    private volatile boolean finished = false;
+    private final long workDuration;
+    private volatile boolean isClosed = false;
 
-    private ArrayList<Baker> bakers;
-    private EmployeesManager<ThreadBaker> bakersManager;
-    private ArrayList<Courier> couriers;
-    private EmployeesManager<ThreadCourier> couriersManager;
-    private MyBlockingQueue<Order> warehouse;
-    private MyBlockingQueue<Order> newOrders;
+    private ArrayList<Baker> bakerList;
+    private EmployeesManager<ThreadBaker> bakerManager;
+    private ArrayList<Courier> courierList;
+    private EmployeesManager<ThreadCourier> courierManager;
+    private MyBlockingQueue<Order> storageQueue;
+    private MyBlockingQueue<Order> orderQueue;
 
-    private final String setupSavePath;
+    private final String configSavePath;
 
     /**
      * Constructor.
      * <br>
      * Loads data from the specified load path and initializes internal data.
      *
-     * @param timeForClosing time in conventional units
-     * @param setupLoadPath  path to initialize json setup
-     * @param setupSavePath  path for final json setup
-     * @throws IOException                when any error occurs while parsing input json setup
-     * @throws IllegalArgumentException when input json setup has some illegal data
+     * @param workDuration time in conventional units
+     * @param configLoadPath path to initialize JSON setup
+     * @param configSavePath path for final JSON setup
+     * @throws IOException if any error occurs while parsing the input JSON setup
+     * @throws IllegalArgumentException if the input JSON setup contains invalid data
      */
-    public Pizzeria(long timeForClosing, String setupLoadPath, String setupSavePath)
-            throws IOException, IllegalArgumentException {
+    public Pizzeria(long workDuration, String configLoadPath,
+                    String configSavePath) throws IOException {
         System.out.println("Initializing Pizzeria");
-        this.timeForClosing = timeForClosing;
-        this.setupSavePath = setupSavePath;
-        Setup setup = getSetup(setupLoadPath);
-        checkSetupValidness(setup);
-        bakers = setup.bakers();
-        couriers = setup.couriers();
-        warehouse = new MyBlockingQueue<>(setup.warehouseCapacity());
-        newOrders = new MyBlockingQueue<>(setup.orders());
+        this.workDuration = workDuration;
+        this.configSavePath = configSavePath;
+        Setup config = loadConfig(configLoadPath);
+        validateConfig(config);
+        bakerList = config.bakers();
+        courierList = config.couriers();
+        storageQueue = new MyBlockingQueue<>(config.warehouseCapacity());
+        orderQueue = new MyBlockingQueue<>(config.orders());
         System.out.println("Pizzeria initialized");
     }
 
@@ -58,79 +58,63 @@ public class Pizzeria implements Runnable {
      *
      * @return true if the pizzeria is still running, false otherwise
      */
-    public boolean hasNotFinished() {
-        return !finished;
+    public boolean isOpen() {
+        return !isClosed;
     }
 
     /**
      * Loads the setup configuration from the specified path.
      *
-     * @param setupPath path to the JSON setup file
+     * @param configPath path to the JSON setup file
      * @return the parsed Setup object
      * @throws IOException if an error occurs while loading or parsing the setup
      */
-    private Setup getSetup(String setupPath) throws IOException {
-        System.out.println("Loading setup from " + setupPath);
+    private Setup loadConfig(String configPath) throws IOException {
+        System.out.println("Loading configuration from " + configPath);
         InputStream inputStream;
-        Setup loadedSetup = null;
+        Setup config = null;
         try {
-            inputStream = new FileInputStream(setupPath);
-        } catch (IOException notFoundException) {
-            inputStream = getClass().getClassLoader().getResourceAsStream(setupPath);
+            inputStream = new FileInputStream(configPath);
+        } catch (IOException e) {
+            inputStream = getClass().getClassLoader().getResourceAsStream(configPath);
         }
         if (inputStream == null) {
-            throw new FileNotFoundException(
-                    "Couldn't find setup JSON file either in specified path "
-                            + "or in this path in resources using path " + setupPath);
+            throw new FileNotFoundException("Could not find configuration file at " + configPath);
         }
-        try {
-            loadedSetup = Json.parse(inputStream, Setup.class);
-        } catch (ParsingException e) {
-            System.out.println("Failed to parse setup: " + e.getMessage());
-            throw e;
-        }
+        config = Json.parse(inputStream, Setup.class);
         inputStream.close();
-        System.out.println("Loaded setup from " + setupPath);
-        return loadedSetup;
+        return config;
     }
 
     /**
      * Saves the current setup to the specified path.
      */
-    private void saveSetup() {
-        System.out.println("Saving setup in " + setupSavePath);
-        Setup setup = new Setup(bakers, couriers, warehouse.maxSize(), newOrders.getListCopy());
-        try (OutputStream outputStream = new FileOutputStream(setupSavePath)) {
-            Json.serialize(setup, outputStream);
-            System.out.println("Saved setup in " + setupSavePath);
-        } catch (IOException streamSerializeException) {
-            System.out.println("Failed to save setup: " + streamSerializeException.getMessage());
-            try {
-                System.out.println(Json.serialize(setup));
-            } catch (IOException stringSerializeException) {
-                System.out.println("Failed to serialize setup: " + stringSerializeException.getMessage());
-            }
+    private void saveConfig() {
+        System.out.println("Saving configuration to " + configSavePath);
+        Setup config = new Setup(bakerList, courierList,
+                storageQueue.maxSize(), orderQueue.getListCopy());
+        try (OutputStream outputStream = new FileOutputStream(configSavePath)) {
+            Json.serialize(config, outputStream);
+        } catch (IOException e) {
+            System.out.println("Failed to save configuration: " + e.getMessage());
         }
     }
 
     /**
      * Validates the setup data.
      *
-     * @param setup the setup object to validate
+     * @param config the setup object to validate
      * @throws IllegalArgumentException if the setup data is invalid
      */
-    private void checkSetupValidness(Setup setup) throws IllegalArgumentException {
-        if (setup.bakers().isEmpty()) {
-            System.out.println("Invalid setup: no bakers found");
-            throw new IllegalArgumentException("There are no bakers");
+    private void validateConfig(Setup config) {
+        if (config.bakers().isEmpty()) {
+            throw new IllegalArgumentException("No bakers in configuration");
         }
-        if (setup.couriers().isEmpty()) {
-            System.out.println("Invalid setup: no couriers found");
-            throw new IllegalArgumentException("There are no couriers");
+        if (config.couriers().isEmpty()) {
+            throw new IllegalArgumentException("No couriers in configuration");
         }
-        if (setup.warehouseCapacity() <= 0) {
-            System.out.println("Invalid setup: non-positive warehouse capacity");
-            throw new IllegalArgumentException("There is invalid warehouse capacity");
+        if (config.warehouseCapacity() <= 0) {
+            throw new IllegalArgumentException("Invalid warehouse capacity");
         }
     }
 
@@ -139,61 +123,60 @@ public class Pizzeria implements Runnable {
      */
     @Override
     public void run() {
-        System.out.println("Starting Pizzeria");
-        runEmployees();
-        System.out.println("All employees have started");
+        System.out.println("Pizzeria is now open");
+        startEmployees();
         try {
-            Thread.sleep(timeForClosing * TIME_MS_QUANTUM);
+            Thread.sleep(workDuration * TIME_STEP_MS);
         } catch (InterruptedException e) {
-            System.out.println("Pizzeria was interrupted while waiting for work day to finish");
+            System.out.println("Pizzeria interrupted before closing time");
         }
-        System.out.println("Finishing work day");
-        finishWorkDay();
-        System.out.println("Work day finished");
+        System.out.println("Closing Pizzeria");
+        shutDownEmployees();
+        System.out.println("Pizzeria is closed");
     }
 
     /**
      * Starts the employees (bakers and couriers) using EmployeesManager.
      */
-    private void runEmployees() {
-        ArrayList<ThreadBaker> runnableBakers = new ArrayList<>();
-        for (var baker : bakers) {
-            runnableBakers.add(new ThreadBaker(baker, newOrders, warehouse));
+    private void startEmployees() {
+        ArrayList<ThreadBaker> bakerThreads = new ArrayList<>();
+        for (var baker : bakerList) {
+            bakerThreads.add(new ThreadBaker(baker, orderQueue, storageQueue));
         }
-        bakersManager = new EmployeesManager<>(runnableBakers);
-        bakersManager.startEmployees();
+        bakerManager = new EmployeesManager<>(bakerThreads);
+        bakerManager.startEmployees();
 
-        ArrayList<ThreadCourier> runnableCouriers = new ArrayList<>();
-        for (var courier : couriers) {
-            runnableCouriers.add(new ThreadCourier(courier, newOrders, warehouse));
+        ArrayList<ThreadCourier> courierThreads = new ArrayList<>();
+        for (var courier : courierList) {
+            courierThreads.add(new ThreadCourier(courier, orderQueue, storageQueue));
         }
-        couriersManager = new EmployeesManager<>(runnableCouriers);
-        couriersManager.startEmployees();
+        courierManager = new EmployeesManager<>(courierThreads);
+        courierManager.startEmployees();
     }
 
     /**
      * Finishes the work day by shutting down employees and saving the setup.
      */
-    private void finishWorkDay() {
-        bakersManager.offerEmployeesFinishJob();
-        newOrders.close(); // Close the newOrders queue to prevent further additions
+    private void shutDownEmployees() {
+        bakerManager.offerEmployeesFinishJob();
+        orderQueue.close();
         try {
-            bakersManager.shutdownAndAwaitTermination(10, TimeUnit.SECONDS);
-        } catch (InterruptedException interruptedException) {
-            System.out.println("Bakers waiting interrupted");
+            bakerManager.shutdownAndAwaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            System.out.println("Baker shutdown interrupted");
         }
-        warehouse.close(); // Close the warehouse queue to prevent further additions
-        System.out.println("All bakers have finished their job");
+        storageQueue.close();
+        System.out.println("All bakers have finished");
 
-        couriersManager.offerEmployeesFinishJob();
+        courierManager.offerEmployeesFinishJob();
         try {
-            couriersManager.shutdownAndAwaitTermination(10, TimeUnit.SECONDS);
-        } catch (InterruptedException interruptedException) {
-            System.out.println("Couriers waiting interrupted");
+            courierManager.shutdownAndAwaitTermination(10, TimeUnit.SECONDS);
+        } catch (InterruptedException e) {
+            System.out.println("Courier shutdown interrupted");
         }
-        System.out.println("All couriers finished their job");
+        System.out.println("All couriers have finished");
 
-        saveSetup();
-        finished = true;
+        saveConfig();
+        isClosed = true;
     }
 }

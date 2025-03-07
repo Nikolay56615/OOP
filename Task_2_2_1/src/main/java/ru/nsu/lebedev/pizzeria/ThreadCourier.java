@@ -6,29 +6,30 @@ import java.util.Optional;
 /**
  * RunnableCourier represents a courier running in its own thread.
  * <p>
- * The courier repeatedly attempts to fill its trunk by polling orders from the warehouse queue.
+ * The courier repeatedly attempts to fill its trunk by polling orders from the stock queue.
  * Then, it delivers orders (simulated with a delay based on order deliveryTime).
- * In case of delivery errors, undelivered orders are returned to the newOrders queue.
+ * In case of delivery errors, undelivered orders are returned to the pendingOrders queue.
  */
 public class ThreadCourier implements TerminableEmployee {
     private final Courier courierData;
-    private final MyBlockingQueue<Order> newOrders;
-    private final MyBlockingQueue<Order> warehouse;
-    private final LinkedList<Order> trunk;
+    private final MyBlockingQueue<Order> pendingOrders;
+    private final MyBlockingQueue<Order> stock;
+    private final LinkedList<Order> vehicle;
     private volatile boolean aboutToFinish = false;
 
     /**
      * Constructor.
      *
      * @param courierData data about the courier
-     * @param newOrders queue with new orders (for returning undelivered orders)
-     * @param warehouse warehouse queue containing orders ready for delivery
+     * @param pendingOrders queue with pending orders (for returning undelivered orders)
+     * @param stock stock queue containing orders ready for delivery
      */
-    public ThreadCourier(Courier courierData, MyBlockingQueue<Order> newOrders, MyBlockingQueue<Order> warehouse) {
+    public ThreadCourier(Courier courierData, MyBlockingQueue<Order> pendingOrders,
+                         MyBlockingQueue<Order> stock) {
         this.courierData = courierData;
-        this.newOrders = newOrders;
-        this.warehouse = warehouse;
-        this.trunk = new LinkedList<>();
+        this.pendingOrders = pendingOrders;
+        this.stock = stock;
+        this.vehicle = new LinkedList<>();
     }
 
     @Override
@@ -37,52 +38,54 @@ public class ThreadCourier implements TerminableEmployee {
     }
 
     /**
-     * Checks if the courier's trunk is full based on its capacity.
+     * Checks if the courier's vehicle is full based on its capacity.
      *
-     * @return true if trunk is full, false otherwise.
+     * @return true if vehicle is full, false otherwise.
      */
-    private boolean isTrunkFull() {
-        return trunk.size() >= courierData.capacity();
+    private boolean isVehicleFull() {
+        return vehicle.size() >= courierData.capacity();
     }
 
     /**
-     * Fills the trunk by polling orders from the warehouse.
+     * Fills the vehicle by polling orders from the stock.
      * Uses a timeout to prevent indefinite waiting.
      */
-    private void fillTrunk() {
-        while (!isTrunkFull()) {
+    private void fillVehicle() {
+        while (!isVehicleFull()) {
             try {
-                Optional<Order> optOrder = warehouse.poll(Pizzeria.ORDER_WAITING_MS);
+                Optional<Order> optOrder = stock.poll(Pizzeria.ORDER_TIMEOUT_MS);
                 if (optOrder.isEmpty()) {
                     break;
                 }
                 Order order = optOrder.get();
-                trunk.add(order);
+                vehicle.add(order);
                 System.out.println("Courier " + courierData.name() +
-                    " got order " + order.id() + " from warehouse");
+                    " got order " + order.id() + " from stock");
             } catch (InterruptedException e) {
                 System.out.println("Courier " + courierData.name() +
-                    " interrupted while polling warehouse: " + e.getMessage());
+                    " interrupted while polling stock: " + e.getMessage());
                 break;
             }
         }
     }
 
     /**
-     * Attempts to deliver all orders in the trunk.
+     * Attempts to deliver all orders in the vehicle.
      *
      * @return true if delivery succeeded for all orders, false if interrupted.
      */
     private boolean deliverOrders() {
-        while (!trunk.isEmpty()) {
-            Order order = trunk.poll();
+        while (!vehicle.isEmpty()) {
+            Order order = vehicle.poll();
             try {
-                Thread.sleep((long) order.deliveryTime() * Pizzeria.TIME_MS_QUANTUM);
-                System.out.println("Courier " + courierData.name() + " delivered order " + order.id());
+                Thread.sleep((long) order.deliveryTime() * Pizzeria.TIME_STEP_MS);
+                System.out.println("Courier " + courierData.name() +
+                    " delivered order " + order.id());
             } catch (InterruptedException e) {
                 System.out.println("Courier " + courierData.name() +
-                    " interrupted while delivering order " + order.id() + ": " + e.getMessage());
-                trunk.add(order);
+                    " interrupted while delivering order " + order.id()
+                    + ": " + e.getMessage());
+                vehicle.add(order);
                 return false;
             }
         }
@@ -90,12 +93,12 @@ public class ThreadCourier implements TerminableEmployee {
     }
 
     /**
-     * Returns undelivered orders from the trunk back to the newOrders queue.
+     * Returns undelivered orders from the vehicle back to the pendingOrders queue.
      */
     private void returnOrders() {
-        for (Order order : trunk) {
+        for (Order order : vehicle) {
             try {
-                newOrders.add(order);
+                pendingOrders.add(order);
             } catch (InterruptedException e) {
                 System.out.println("Courier " + courierData.name() +
                     " interrupted while returning order " + order.id() + ": " + e.getMessage());
@@ -104,18 +107,18 @@ public class ThreadCourier implements TerminableEmployee {
                     " cannot return order " + order.id() + " (queue closed): " + e.getMessage());
             }
         }
-        trunk.clear();
+        vehicle.clear();
     }
 
     /**
      * Main loop for the courier thread.
-     * Continues filling trunk and delivering orders until signaled to finish
-     * and the warehouse becomes empty.
+     * Continues filling vehicle and delivering orders until signaled to finish
+     * and the stock becomes empty.
      */
     @Override
     public void run() {
-        while (!aboutToFinish || !warehouse.isEmpty()) {
-            fillTrunk();
+        while (!aboutToFinish || !stock.isEmpty()) {
+            fillVehicle();
             if (!deliverOrders()) {
                 returnOrders();
             }

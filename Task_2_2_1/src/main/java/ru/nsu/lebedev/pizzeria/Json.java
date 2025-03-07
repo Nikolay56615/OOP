@@ -2,19 +2,23 @@ package ru.nsu.lebedev.pizzeria;
 
 import com.fasterxml.jackson.databind.ObjectMapper;
 
-import java.io.*;
+import java.io.BufferedReader;
+import java.io.IOException;
+import java.io.InputStream;
+import java.io.InputStreamReader;
+import java.io.OutputStream;
 import java.nio.charset.StandardCharsets;
 
 /**
  * Utility class for JSON serialization and deserialization using Jackson.
- *
  * <p>
- * This class follows the <strong>Single Responsibility Principle</strong> by focusing solely on JSON conversion.
+ * This class follows the <strong>Single Responsibility Principle</strong>
+ * by focusing solely on JSON conversion.
  * Moreover, by relying on the abstract marker interface {@code Serializable},
  * it observes the <strong>Dependency Inversion Principle</strong>.
- *
  * <p>
- * Note: The parameter type {@code Serializable} is a marker interface used to indicate that an object for JSON.
+ * Note: The parameter type {@code Serializable} is a marker interface
+ * used to indicate that an object for JSON.
  */
 public final class Json {
     /**
@@ -42,7 +46,8 @@ public final class Json {
      * @param outputStream the output stream to which the JSON data is written.
      * @throws IOException if an error occurs during serialization.
      */
-    public static void serialize(JsonSerializable object, OutputStream outputStream) throws IOException {
+    public static void serialize(JsonSerializable object,
+                                 OutputStream outputStream) throws IOException {
         ObjectMapper mapper = new ObjectMapper();
         mapper.writeValue(outputStream, object);
     }
@@ -56,7 +61,8 @@ public final class Json {
      * @return an instance of type T deserialized from the JSON string
      * @throws ParsingException if an error occurs during parsing
      */
-    public static <T extends JsonSerializable> T parse(String inputString, Class<T> type) throws ParsingException {
+    public static <T extends JsonSerializable> T parse(String inputString, Class<T> type)
+            throws ParsingException {
         try {
             return new ObjectMapper().readValue(inputString, type);
         } catch (IOException e) {
@@ -66,10 +72,9 @@ public final class Json {
 
     /**
      * Deserializes JSON data from an input stream into an object of the specified type.
-     *
      * <p>
-     * The method reads the input stream using UTF-8 encoding and converts it into the target object.
-     * </p>
+     * The method reads the input stream using UTF-8 encoding and converts
+     * it into the target object.
      *
      * @param inputStream the input stream containing JSON data
      * @param type        the target class type
@@ -77,9 +82,11 @@ public final class Json {
      * @return an instance of type T deserialized from the JSON input stream
      * @throws ParsingException if an error occurs during parsing
      */
-    public static <T extends JsonSerializable> T parse(InputStream inputStream, Class<T> type) throws ParsingException {
+    public static <T extends JsonSerializable> T
+    parse(InputStream inputStream, Class<T> type) throws ParsingException {
         ObjectMapper mapper = new ObjectMapper();
-        BufferedReader reader = new BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
+        BufferedReader reader = new
+            BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         try {
             var parser = mapper.createParser(reader);
             return parser.readValueAs(type);

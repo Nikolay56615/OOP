@@ -3,108 +3,114 @@ package ru.nsu.lebedev.pizzeria;
 /**
  * RunnableBaker represents a baker running in its own thread.
  * <p>
- * The baker continuously attempts to accept new orders from the newOrders queue,
- * simulates cooking (using a delay), and then adds the cooked order to the warehouse.
+ * The baker continuously attempts to accept new orders from the pendingOrders queue,
+ * simulates cooking (using a delay), and then adds the cooked order to the storageQueue.
  */
 public class ThreadBaker implements TerminableEmployee {
-    private final Baker bakerData;
-    private final MyBlockingQueue<Order> newOrders;
-    private Order currentOrder;
-    private final MyBlockingQueue<Order> warehouse;
-    private volatile boolean aboutToFinish = false;
+    private final Baker bakerInfo;
+    private final MyBlockingQueue<Order> pendingOrders;
+    private Order activeOrder;
+    private final MyBlockingQueue<Order> storageQueue;
+    private volatile boolean shouldTerminate = false;
 
     /**
      * Constructor.
      *
-     * @param bakerData data about the baker
-     * @param newOrders queue with new orders
-     * @param warehouse warehouse queue for cooked orders
+     * @param bakerInfo   data about the baker
+     * @param pendingOrders queue with new orders
+     * @param storageQueue  storage queue for cooked orders
      */
-    public ThreadBaker(Baker bakerData, MyBlockingQueue<Order> newOrders, MyBlockingQueue<Order> warehouse) {
-        this.bakerData = bakerData;
-        this.newOrders = newOrders;
-        this.warehouse = warehouse;
+    public ThreadBaker(Baker bakerInfo, MyBlockingQueue<Order> pendingOrders,
+                       MyBlockingQueue<Order> storageQueue) {
+        this.bakerInfo = bakerInfo;
+        this.pendingOrders = pendingOrders;
+        this.storageQueue = storageQueue;
     }
 
     @Override
     public void offerToFinishJob() {
-        aboutToFinish = true;
+        shouldTerminate = true;
     }
 
     /**
-     * Attempts to retrieve an order from the newOrders queue.
+     * Attempts to retrieve an order from the pendingOrders queue.
      *
      * @return true if an order was successfully retrieved, false otherwise.
      */
-    private boolean acceptOrder() {
+    private boolean fetchOrder() {
         try {
-            var optOrder = newOrders.poll();
-            if (optOrder.isEmpty()) {
+            var optionalOrder = pendingOrders.poll();
+            if (optionalOrder.isEmpty()) {
                 return false;
             }
-            currentOrder = optOrder.get();
+            activeOrder = optionalOrder.get();
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerData.name() + " interrupted while accepting order: " + e.getMessage());
+            System.out.println("Baker " + bakerInfo.name() +
+                " interrupted while fetching order: " + e.getMessage());
             return false;
         }
-        System.out.println("Baker " + bakerData.name() + " accepted order " + currentOrder.id());
+        System.out.println("Baker " + bakerInfo.name() + " fetched order " + activeOrder.id());
         return true;
     }
 
     /**
-     * Simulates cooking the current order.
-     * On success, adds the cooked order to the warehouse; in case of error,
-     * returns the order back to the newOrders queue.
+     * Simulates cooking the active order.
+     * On success, adds the cooked order to the storageQueue; in case of error,
+     * returns the order back to the pendingOrders queue.
      */
-    private void cookOrder() {
-        boolean error = false;
+    private void processOrder() {
+        boolean hasError = false;
         try {
-            Thread.sleep((long) bakerData.cookingTime() * Pizzeria.TIME_MS_QUANTUM);
+            Thread.sleep((long) bakerInfo.cookingTime() * Pizzeria.TIME_STEP_MS);
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerData.name() +
-                " interrupted while cooking order " + currentOrder.id() + ": " + e.getMessage());
-            error = true;
+            System.out.println("Baker " + bakerInfo.name() +
+                " interrupted while processing order " + activeOrder.id() + ": " + e.getMessage());
+            hasError = true;
         }
-        if (!error) {
-            System.out.println("Baker " + bakerData.name() + " cooked order " + currentOrder.id());
+        if (!hasError) {
+            System.out.println("Baker " + bakerInfo.name() + " processed order " + activeOrder.id());
             try {
-                warehouse.add(currentOrder);
-                System.out.println("Baker " + bakerData.name() +
-                    " placed order " + currentOrder.id() + " to warehouse");
+                storageQueue.add(activeOrder);
+                System.out.println("Baker " + bakerInfo.name() +
+                    " placed order " + activeOrder.id() + " in storage queue");
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerData.name() +
-                    " interrupted while adding order " + currentOrder.id() + " to warehouse: " + e.getMessage());
-                error = true;
+                System.out.println("Baker " + bakerInfo.name() +
+                    " interrupted while adding order " +
+                    activeOrder.id() + " to storage queue: " + e.getMessage());
+                hasError = true;
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerData.name() +
-                    " cannot place order " + currentOrder.id() + " to warehouse (queue closed): " + e.getMessage());
-                error = true;
+                System.out.println("Baker " + bakerInfo.name() +
+                    " cannot place order " +
+                    activeOrder.id() + " in storage queue (queue closed): " + e.getMessage());
+                hasError = true;
             }
         }
-        if (error) {
+        if (hasError) {
             try {
-                newOrders.add(currentOrder);
+                pendingOrders.add(activeOrder);
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerData.name() +
-                    " interrupted while returning failed order " + currentOrder.id() + ": " + e.getMessage());
+                System.out.println("Baker " + bakerInfo.name() +
+                    " interrupted while returning failed order "
+                    + activeOrder.id() + ": " + e.getMessage());
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerData.name() +
-                    " cannot return failed order " + currentOrder.id() + " (queue closed): " + e.getMessage());
+                System.out.println("Baker " + bakerInfo.name() +
+                    " cannot return failed order " + activeOrder.id()
+                    + " (queue closed): " + e.getMessage());
             }
         }
     }
 
     /**
      * Main loop for the baker thread.
-     * Continuously accepts and cooks orders until signaled to finish.
+     * Continuously fetches and processes orders until signaled to terminate.
      */
     @Override
     public void run() {
-        while (!aboutToFinish) {
-            if (acceptOrder()) {
-                cookOrder();
+        while (!shouldTerminate) {
+            if (fetchOrder()) {
+                processOrder();
             }
         }
-        System.out.println("Baker " + bakerData.name() + " finished work.");
+        System.out.println("Baker " + bakerInfo.name() + " finished work.");
     }
 }
