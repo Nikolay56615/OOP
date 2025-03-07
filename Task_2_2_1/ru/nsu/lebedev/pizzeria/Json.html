@@ -77,12 +77,10 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public final class </span><span class="element-name type-name-label">Json</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
 <div class="block">Utility class for JSON serialization and deserialization using Jackson.
- <p>
  This class follows the <strong>Single Responsibility Principle</strong>
  by focusing solely on JSON conversion.
  Moreover, by relying on the abstract marker interface <code>Serializable</code>,
  it observes the <strong>Dependency Inversion Principle</strong>.
- <p>
  Note: The parameter type <code>Serializable</code> is a marker interface
  used to indicate that an object for JSON.</div>
 </section>
@@ -198,7 +196,6 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</span>
                                             throws <span class="exceptions"><a href="ParsingException.html" title="class in ru.nsu.lebedev.pizzeria">ParsingException</a></span></div>
 <div class="block">Deserializes JSON data from an input stream into an object of the specified type.
- <p>
  The method reads the input stream using UTF-8 encoding and converts
  it into the target object.</div>
 <dl class="notes">
