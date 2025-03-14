@@ -98,13 +98,13 @@ loadScripts(document, 'script');</script>
 <div class="table-header col-second">Method</div>
 <div class="table-header col-last">Description</div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;<br>T</code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#parse(java.io.InputStream,java.lang.Class)" class="member-name-link">parse</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;inputStream,
+<div class="col-second even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#deserialize(java.io.InputStream,java.lang.Class)" class="member-name-link">deserialize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;inputStream,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Deserializes JSON data from an input stream into an object of the specified type.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code>static &lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;<br>T</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#parse(java.lang.String,java.lang.Class)" class="member-name-link">parse</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;inputString,
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4"><code><a href="#deserialize(java.lang.String,java.lang.Class)" class="member-name-link">deserialize</a><wbr>(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;inputString,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab1 method-summary-table-tab4">
 <div class="block">Deserializes a JSON string into an object of the specified type.</div>
@@ -170,11 +170,11 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="parse(java.lang.String,java.lang.Class)">
-<h3>parse</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">parse</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;inputString,
+<section class="detail" id="deserialize(java.lang.String,java.lang.Class)">
+<h3>deserialize</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">deserialize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/String.html" title="class or interface in java.lang" class="external-link">String</a>&nbsp;inputString,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</span>
-                                            throws <span class="exceptions"><a href="ParsingException.html" title="class in ru.nsu.lebedev.pizzeria">ParsingException</a></span></div>
+                                                  throws <span class="exceptions"><a href="ParsingException.html" title="class in ru.nsu.lebedev.pizzeria">ParsingException</a></span></div>
 <div class="block">Deserializes a JSON string into an object of the specified type.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
@@ -190,11 +190,11 @@ loadScripts(document, 'script');</script>
 </section>
 </li>
 <li>
-<section class="detail" id="parse(java.io.InputStream,java.lang.Class)">
-<h3>parse</h3>
-<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">parse</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;inputStream,
+<section class="detail" id="deserialize(java.io.InputStream,java.lang.Class)">
+<h3>deserialize</h3>
+<div class="member-signature"><span class="modifiers">public static</span>&nbsp;<span class="type-parameters">&lt;T extends <a href="JsonSerializable.html" title="interface in ru.nsu.lebedev.pizzeria">JsonSerializable</a>&gt;</span>&nbsp;<span class="return-type">T</span>&nbsp;<span class="element-name">deserialize</span><wbr><span class="parameters">(<a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/io/InputStream.html" title="class or interface in java.io" class="external-link">InputStream</a>&nbsp;inputStream,
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</span>
-                                            throws <span class="exceptions"><a href="ParsingException.html" title="class in ru.nsu.lebedev.pizzeria">ParsingException</a></span></div>
+                                                  throws <span class="exceptions"><a href="ParsingException.html" title="class in ru.nsu.lebedev.pizzeria">ParsingException</a></span></div>
 <div class="block">Deserializes JSON data from an input stream into an object of the specified type.
  The method reads the input stream using UTF-8 encoding and converts
  it into the target object.</div>
