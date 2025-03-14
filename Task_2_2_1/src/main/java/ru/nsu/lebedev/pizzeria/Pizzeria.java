@@ -37,7 +37,7 @@ public class Pizzeria implements Runnable {
      * @param configLoadPath path to initialize JSON setup
      * @param configSavePath path for final JSON setup
      * @throws IOException if any error occurs while parsing the input JSON setup
-     * @throws IllegalArgumentException if the input JSON setup contains invalid data
+     * @throws NullPointerException if the input JSON setup contains invalid data
      */
     public Pizzeria(long workDuration, String configLoadPath,
                     String configSavePath) throws IOException {
@@ -81,7 +81,7 @@ public class Pizzeria implements Runnable {
         if (inputStream == null) {
             throw new FileNotFoundException("Could not find configuration file at " + configPath);
         }
-        config = Json.parse(inputStream, Setup.class);
+        config = Json.deserialize(inputStream, Setup.class);
         inputStream.close();
         return config;
     }

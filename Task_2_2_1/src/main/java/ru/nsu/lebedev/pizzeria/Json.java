@@ -18,6 +18,8 @@ import java.nio.charset.StandardCharsets;
  * used to indicate that an object for JSON.
  */
 public final class Json {
+    private static final ObjectMapper MAPPER = new ObjectMapper();
+
     /**
      * Private constructor to prevent instantiation, as this is a utility class.
      */
@@ -32,8 +34,7 @@ public final class Json {
      * @throws IOException if an error occurs during serialization.
      */
     public static String serialize(JsonSerializable object) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        return mapper.writeValueAsString(object);
+        return MAPPER.writeValueAsString(object);
     }
 
     /**
@@ -45,8 +46,7 @@ public final class Json {
      */
     public static void serialize(JsonSerializable object,
                                  OutputStream outputStream) throws IOException {
-        ObjectMapper mapper = new ObjectMapper();
-        mapper.writeValue(outputStream, object);
+        MAPPER.writeValue(outputStream, object);
     }
 
     /**
@@ -58,10 +58,10 @@ public final class Json {
      * @return an instance of type T deserialized from the JSON string
      * @throws ParsingException if an error occurs during parsing
      */
-    public static <T extends JsonSerializable> T parse(String inputString, Class<T> type)
+    public static <T extends JsonSerializable> T deserialize(String inputString, Class<T> type)
             throws ParsingException {
         try {
-            return new ObjectMapper().readValue(inputString, type);
+            return MAPPER.readValue(inputString, type);
         } catch (IOException e) {
             throw new ParsingException(e);
         }
@@ -79,13 +79,12 @@ public final class Json {
      * @throws ParsingException if an error occurs during parsing
      */
     public static <T extends JsonSerializable> T
-        parse(InputStream inputStream, Class<T> type) throws ParsingException {
-        ObjectMapper mapper = new ObjectMapper();
+        deserialize(InputStream inputStream, Class<T> type) throws ParsingException {
         BufferedReader reader = new
             BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         try {
-            var parser = mapper.createParser(reader);
-            return parser.readValueAs(type);
+            var deserializer = MAPPER.createParser(reader);
+            return deserializer.readValueAs(type);
         } catch (IOException e) {
             throw new ParsingException(e);
         }

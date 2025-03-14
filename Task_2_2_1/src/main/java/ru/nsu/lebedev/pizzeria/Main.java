@@ -14,8 +14,8 @@ public class Main {
         try {
             new Thread(
                     new Pizzeria(
-                            50, "setup.json",
-                            "./Test.json"
+                            50, "noBakers.json",
+                            "Nno"
                     )
             ).start();
         } catch (IOException | IllegalArgumentException e) {

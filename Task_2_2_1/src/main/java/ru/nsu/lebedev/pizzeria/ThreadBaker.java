@@ -1,5 +1,7 @@
 package ru.nsu.lebedev.pizzeria;
 
+import java.util.Optional;
+
 /**
  * RunnableBaker represents a baker running in its own thread.
  * The baker continuously attempts to accept new orders from the pendingOrders queue,
@@ -44,11 +46,11 @@ public class ThreadBaker implements TerminableEmployee {
             }
             activeOrder = optionalOrder.get();
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerInfo.name()
-                + " interrupted while fetching order: " + e.getMessage());
+            System.out.println("Baker " + bakerInfo
+                    + " interrupted while fetching order: " + e.getMessage());
             return false;
         }
-        System.out.println("Baker " + bakerInfo.name() + " fetched order " + activeOrder.id());
+        System.out.println("Baker " + bakerInfo + " fetched order " + activeOrder);
         return true;
     }
 
@@ -62,28 +64,28 @@ public class ThreadBaker implements TerminableEmployee {
         try {
             Thread.sleep((long) bakerInfo.cookingTime() * Pizzeria.TIME_STEP_MS);
         } catch (InterruptedException e) {
-            System.out.println("Baker " + bakerInfo.name()
+            System.out.println("Baker " + bakerInfo
                 + " interrupted while processing order "
-                + activeOrder.id() + ": " + e.getMessage());
+                + activeOrder + ": " + e.getMessage());
             hasError = true;
         }
         if (!hasError) {
-            System.out.println("Baker " + bakerInfo.name()
-                + " processed order " + activeOrder.id());
+            System.out.println("Baker " + bakerInfo
+                + " processed order " + activeOrder);
             try {
                 storageQueue.add(activeOrder);
-                System.out.println("Baker " + bakerInfo.name()
-                    + " placed order " + activeOrder.id() + " in storage queue");
+                System.out.println("Baker " + bakerInfo
+                    + " placed order " + activeOrder
+                    + " in storage queue");
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerInfo.name()
+                System.out.println("Baker " + bakerInfo
                     + " interrupted while adding order "
-                    + activeOrder.id() + " to storage queue: " + e.getMessage());
+                    + activeOrder + " to storage queue: " + e.getMessage());
                 hasError = true;
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerInfo.name()
-                    + " cannot place order "
-                    + activeOrder.id() + " in storage queue (queue closed): "
-                    + e.getMessage());
+                System.out.println("Baker " + bakerInfo
+                    + " cannot place order " + activeOrder
+                    + " in storage queue (queue closed): " + e.getMessage());
                 hasError = true;
             }
         }
@@ -91,12 +93,12 @@ public class ThreadBaker implements TerminableEmployee {
             try {
                 pendingOrders.add(activeOrder);
             } catch (InterruptedException e) {
-                System.out.println("Baker " + bakerInfo.name()
+                System.out.println("Baker " + bakerInfo
                     + " interrupted while returning failed order "
-                    + activeOrder.id() + ": " + e.getMessage());
+                    + activeOrder + ": " + e.getMessage());
             } catch (IllegalStateException e) {
-                System.out.println("Baker " + bakerInfo.name()
-                    + " cannot return failed order " + activeOrder.id()
+                System.out.println("Baker " + bakerInfo
+                    + " cannot return failed order " + activeOrder
                     + " (queue closed): " + e.getMessage());
             }
         }
@@ -113,6 +115,6 @@ public class ThreadBaker implements TerminableEmployee {
                 processOrder();
             }
         }
-        System.out.println("Baker " + bakerInfo.name() + " finished work.");
+        System.out.println("Baker " + bakerInfo + " finished work.");
     }
 }

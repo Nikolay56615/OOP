@@ -58,10 +58,10 @@ public class ThreadCourier implements TerminableEmployee {
                 }
                 Order order = optOrder.get();
                 vehicle.add(order);
-                System.out.println("Courier " + courierData.name()
-                    + " got order " + order.id() + " from stock");
+                System.out.println("Courier " + courierData
+                    + " got order " + order + " from stock");
             } catch (InterruptedException e) {
-                System.out.println("Courier " + courierData.name()
+                System.out.println("Courier " + courierData
                     + " interrupted while polling stock: " + e.getMessage());
                 break;
             }
@@ -78,11 +78,11 @@ public class ThreadCourier implements TerminableEmployee {
             Order order = vehicle.poll();
             try {
                 Thread.sleep((long) order.deliveryTime() * Pizzeria.TIME_STEP_MS);
-                System.out.println("Courier " + courierData.name()
-                    + " delivered order " + order.id());
+                System.out.println("Courier " + courierData
+                    + " delivered order " + order);
             } catch (InterruptedException e) {
-                System.out.println("Courier " + courierData.name()
-                    + " interrupted while delivering order " + order.id()
+                System.out.println("Courier " + courierData
+                    + " interrupted while delivering order " + order
                     + ": " + e.getMessage());
                 vehicle.add(order);
                 return false;
@@ -99,11 +99,11 @@ public class ThreadCourier implements TerminableEmployee {
             try {
                 pendingOrders.add(order);
             } catch (InterruptedException e) {
-                System.out.println("Courier " + courierData.name()
-                    + " interrupted while returning order " + order.id() + ": " + e.getMessage());
+                System.out.println("Courier " + courierData
+                    + " interrupted while returning order " + order + ": " + e.getMessage());
             } catch (IllegalStateException e) {
-                System.out.println("Courier " + courierData.name()
-                    + " cannot return order " + order.id() + " (queue closed): " + e.getMessage());
+                System.out.println("Courier " + courierData
+                    + " cannot return order " + order + " (queue closed): " + e.getMessage());
             }
         }
         vehicle.clear();
@@ -122,6 +122,6 @@ public class ThreadCourier implements TerminableEmployee {
                 returnOrders();
             }
         }
-        System.out.println("Courier " + courierData.name() + " finished work.");
+        System.out.println("Courier " + courierData + " finished work.");
     }
 }
