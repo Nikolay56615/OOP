@@ -31,7 +31,8 @@ public class EmployeeTest {
         baker.offerToFinishJob();
         try {
             Thread.sleep(5 * Pizzeria.TIME_STEP_MS);
-            Assertions.assertFalse(newOrders.isEmpty(), "Очередь новых заказов не должна быть пуста");
+            Assertions.assertFalse(newOrders.isEmpty(),
+                "Очередь новых заказов не должна быть пуста");
         } catch (InterruptedException e) {
             Assertions.fail("Тест прерван: " + e.getMessage());
         }
