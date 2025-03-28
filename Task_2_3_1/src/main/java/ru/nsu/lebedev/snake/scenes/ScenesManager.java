@@ -7,15 +7,16 @@ import javafx.stage.Stage;
 import ru.nsu.lebedev.snake.AppEntryPoint;
 
 /**
- * Scene manager class.
- * Used for easily switching between scenes in the application. Handles loading and switching
- * scenes, and binds controllers to the scenes.
+ * Scene manager class. Used for easily switching between scenes in the application.
+ * Handles loading and switching scenes, and binds controllers to the scenes.
  */
 public class ScenesManager {
 
-    public static final int WIDTH = 640;
-    public static final int HEIGHT = 700;
+    private static final int DEFAULT_WIDTH = 640;
+    private static final int DEFAULT_HEIGHT = 700;
     private final Stage primaryStage;
+    private int currentWidth = DEFAULT_WIDTH;
+    private int currentHeight = DEFAULT_HEIGHT;
 
     /**
      * Constructor.
@@ -34,9 +35,8 @@ public class ScenesManager {
     }
 
     /**
-     * Loads a scene from the specified FXML file and binds the controller.
-     * Sets up the scene with the given FXML, assigns the appropriate controller, and binds it with
-     * the scene manager.
+     * Loads a scene from the specified FXML file and binds the controller. Sets up the scene with
+     * the given FXML, assigns the appropriate controller, and binds it with the scene manager.
      *
      * @param fxmlPath the path to the FXML file.
      * @throws IOException if there is an issue with loading the FXML file.
@@ -46,18 +46,23 @@ public class ScenesManager {
             AppEntryPoint.class.getResource(fxmlPath)
         );
 
-        Scene scene = new Scene(loader.load(), WIDTH, HEIGHT);
+        Scene scene = new Scene(loader.load(), currentWidth, currentHeight);
         scene.getStylesheets().add("style.css");
         primaryStage.setScene(scene);
         primaryStage.show();
 
         ScenesControllerContract controller = loader.getController();
         controller.setSceneManager(this);
+
+        scene.widthProperty()
+            .addListener((obs, oldVal, newVal) -> updateSize(newVal.intValue(), currentHeight));
+        scene.heightProperty()
+            .addListener((obs, oldVal, newVal) -> updateSize(currentWidth, newVal.intValue()));
     }
 
     /**
-     * Changes the current scene to the specified one.
-     * Switches to the specified scene by loading the corresponding FXML file.
+     * Changes the current scene to the specified one. Switches to the specified scene by loading
+     * the corresponding FXML file.
      *
      * @param sceneEnum the enum value representing the scene to switch to.
      */
@@ -83,6 +88,35 @@ public class ScenesManager {
             e.printStackTrace();
             close();
         }
+    }
+
+    /**
+     * Updates the current width and height.
+     *
+     * @param width  the new width.
+     * @param height the new height.
+     */
+    private void updateSize(int width, int height) {
+        this.currentWidth = width;
+        this.currentHeight = height;
+    }
+
+    /**
+     * Returns the current width of the scene.
+     *
+     * @return the current width.
+     */
+    public int getCurrentWidth() {
+        return currentWidth;
+    }
+
+    /**
+     * Returns the current height of the scene.
+     *
+     * @return the current height.
+     */
+    public int getCurrentHeight() {
+        return currentHeight;
     }
 
     /**

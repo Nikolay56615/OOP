@@ -8,8 +8,7 @@
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GamePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GamePoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -64,7 +63,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "#18 on Task__2__3__1",
+    "git-widget-placeholder": "Task__2__3__1",
     "jdk.selected.JAVA_MODULE": "corretto-21",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/javafx-sdk-21.0.6/lib",
@@ -167,7 +166,8 @@
       <workItem from="1742966040625" duration="699000" />
       <workItem from="1743061721368" duration="2000" />
       <workItem from="1743081636131" duration="9219000" />
-      <workItem from="1743128203108" duration="25099000" />
+      <workItem from="1743128203108" duration="31095000" />
+      <workItem from="1743189363329" duration="307000" />
     </task>
     <servers />
   </component>

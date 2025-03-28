@@ -14,7 +14,6 @@ public class AppEntryPoint extends Application {
     @Override
     public void start(Stage stage) throws IOException {
         stage.setTitle("Snake");
-        stage.setResizable(false);
         ScenesManager sceneManager = new ScenesManager(stage);
         sceneManager.changeScene(SceneEnum.MENU);
     }

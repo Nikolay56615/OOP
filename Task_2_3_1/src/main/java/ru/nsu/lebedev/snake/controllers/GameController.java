@@ -60,14 +60,17 @@ public class GameController implements ScenesControllerContract {
     public void setSceneManager(ScenesManager sceneManager) {
         this.sceneManager = sceneManager;
         this.gameModel = ModelEnum.GAME.get().restartModel();
+        double width = sceneManager.getCurrentWidth();
+        double height = sceneManager.getCurrentHeight();
         this.gameView = new GameView(
             fieldGrid,
             gameModel.getCurrentFieldHeight(),
-            gameModel.getCurrentFieldWidth()
+            gameModel.getCurrentFieldWidth(),
+            width,
+            height
         );
 
         sceneManager.getCurrentScene().setOnKeyPressed(this::keyHandler);
-        sceneManager.getCurrentScene().widthProperty();
         animationTimer.start();
     }
 
