@@ -8,7 +8,6 @@ import ru.nsu.lebedev.snake.AppEntryPoint;
 
 /**
  * Scene manager class.
- * <p>
  * Used for easily switching between scenes in the application. Handles loading and switching
  * scenes, and binds controllers to the scenes.
  */
