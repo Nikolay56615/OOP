@@ -123,7 +123,7 @@ public class GameView {
             cellPane.getChildren().remove(1, cellPane.getChildren().size());
         }
 
-        Rectangle background = (Rectangle) cellPane.getChildren().getFirst();
+        Rectangle background = (Rectangle) cellPane.getChildren().get(0);
 
         if (color == CellColor.SNAKE) {
             Rectangle snakeBody = new Rectangle();
