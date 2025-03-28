@@ -23,8 +23,8 @@ tasks.withType(JavaCompile).configureEach {
 }
 
 application {
-    mainModule = 'ru.nsu.lebedev.snake.task_2_3_1'
-    mainClass = 'ru.nsu.lebedev.snake.task_2_3_1.HelloApplication'
+    mainModule = 'ru.nsu.lebedev.snake'
+    mainClass = 'ru.nsu.lebedev.snake.AppEntryPoint'
 }
 
 javafx {

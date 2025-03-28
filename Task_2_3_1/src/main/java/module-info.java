@@ -1,4 +1,4 @@
-module ru.nsu.lebedev.snake.task_2_3_1 {
+module ru.nsu.lebedev.snake {
     requires javafx.controls;
     requires javafx.fxml;
     requires com.fasterxml.jackson.databind;
