@@ -36,7 +36,6 @@ public class ScenesManager {
 
     /**
      * Loads a scene from the specified FXML file and binds the controller.
-     * <p>
      * Sets up the scene with the given FXML, assigns the appropriate controller, and binds it with
      * the scene manager.
      *
@@ -59,7 +58,6 @@ public class ScenesManager {
 
     /**
      * Changes the current scene to the specified one.
-     * <p>
      * Switches to the specified scene by loading the corresponding FXML file.
      *
      * @param sceneEnum the enum value representing the scene to switch to.

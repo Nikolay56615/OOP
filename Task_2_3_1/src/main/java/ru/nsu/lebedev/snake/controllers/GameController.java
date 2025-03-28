@@ -109,10 +109,10 @@ public class GameController implements ScenesControllerContract {
      */
     private void updateSnakeCells() {
         GamePoint currentHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(currentHead.getX(), currentHead.getY(), GameView.CellColor.SNAKE);
+        gameView.setCellColor(currentHead.getX1(), currentHead.getY1(), GameView.CellColor.SNAKE);
 
         GamePoint tail = gameModel.getSnake().getTail();
-        gameView.setCellColor(tail.getX(), tail.getY(), GameView.CellColor.FIELD);
+        gameView.setCellColor(tail.getX1(), tail.getY1(), GameView.CellColor.FIELD);
 
         gameModel.update();
         if (gameModel.isGameOver()) {
@@ -122,10 +122,10 @@ public class GameController implements ScenesControllerContract {
         scores.setText(Integer.toString(gameModel.getScore()));
 
         GamePoint newHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(newHead.getX(), newHead.getY(), GameView.CellColor.SNAKE_HEAD);
+        gameView.setCellColor(newHead.getX1(), newHead.getY1(), GameView.CellColor.SNAKE_HEAD);
 
         for (GamePoint apple : gameModel.getApples().getApples()) {
-            gameView.setCellColor(apple.getX(), apple.getY(), GameView.CellColor.APPLE);
+            gameView.setCellColor(apple.getX1(), apple.getY1(), GameView.CellColor.APPLE);
         }
 
         updatedAfterKeyPressed = true;

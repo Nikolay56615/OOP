@@ -8,8 +8,8 @@ import java.util.Optional;
  */
 public class GamePoint {
 
-    private Integer x;
-    private Integer y;
+    private Integer x1;
+    private Integer y1;
 
     /**
      * Constructs a point with the given coordinates.
@@ -18,8 +18,8 @@ public class GamePoint {
      * @param y The y-coordinate.
      */
     public GamePoint(Integer x, Integer y) {
-        this.x = x;
-        this.y = y;
+        this.x1 = x;
+        this.y1 = y;
     }
 
     /**
@@ -27,8 +27,8 @@ public class GamePoint {
      *
      * @return The x value.
      */
-    public Integer getX() {
-        return x;
+    public Integer getX1() {
+        return x1;
     }
 
     /**
@@ -36,8 +36,8 @@ public class GamePoint {
      *
      * @return The y value.
      */
-    public Integer getY() {
-        return y;
+    public Integer getY1() {
+        return y1;
     }
 
     /**
@@ -46,8 +46,8 @@ public class GamePoint {
      * @param vector The movement vector.
      */
     public void move(GameVector vector) {
-        x += vector.getOffset().getX();
-        y += vector.getOffset().getY();
+        x1 += vector.getOffset().getX1();
+        y1 += vector.getOffset().getY1();
     }
 
     /**
@@ -60,18 +60,18 @@ public class GamePoint {
      * @param maxY   Maximum y boundary.
      */
     public void move(GameVector vector, int minX, int maxX, int minY, int maxY) {
-        x += vector.getOffset().getX();
-        if (x < minX) {
-            x = maxX;
-        } else if (x > maxX) {
-            x = minX;
+        x1 += vector.getOffset().getX1();
+        if (x1 < minX) {
+            x1 = maxX;
+        } else if (x1 > maxX) {
+            x1 = minX;
         }
 
-        y += vector.getOffset().getY();
-        if (y < minY) {
-            y = maxY;
-        } else if (y > maxY) {
-            y = minY;
+        y1 += vector.getOffset().getY1();
+        if (y1 < minY) {
+            y1 = maxY;
+        } else if (y1 > maxY) {
+            y1 = minY;
         }
     }
 
@@ -81,7 +81,7 @@ public class GamePoint {
      * @return A new Point instance with the same coordinates.
      */
     public GamePoint copy() {
-        return new GamePoint(x, y);
+        return new GamePoint(x1, y1);
     }
 
     /**
@@ -101,8 +101,7 @@ public class GamePoint {
      * Finds the index of this point in a given list.
      *
      * @param list The list to check.
-     * @return The index of the first occurrence wrapped in an Optional, or Optional.empty() if not
-     * found.
+     * @return The index of the first occurrence wrapped in an Optional, or Optional.empty()
      */
     public Optional<Integer> getListCollision(List<GamePoint> list) {
         if (list == null) {
@@ -125,6 +124,6 @@ public class GamePoint {
             return false;
         }
         GamePoint point = (GamePoint) obj;
-        return x.equals(point.x) && y.equals(point.y);
+        return x1.equals(point.x1) && y1.equals(point.y1);
     }
 }

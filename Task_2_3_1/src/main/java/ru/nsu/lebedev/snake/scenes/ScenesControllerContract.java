@@ -2,7 +2,6 @@ package ru.nsu.lebedev.snake.scenes;
 
 /**
  * Interface for Controllers that require access to the ScenesManager.
- * <p>
  * This interface is implemented by Controllers that need to interact with the ScenesManager,
  * typically for handling scene transitions.
  */
@@ -10,7 +9,6 @@ public interface ScenesControllerContract {
 
     /**
      * Links the Controller with the ScenesManager.
-     * <p>
      * This method is called by the ScenesManager to pass its instance to the Controllers, enabling
      * it to manage scene transitions or perform other necessary actions.
      *

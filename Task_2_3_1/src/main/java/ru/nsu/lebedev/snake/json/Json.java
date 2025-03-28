@@ -78,8 +78,8 @@ public final class Json {
      * @return an instance of type T deserialized from the JSON input stream
      * @throws ParsingException if an error occurs during parsing
      */
-    public static <T extends JsonSerializable> T
-    deserialize(InputStream inputStream, Class<T> type) throws ParsingException {
+    public static <T extends JsonSerializable> T deserialize(InputStream inputStream,
+        Class<T> type) throws ParsingException {
         BufferedReader reader = new
             BufferedReader(new InputStreamReader(inputStream, StandardCharsets.UTF_8));
         try {
