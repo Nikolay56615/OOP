@@ -7,7 +7,6 @@ import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the Menu scene.
- * <p>
  * This class handles user actions on the Menu scene such as starting the game, opening the
  * settings, and exiting the application.
  */

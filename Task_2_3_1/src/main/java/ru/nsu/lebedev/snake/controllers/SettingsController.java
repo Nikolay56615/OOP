@@ -17,7 +17,6 @@ import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the settings scene.
- * <p>
  * Manages user input for game settings and performs validation.
  */
 public class SettingsController implements ScenesControllerContract {
@@ -92,7 +91,6 @@ public class SettingsController implements ScenesControllerContract {
 
     /**
      * Validates the text input for a field.
-     * <p>
      * Checks if the new value is a positive integer, shows error if invalid, and reverts to old
      * value.
      *
@@ -116,7 +114,6 @@ public class SettingsController implements ScenesControllerContract {
 
     /**
      * Checks if the given text is a valid positive integer.
-     * <p>
      * Returns false if the text is empty, not a number, or less than 1.
      *
      * @param text the text to validate

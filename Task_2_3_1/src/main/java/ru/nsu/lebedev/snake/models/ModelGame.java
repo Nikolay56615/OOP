@@ -9,7 +9,6 @@ import ru.nsu.lebedev.snake.game.GameVector;
 
 /**
  * Represents the game model, managing the game state, including the snake, apples, and field.
- * <p>
  * This class is responsible for updating the game state, handling game logic such as snake
  * movement, apple spawning, and checking if the game is over. It also provides methods to retrieve
  * game data like score and available field cells.
@@ -62,7 +61,6 @@ public class ModelGame implements ModelContract {
 
     /**
      * Returns a copy of the list of all field points.
-     * <p>
      * This method provides a duplicate of the current field points list, ensuring that changes to
      * the copy do not affect the original list.
      *
@@ -91,7 +89,6 @@ public class ModelGame implements ModelContract {
 
     /**
      * Retrieves a list of free cells on the field where objects (like apples) can be placed.
-     * <p>
      * Free cells are those that are not occupied by the snake or apples.
      *
      * @return A list of available cells for object placement.

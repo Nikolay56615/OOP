@@ -16,7 +16,6 @@ import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the Game scene.
- * <p>
  * This class manages the game loop, handles key input events for controlling the snake,
  * and updates the game view accordingly.
  */
@@ -74,7 +73,6 @@ public class GameController implements ScenesControllerContract {
 
     /**
      * Handles key events for controlling the snake.
-     * <p>
      * Arrow keys change the snake's direction; the ESC key ends the game.
      *
      * @param event the key event.

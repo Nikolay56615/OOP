@@ -10,8 +10,8 @@ import ru.nsu.lebedev.snake.json.ParsingException;
 import ru.nsu.lebedev.snake.json.SettingsRecord;
 
 /**
- * The ModelSettings class is responsible for managing game settings. It loads settings from a JSON
- * file and can save updated settings back to the file.
+ * The ModelSettings class is responsible for managing game settings.
+ * It loads settings from a JSON file and can save updated settings back to the file.
  */
 public class ModelSettings implements ModelContract {
 

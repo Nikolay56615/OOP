@@ -5,13 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d7b8efb-b656-4285-a46a-8d394e01bf73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/EmployeeTest.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/EmployeeTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/EmployeeTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -169,7 +172,7 @@
       <workItem from="1742966040625" duration="699000" />
       <workItem from="1743061721368" duration="2000" />
       <workItem from="1743081636131" duration="9219000" />
-      <workItem from="1743128203108" duration="24119000" />
+      <workItem from="1743128203108" duration="24436000" />
     </task>
     <servers />
   </component>
