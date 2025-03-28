@@ -1,1 +1,7 @@
+module:ru.nsu.lebedev.snake
 ru.nsu.lebedev.snake
+ru.nsu.lebedev.snake.controllers
+ru.nsu.lebedev.snake.game
+ru.nsu.lebedev.snake.json
+ru.nsu.lebedev.snake.models
+ru.nsu.lebedev.snake.scenes
