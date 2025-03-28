@@ -3,21 +3,17 @@
 <?import javafx.geometry.Insets?>
 <?import javafx.scene.control.Button?>
 <?import javafx.scene.control.Label?>
-<?import javafx.scene.layout.GridPane?>
 <?import javafx.scene.layout.HBox?>
 <?import javafx.scene.layout.VBox?>
 <VBox alignment="CENTER" spacing="20.0" xmlns:fx="http://javafx.com/fxml"
-  fx:controller="ru.nsu.lebedev.snake.task_2_3_1.controllers.GameController">
+  fx:controller="ru.nsu.lebedev.snake.controllers.GameOverController">
   <padding>
     <Insets bottom="20.0" left="20.0" right="20.0" top="20.0"/>
   </padding>
-  <HBox alignment="CENTER" spacing="20.0">
-    <HBox alignment="CENTER">
-      <Label text="Scores: "/>
-      <Label styleClass="text" fx:id="scores"/>
-    </HBox>
-    <Button text="Game over" focusTraversable="false" onAction="#gameOver"/>
+  <Label>Game over</Label>
+  <HBox alignment="CENTER">
+    <Label text="Your scores: "/>
+    <Label fx:id="score"/>
   </HBox>
-  <GridPane fx:id="fieldGrid">
-  </GridPane>
+  <Button text="Back to menu" onAction="#back" styleClass="button"/>
 </VBox>

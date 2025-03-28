@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.game;
+package ru.nsu.lebedev.snake.game;
 
 import java.util.List;
 import java.util.Optional;

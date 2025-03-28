@@ -5,49 +5,37 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d7b8efb-b656-4285-a46a-8d394e01bf73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/.idea/codeStyles/codeStyleConfig.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/gradle.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/misc.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/uiDesigner.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/vcs.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/AppEntryPoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameOverController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/MenuController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/SettingsController.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameAppleList.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GamePoint.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameSnake.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameVector.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/Json.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/JsonSerializable.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/ParsingException.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/SettingsRecord.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelContract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelGame.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelSettings.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/GameView.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/SceneEnum.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/ScenesControllerContract.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/ScenesManager.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-menu-scene-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-over-scene-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-scene-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-settings-scene-view.fxml" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/settings.json" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/main/resources/style.css" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/.idea/.gitignore" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/build.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/build.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" beforeDir="false" afterPath="$PROJECT_DIR$/gradle/wrapper/gradle-wrapper.properties" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.gradle" beforeDir="false" afterPath="$PROJECT_DIR$/settings.gradle" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/Main.java" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/MainTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/AppEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/AppEntryPoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameOverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/MenuController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/MenuController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/SettingsController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/SettingsController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameAppleList.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GameAppleList.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GamePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GamePoint.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GameSnake.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/game/GameVector.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GameVector.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/Json.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/json/Json.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/JsonSerializable.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/json/JsonSerializable.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/ParsingException.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/json/ParsingException.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/json/SettingsRecord.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/json/SettingsRecord.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelGame.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/models/ModelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelSettings.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/GameView.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/SceneEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/SceneEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/ScenesControllerContract.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesControllerContract.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/scenes/ScenesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesManager.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-menu-scene-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-menu-scene-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-over-scene-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-over-scene-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-scene-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-scene-view.fxml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/task_2_3_1/game-settings-scene-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-settings-scene-view.fxml" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -177,7 +165,7 @@
       <workItem from="1742966040625" duration="699000" />
       <workItem from="1743061721368" duration="2000" />
       <workItem from="1743081636131" duration="9219000" />
-      <workItem from="1743128203108" duration="22644000" />
+      <workItem from="1743128203108" duration="23259000" />
     </task>
     <servers />
   </component>
@@ -188,13 +176,13 @@
     <breakpoint-manager>
       <breakpoints>
         <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
           <line>143</line>
           <properties field="animationTimer" class="ru.nsu.lebedev.snake.task_2_3_1.controllers.GameController" />
           <option name="timeStamp" value="8" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
           <line>143</line>
           <properties class="ru.nsu.lebedev.snake.task_2_3_1.controllers.GameController">
             <option name="EMULATED" value="true" />
@@ -203,7 +191,7 @@
           <option name="timeStamp" value="9" />
         </line-breakpoint>
         <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/task_2_3_1/controllers/GameController.java</url>
+          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
           <line>143</line>
           <option name="timeStamp" value="10" />
         </line-breakpoint>

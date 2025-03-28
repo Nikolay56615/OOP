@@ -1,9 +1,9 @@
-package ru.nsu.lebedev.snake.task_2_3_1.game;
+package ru.nsu.lebedev.snake.game;
 
 import java.util.LinkedList;
 import java.util.List;
 import java.util.Random;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelGame;
+import ru.nsu.lebedev.snake.models.ModelGame;
 
 /**
  * Manages the list of apples in the game.

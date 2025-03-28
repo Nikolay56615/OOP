@@ -1,10 +1,10 @@
-package ru.nsu.lebedev.snake.task_2_3_1.scenes;
+package ru.nsu.lebedev.snake.scenes;
 
 import java.io.IOException;
 import javafx.fxml.FXMLLoader;
 import javafx.scene.Scene;
 import javafx.stage.Stage;
-import ru.nsu.lebedev.snake.task_2_3_1.AppEntryPoint;
+import ru.nsu.lebedev.snake.AppEntryPoint;
 
 /**
  * Scene manager class.

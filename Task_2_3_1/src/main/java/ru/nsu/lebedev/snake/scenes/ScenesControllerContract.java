@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.scenes;
+package ru.nsu.lebedev.snake.scenes;
 
 /**
  * Interface for Controllers that require access to the ScenesManager.

@@ -1,11 +1,11 @@
-package ru.nsu.lebedev.snake.task_2_3_1.models;
+package ru.nsu.lebedev.snake.models;
 
 import java.util.ArrayList;
 import java.util.List;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GameAppleList;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GamePoint;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GameSnake;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GameVector;
+import ru.nsu.lebedev.snake.game.GameAppleList;
+import ru.nsu.lebedev.snake.game.GamePoint;
+import ru.nsu.lebedev.snake.game.GameSnake;
+import ru.nsu.lebedev.snake.game.GameVector;
 
 /**
  * Represents the game model, managing the game state, including the snake, apples, and field.

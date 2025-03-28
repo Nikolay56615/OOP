@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.game;
+package ru.nsu.lebedev.snake.game;
 
 /**
  * Enum representing movement directions as vectors.

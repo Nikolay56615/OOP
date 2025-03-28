@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.models;
+package ru.nsu.lebedev.snake.models;
 
 /**
  * Enum class for singletones ModelFragments.

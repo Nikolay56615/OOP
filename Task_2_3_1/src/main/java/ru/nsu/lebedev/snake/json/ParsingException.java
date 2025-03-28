@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.json;
+package ru.nsu.lebedev.snake.json;
 
 import java.io.IOException;
 

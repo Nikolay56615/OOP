@@ -1,10 +1,10 @@
-package ru.nsu.lebedev.snake.task_2_3_1;
+package ru.nsu.lebedev.snake;
 
 import java.io.IOException;
 import javafx.application.Application;
 import javafx.stage.Stage;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.SceneEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesManager;
+import ru.nsu.lebedev.snake.scenes.SceneEnum;
+import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Entry point for all game.

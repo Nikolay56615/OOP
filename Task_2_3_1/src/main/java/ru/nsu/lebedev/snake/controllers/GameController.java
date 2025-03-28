@@ -1,18 +1,18 @@
-package ru.nsu.lebedev.snake.task_2_3_1.controllers;
+package ru.nsu.lebedev.snake.controllers;
 
 import javafx.animation.AnimationTimer;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GamePoint;
-import ru.nsu.lebedev.snake.task_2_3_1.game.GameVector;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelGame;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.GameView;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.SceneEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesControllerContract;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesManager;
+import ru.nsu.lebedev.snake.game.GamePoint;
+import ru.nsu.lebedev.snake.game.GameVector;
+import ru.nsu.lebedev.snake.models.ModelEnum;
+import ru.nsu.lebedev.snake.models.ModelGame;
+import ru.nsu.lebedev.snake.scenes.GameView;
+import ru.nsu.lebedev.snake.scenes.SceneEnum;
+import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
+import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the Game scene.

@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.models;
+package ru.nsu.lebedev.snake.models;
 
 /**
  * Interface for classes that will be integrated into the model enum.

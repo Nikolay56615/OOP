@@ -1,4 +1,4 @@
-package ru.nsu.lebedev.snake.task_2_3_1.controllers;
+package ru.nsu.lebedev.snake.controllers;
 
 import java.util.HashMap;
 import java.util.Map;
@@ -9,11 +9,11 @@ import javafx.scene.control.Label;
 import javafx.scene.control.TextField;
 import javafx.util.Pair;
 import javafx.util.converter.NumberStringConverter;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelSettings;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.SceneEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesControllerContract;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesManager;
+import ru.nsu.lebedev.snake.models.ModelEnum;
+import ru.nsu.lebedev.snake.models.ModelSettings;
+import ru.nsu.lebedev.snake.scenes.SceneEnum;
+import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
+import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the settings scene.

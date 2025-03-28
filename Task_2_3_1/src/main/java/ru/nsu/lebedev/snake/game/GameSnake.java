@@ -1,7 +1,7 @@
-package ru.nsu.lebedev.snake.task_2_3_1.game;
+package ru.nsu.lebedev.snake.game;
 
 import java.util.LinkedList;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelGame;
+import ru.nsu.lebedev.snake.models.ModelGame;
 
 /**
  * Represents the snake in the game.

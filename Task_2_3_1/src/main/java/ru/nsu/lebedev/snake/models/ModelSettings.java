@@ -1,13 +1,13 @@
-package ru.nsu.lebedev.snake.task_2_3_1.models;
+package ru.nsu.lebedev.snake.models;
 
 import java.io.FileInputStream;
 import java.io.FileNotFoundException;
 import java.io.FileOutputStream;
 import java.io.IOException;
 import java.io.InputStream;
-import ru.nsu.lebedev.snake.task_2_3_1.json.Json;
-import ru.nsu.lebedev.snake.task_2_3_1.json.ParsingException;
-import ru.nsu.lebedev.snake.task_2_3_1.json.SettingsRecord;
+import ru.nsu.lebedev.snake.json.Json;
+import ru.nsu.lebedev.snake.json.ParsingException;
+import ru.nsu.lebedev.snake.json.SettingsRecord;
 
 /**
  * The ModelSettings class is responsible for managing game settings. It loads settings from a JSON

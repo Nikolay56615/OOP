@@ -1,12 +1,12 @@
-package ru.nsu.lebedev.snake.task_2_3_1.controllers;
+package ru.nsu.lebedev.snake.controllers;
 
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.models.ModelGame;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.SceneEnum;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesControllerContract;
-import ru.nsu.lebedev.snake.task_2_3_1.scenes.ScenesManager;
+import ru.nsu.lebedev.snake.models.ModelEnum;
+import ru.nsu.lebedev.snake.models.ModelGame;
+import ru.nsu.lebedev.snake.scenes.SceneEnum;
+import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
+import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
  * Controller for the Game Over scene.
