@@ -15,9 +15,8 @@ import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
 import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
- * Controller for the Game scene.
- * This class manages the game loop, handles key input events for controlling the snake,
- * and updates the game view accordingly.
+ * Controller for the Game scene. This class manages the game loop, handles key input events for
+ * controlling the snake, and updates the game view accordingly.
  */
 public class GameController implements ScenesControllerContract {
 
@@ -75,8 +74,8 @@ public class GameController implements ScenesControllerContract {
     }
 
     /**
-     * Handles key events for controlling the snake.
-     * Arrow keys change the snake's direction; the ESC key ends the game.
+     * Handles key events for controlling the snake. Arrow keys change the snake's direction; the
+     * ESC key ends the game.
      *
      * @param event the key event.
      */
@@ -107,8 +106,8 @@ public class GameController implements ScenesControllerContract {
     }
 
     /**
-     * Updates the game state: repaints cells, updates the model,
-     * and checks for game over condition.
+     * Updates the game state: repaints cells, updates the model, and checks for game over
+     * condition.
      */
     private void updateSnakeCells() {
         GamePoint currentHead = gameModel.getSnake().getHead();
@@ -120,6 +119,11 @@ public class GameController implements ScenesControllerContract {
         gameModel.update();
         if (gameModel.isGameOver()) {
             gameOver();
+            return;
+        }
+        if (gameModel.getSnake().getSize()
+            == gameModel.getCurrentFieldWidth() * gameModel.getCurrentFieldHeight()) {
+            win();
             return;
         }
         scores.setText(Integer.toString(gameModel.getScore()));
@@ -140,5 +144,13 @@ public class GameController implements ScenesControllerContract {
     public void gameOver() {
         animationTimer.stop();
         sceneManager.changeScene(SceneEnum.GAME_OVER);
+    }
+
+    /**
+     * Ends the game by stopping the animation timer and switching to the Game Win scene.
+     */
+    private void win() {
+        animationTimer.stop();
+        sceneManager.changeScene(SceneEnum.GAME_WIN);
     }
 }

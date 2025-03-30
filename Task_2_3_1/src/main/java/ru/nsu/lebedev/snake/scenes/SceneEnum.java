@@ -8,4 +8,5 @@ public enum SceneEnum {
     SETTINGS,
     GAME,
     GAME_OVER,
+    GAME_WIN
 }

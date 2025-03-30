@@ -81,6 +81,9 @@ public class ScenesManager {
                 case GAME_OVER:
                     loadScene("game-over-scene-view.fxml");
                     break;
+                case GAME_WIN:
+                    loadScene("game-win-scene-view.fxml");
+                    break;
                 default:
                     break;
             }

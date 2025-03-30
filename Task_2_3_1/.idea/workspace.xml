@@ -5,10 +5,16 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d7b8efb-b656-4285-a46a-8d394e01bf73" name="Changes" comment="">
+      <change afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameWinController.java" afterDir="false" />
+      <change afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-win-scene-view.fxml" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameOverController.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/SceneEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/SceneEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesManager.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -23,8 +29,8 @@
   <component name="FileTemplateManagerImpl">
     <option name="RECENT_TEMPLATES">
       <list>
-        <option value="FxmlFile" />
         <option value="JUnit5 Test Class" />
+        <option value="FxmlFile" />
         <option value="Class" />
       </list>
     </option>
@@ -63,7 +69,7 @@
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
     "create.test.in.the.same.root": "true",
-    "git-widget-placeholder": "Task__2__3__1",
+    "git-widget-placeholder": "#18 on Task__2__3__1",
     "jdk.selected.JAVA_MODULE": "corretto-21",
     "kotlin-language-version-configured": "true",
     "last_opened_file_path": "C:/javafx-sdk-21.0.6/lib",
@@ -72,10 +78,10 @@
     "node.js.selected.package.eslint": "(autodetect)",
     "node.js.selected.package.tslint": "(autodetect)",
     "nodejs_package_manager_path": "npm",
-    "project.structure.last.edited": "Modules",
+    "project.structure.last.edited": "Libraries",
     "project.structure.proportion": "0.15",
     "project.structure.side.proportion": "0.545977",
-    "settings.editor.selected.configurable": "preferences.sourceCode.Java",
+    "settings.editor.selected.configurable": "preferences.pathVariables",
     "vue.rearranger.settings.migration": "true"
   }
 }]]></component>
@@ -92,10 +98,11 @@
       <command value="gradle clean jlink" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.ru.nsu.lebedev.snake.AppEntryPoint">
-    <configuration name="ru.nsu.lebedev.snake.AppEntryPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
+  <component name="RunManager" selected="Application.AppEntryPoint">
+    <configuration name="AppEntryPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.nsu.lebedev.snake.AppEntryPoint" />
       <module name="Task_2_3_1.main" />
+      <option name="VM_PARAMETERS" value="--module-path ${PATH_TO_FX} --add-modules javafx.controls,javafx.fxml" />
       <extension name="coverage">
         <pattern>
           <option name="PATTERN" value="ru.nsu.lebedev.snake.*" />
@@ -144,13 +151,13 @@
       <method v="2" />
     </configuration>
     <list>
-      <item itemvalue="Application.ru.nsu.lebedev.snake.AppEntryPoint" />
+      <item itemvalue="Application.AppEntryPoint" />
       <item itemvalue="Gradle.Task_2_3_1 [clean jlink]" />
     </list>
     <recent_temporary>
       <list>
-        <item itemvalue="Application.ru.nsu.lebedev.snake.AppEntryPoint" />
-        <item itemvalue="Application.ru.nsu.lebedev.snake.AppEntryPoint" />
+        <item itemvalue="Application.AppEntryPoint" />
+        <item itemvalue="Application.AppEntryPoint" />
         <item itemvalue="Gradle.Task_2_3_1 [clean jlink]" />
       </list>
     </recent_temporary>
@@ -167,37 +174,15 @@
       <workItem from="1743061721368" duration="2000" />
       <workItem from="1743081636131" duration="9219000" />
       <workItem from="1743128203108" duration="31095000" />
-      <workItem from="1743189363329" duration="307000" />
+      <workItem from="1743189363329" duration="710000" />
+      <workItem from="1743299075511" duration="5796000" />
+      <workItem from="1743306533212" duration="28000" />
+      <workItem from="1743306562936" duration="32000" />
+      <workItem from="1743306616132" duration="2253000" />
     </task>
     <servers />
   </component>
   <component name="TypeScriptGeneratedFilesManager">
     <option name="version" value="3" />
-  </component>
-  <component name="XDebuggerManager">
-    <breakpoint-manager>
-      <breakpoints>
-        <line-breakpoint enabled="true" type="java-field">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
-          <line>143</line>
-          <properties field="animationTimer" class="ru.nsu.lebedev.snake.task_2_3_1.controllers.GameController" />
-          <option name="timeStamp" value="8" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-method">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
-          <line>143</line>
-          <properties class="ru.nsu.lebedev.snake.task_2_3_1.controllers.GameController">
-            <option name="EMULATED" value="true" />
-            <option name="WATCH_EXIT" value="false" />
-          </properties>
-          <option name="timeStamp" value="9" />
-        </line-breakpoint>
-        <line-breakpoint enabled="true" type="java-line">
-          <url>file://$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java</url>
-          <line>143</line>
-          <option name="timeStamp" value="10" />
-        </line-breakpoint>
-      </breakpoints>
-    </breakpoint-manager>
   </component>
 </project>

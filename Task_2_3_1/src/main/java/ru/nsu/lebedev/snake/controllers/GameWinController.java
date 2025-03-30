@@ -8,18 +8,18 @@ import ru.nsu.lebedev.snake.scenes.SceneEnum;
 import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
 import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
-/**
- * Controller for the Game Over scene.
- */
-public class GameOverController implements ScenesControllerContract {
+public class GameWinController implements ScenesControllerContract {
 
     private ScenesManager sceneManager;
 
     @FXML
+    private Label winMessage;
+    @FXML
     private Label score;
 
+
     /**
-     * Sets the ScenesManager and updates the score label with the current game score.
+     * Sets the ScenesManager, updates the score label with the current game score and win message.
      *
      * @param sceneManager the ScenesManager instance
      */
@@ -28,14 +28,14 @@ public class GameOverController implements ScenesControllerContract {
         this.sceneManager = sceneManager;
         ModelGame gameModel = (ModelGame) ModelEnum.GAME.get();
         score.setText(Integer.toString(gameModel.getScore()));
+        winMessage.setText("Congratulation! You win the game!");
     }
 
     /**
      * Handler for the back button. Switches the scene back to the MENU scene.
      */
     @FXML
-    protected void back() {
+    protected void backToMenu() {
         sceneManager.changeScene(SceneEnum.MENU);
     }
 }
-
