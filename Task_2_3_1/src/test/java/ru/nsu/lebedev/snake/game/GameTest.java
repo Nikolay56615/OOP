@@ -1,15 +1,15 @@
 package ru.nsu.lebedev.snake.game;
 
-import ru.nsu.lebedev.snake.models.ModelEnum;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.nsu.lebedev.snake.models.ModelEnum;
 import ru.nsu.lebedev.snake.models.ModelGame;
 
 /**
- * Tests for GameModel model fragment.
- * Contains almost whole methods of internal objects
+ * Tests for GameModel model fragment. Contains almost whole methods of internal objects
  */
 public class GameTest {
+
     @Test
     void testValidSnakeDirectionChanges() {
         ModelGame gameModel = ModelEnum.GAME.get().restartModel();

@@ -7,6 +7,7 @@ import org.junit.jupiter.api.Test;
  * Unit tests for the GamePoint class.
  */
 public class PointTest {
+
     @Test
     void shouldWrapAroundWhenMovingLeftAtMinX() {
         GamePoint point = new GamePoint(0, 1);

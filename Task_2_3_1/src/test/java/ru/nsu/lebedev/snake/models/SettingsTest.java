@@ -3,15 +3,16 @@ package ru.nsu.lebedev.snake.models;
 import java.io.File;
 import java.io.FileInputStream;
 import java.io.IOException;
-import ru.nsu.lebedev.snake.json.Json;
-import ru.nsu.lebedev.snake.json.SettingsRecord;
 import org.junit.jupiter.api.Assertions;
 import org.junit.jupiter.api.Test;
+import ru.nsu.lebedev.snake.json.Json;
+import ru.nsu.lebedev.snake.json.SettingsRecord;
 
 /**
  * Tests for SettingsModel model fragment.
  */
 public class SettingsTest {
+
     private static final String SETTINGS_TEST_FILE = "testSettings.json";
 
     @Test
@@ -36,10 +37,10 @@ public class SettingsTest {
         settingsModel.saveSettingsToJson();
 
         try (
-            var fileInputStream  = new FileInputStream(SETTINGS_TEST_FILE)
+            var fileInputStream = new FileInputStream(SETTINGS_TEST_FILE)
         ) {
             SettingsRecord savedSettings = Json.deserialize(
-                fileInputStream , SettingsRecord.class
+                fileInputStream, SettingsRecord.class
             );
             Assertions.assertEquals(4, savedSettings.fieldWidth());
             Assertions.assertEquals(5, savedSettings.fieldHeight());
