@@ -78,8 +78,8 @@ loadScripts(document, 'script');</script>
 <hr>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">GameView</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a></span></div>
-<div class="block">Utility class for managing the game view.
- It builds a grid of cells (Rectangles) inside a GridPane and allows changing cell colors.</div>
+<div class="block">Utility class for managing the game view. It builds a grid of cells (Rectangles) inside a
+ GridPane and allows changing cell colors.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -108,11 +108,9 @@ loadScripts(document, 'script');</script>
 <div class="summary-table two-column-summary">
 <div class="table-header col-first">Constructor</div>
 <div class="table-header col-last">Description</div>
-<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.scene.layout.GridPane,int,int,double,double)" class="member-name-link">GameView</a><wbr>(javafx.scene.layout.GridPane&nbsp;grid,
+<div class="col-constructor-name even-row-color"><code><a href="#%3Cinit%3E(javafx.scene.layout.GridPane,int,int)" class="member-name-link">GameView</a><wbr>(javafx.scene.layout.GridPane&nbsp;grid,
  int&nbsp;numRows,
- int&nbsp;numCols,
- double&nbsp;width,
- double&nbsp;height)</code></div>
+ int&nbsp;numCols)</code></div>
 <div class="col-last even-row-color">
 <div class="block">Constructs the game view with the specified grid and dimensions.</div>
 </div>
@@ -137,6 +135,12 @@ loadScripts(document, 'script');</script>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Sets the color of a specific cell.</div>
 </div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#setCellColor(ru.nsu.lebedev.snake.game.GamePoint,ru.nsu.lebedev.snake.scenes.GameView.CellColor)" class="member-name-link">setCellColor</a><wbr>(<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&nbsp;point,
+ <a href="GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a>&nbsp;color)</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Sets the color of a specific cell using a GamePoint.</div>
+</div>
 </div>
 </div>
 </div>
@@ -155,21 +159,17 @@ loadScripts(document, 'script');</script>
 <h2>Constructor Details</h2>
 <ul class="member-list">
 <li>
-<section class="detail" id="&lt;init&gt;(javafx.scene.layout.GridPane,int,int,double,double)">
+<section class="detail" id="&lt;init&gt;(javafx.scene.layout.GridPane,int,int)">
 <h3>GameView</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="element-name">GameView</span><wbr><span class="parameters">(javafx.scene.layout.GridPane&nbsp;grid,
  int&nbsp;numRows,
- int&nbsp;numCols,
- double&nbsp;width,
- double&nbsp;height)</span></div>
+ int&nbsp;numCols)</span></div>
 <div class="block">Constructs the game view with the specified grid and dimensions.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>grid</code> - the GridPane container for the cells.</dd>
 <dd><code>numRows</code> - the number of rows.</dd>
 <dd><code>numCols</code> - the number of columns.</dd>
-<dd><code>width</code> - the width of the game area.</dd>
-<dd><code>height</code> - the height of the game area.</dd>
 </dl>
 </section>
 </li>
@@ -192,6 +192,19 @@ loadScripts(document, 'script');</script>
 <dt>Parameters:</dt>
 <dd><code>x</code> - the column index.</dd>
 <dd><code>y</code> - the row index.</dd>
+<dd><code>color</code> - the new color from the CellColor enum.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="setCellColor(ru.nsu.lebedev.snake.game.GamePoint,ru.nsu.lebedev.snake.scenes.GameView.CellColor)">
+<h3>setCellColor</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">setCellColor</span><wbr><span class="parameters">(<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&nbsp;point,
+ <a href="GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a>&nbsp;color)</span></div>
+<div class="block">Sets the color of a specific cell using a GamePoint.</div>
+<dl class="notes">
+<dt>Parameters:</dt>
+<dd><code>point</code> - the GamePoint containing the cell coordinates.</dd>
 <dd><code>color</code> - the new color from the CellColor enum.</dd>
 </dl>
 </section>

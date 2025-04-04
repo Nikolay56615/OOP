@@ -90,6 +90,23 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 </section>
 <section class="summary">
 <ul class="summary-list">
+<!-- =========== PROPERTY SUMMARY =========== -->
+<li>
+<section class="property-summary" id="property-summary">
+<h2>Property Summary</h2>
+<div class="caption"><span>Properties</span></div>
+<div class="summary-table three-column-summary">
+<div class="table-header col-first">Type</div>
+<div class="table-header col-second">Property</div>
+<div class="table-header col-last">Description</div>
+<div class="col-first even-row-color"><code>javafx.beans.property.IntegerProperty</code></div>
+<div class="col-second even-row-color"><code><a href="#scoreProperty" class="member-name-link">score</a></code></div>
+<div class="col-last even-row-color">
+<div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
+</div>
+</div>
+</section>
+</li>
 <!-- ======== CONSTRUCTOR SUMMARY ======== -->
 <li>
 <section class="constructor-summary" id="constructor-summary">
@@ -161,9 +178,14 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <div class="block">Restarts the game model by resetting the field dimensions, constructing the field points,
  creating the snake, and adding apples.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.IntegerProperty</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scoreProperty()" class="member-name-link">scoreProperty</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Updates the game state, executing necessary actions such as moving the snake and checking for
  apple collisions.</div>
 </div>
@@ -179,6 +201,29 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 </section>
 <section class="details">
 <ul class="details-list">
+<!-- ============ PROPERTY DETAIL =========== -->
+<li>
+<section class="property-details" id="property-detail">
+<h2>Property Details</h2>
+<ul class="member-list">
+<li>
+<section class="detail" id="scoreProperty">
+<h3>score</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.IntegerProperty</span>&nbsp;<span class="element-name">scoreProperty</span></div>
+<div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getScore()"><code>getScore()</code></a></li>
+</ul>
+</dd>
+</dl>
+</section>
+</li>
+</ul>
+</section>
+</li>
 <!-- ========= CONSTRUCTOR DETAIL ======== -->
 <li>
 <section class="constructor-details" id="constructor-detail">
@@ -246,6 +291,21 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <dl class="notes">
 <dt>Returns:</dt>
 <dd>The current score of the game (snake size).</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="scoreProperty()">
+<h3>scoreProperty</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">javafx.beans.property.IntegerProperty</span>&nbsp;<span class="element-name">scoreProperty</span>()</div>
+<div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
+<dl class="notes">
+<dt>See Also:</dt>
+<dd>
+<ul class="see-list">
+<li><a href="#getScore()"><code>getScore()</code></a></li>
+</ul>
+</dd>
 </dl>
 </section>
 </li>

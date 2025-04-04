@@ -202,7 +202,7 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Utility class for managing the game view.</div>
 </dd>
-<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html#%3Cinit%3E(javafx.scene.layout.GridPane,int,int,double,double)" class="member-name-link">GameView(GridPane, int, int, double, double)</a> - Constructor for class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html" title="class in ru.nsu.lebedev.snake.scenes">GameView</a></dt>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html#%3Cinit%3E(javafx.scene.layout.GridPane,int,int)" class="member-name-link">GameView(GridPane, int, int)</a> - Constructor for class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html" title="class in ru.nsu.lebedev.snake.scenes">GameView</a></dt>
 <dd>
 <div class="block">Constructs the game view with the specified grid and dimensions.</div>
 </dd>
@@ -242,17 +242,13 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Retrieves the current width of the game field.</div>
 </dd>
-<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html#getCurrentHeight()" class="member-name-link">getCurrentHeight()</a> - Method in class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html" title="class in ru.nsu.lebedev.snake.scenes">ScenesManager</a></dt>
-<dd>
-<div class="block">Returns the current height of the scene.</div>
-</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html#getCurrentScene()" class="member-name-link">getCurrentScene()</a> - Method in class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html" title="class in ru.nsu.lebedev.snake.scenes">ScenesManager</a></dt>
 <dd>
 <div class="block">Returns the current scene displayed in the primary stage.</div>
 </dd>
-<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html#getCurrentWidth()" class="member-name-link">getCurrentWidth()</a> - Method in class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesManager.html" title="class in ru.nsu.lebedev.snake.scenes">ScenesManager</a></dt>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html#getDirection()" class="member-name-link">getDirection()</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></dt>
 <dd>
-<div class="block">Returns the current width of the scene.</div>
+<div class="block">Gets the snake's direction.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html#getFieldHeight()" class="member-name-link">getFieldHeight()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html" title="class in ru.nsu.lebedev.snake.models">ModelSettings</a></dt>
 <dd>
@@ -290,6 +286,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getScore()" class="member-name-link">getScore()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
 <div class="block">Retrieves the current score, which is equivalent to the snake's current size.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html#getSettingsPath()" class="member-name-link">getSettingsPath()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html" title="class in ru.nsu.lebedev.snake.models">ModelSettings</a></dt>
+<dd>
+<div class="block">Gets the path to settings.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html#getSize()" class="member-name-link">getSize()</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></dt>
 <dd>
@@ -386,7 +386,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelEnum.html" class="type-name-link" title="enum class in ru.nsu.lebedev.snake.models">ModelEnum</a> - Enum Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/package-summary.html">ru.nsu.lebedev.snake.models</a></dt>
 <dd>
-<div class="block">Enum class for singletones ModelFragments.</div>
+<div class="block">Enum class for singletones Models.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" class="type-name-link" title="class in ru.nsu.lebedev.snake.models">ModelGame</a> - Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/package-summary.html">ru.nsu.lebedev.snake.models</a></dt>
 <dd>
@@ -486,6 +486,10 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Constructor.</div>
 </dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#scoreProperty()" class="member-name-link">scoreProperty()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
+<dd>
+<div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
+</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/json/Json.html#serialize(ru.nsu.lebedev.snake.json.JsonSerializable)" class="member-name-link">serialize(JsonSerializable)</a> - Static method in class ru.nsu.lebedev.snake.json.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/json/Json.html" title="class in ru.nsu.lebedev.snake.json">Json</a></dt>
 <dd>
 <div class="block">Serializes an object to its JSON string representation.</div>
@@ -501,6 +505,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html#setCellColor(int,int,ru.nsu.lebedev.snake.scenes.GameView.CellColor)" class="member-name-link">setCellColor(int, int, GameView.CellColor)</a> - Method in class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html" title="class in ru.nsu.lebedev.snake.scenes">GameView</a></dt>
 <dd>
 <div class="block">Sets the color of a specific cell.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html#setCellColor(ru.nsu.lebedev.snake.game.GamePoint,ru.nsu.lebedev.snake.scenes.GameView.CellColor)" class="member-name-link">setCellColor(GamePoint, GameView.CellColor)</a> - Method in class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.html" title="class in ru.nsu.lebedev.snake.scenes">GameView</a></dt>
+<dd>
+<div class="block">Sets the color of a specific cell using a GamePoint.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html#setDirection(ru.nsu.lebedev.snake.game.GameVector)" class="member-name-link">setDirection(GameVector)</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></dt>
 <dd>
@@ -535,6 +543,10 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesControllerContract.html#setSceneManager(ru.nsu.lebedev.snake.scenes.ScenesManager)" class="member-name-link">setSceneManager(ScenesManager)</a> - Method in interface ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/ScenesControllerContract.html" title="interface in ru.nsu.lebedev.snake.scenes">ScenesControllerContract</a></dt>
 <dd>
 <div class="block">Links the Controller with the ScenesManager.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html#setSettingsPath(java.lang.String)" class="member-name-link">setSettingsPath(String)</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html" title="class in ru.nsu.lebedev.snake.models">ModelSettings</a></dt>
+<dd>
+<div class="block">Sets the path to settings.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/controllers/MenuController.html#settings()" class="member-name-link">settings()</a> - Method in class ru.nsu.lebedev.snake.controllers.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/controllers/MenuController.html" title="class in ru.nsu.lebedev.snake.controllers">MenuController</a></dt>
 <dd>
