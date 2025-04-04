@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.snake.controllers;
 
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import ru.nsu.lebedev.snake.models.ModelEnum;
@@ -27,7 +28,7 @@ public class GameWinController implements ScenesControllerContract {
     public void setSceneManager(ScenesManager sceneManager) {
         this.sceneManager = sceneManager;
         ModelGame gameModel = (ModelGame) ModelEnum.GAME.get();
-        score.setText(Integer.toString(gameModel.getScore()));
+        score.textProperty().bind(Bindings.convert(gameModel.scoreProperty()));
         winMessage.setText("Congratulation! You win the game!");
     }
 
@@ -36,6 +37,8 @@ public class GameWinController implements ScenesControllerContract {
      */
     @FXML
     protected void backToMenu() {
+        ModelGame gameModel = (ModelGame) ModelEnum.GAME.get();
+        gameModel.restartModel();
         sceneManager.changeScene(SceneEnum.MENU);
     }
 }

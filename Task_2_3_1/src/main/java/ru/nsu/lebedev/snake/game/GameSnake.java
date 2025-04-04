@@ -57,6 +57,15 @@ public class GameSnake {
     }
 
     /**
+     * Gets the snake's direction.
+     *
+     * @return The direction.
+     */
+    public GameVector getDirection() {
+        return direction;
+    }
+
+    /**
      * Gets the snake's head.
      *
      * @return The head position.

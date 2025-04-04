@@ -2,6 +2,8 @@ package ru.nsu.lebedev.snake.models;
 
 import java.util.ArrayList;
 import java.util.List;
+import javafx.beans.property.IntegerProperty;
+import javafx.beans.property.SimpleIntegerProperty;
 import ru.nsu.lebedev.snake.game.GameAppleList;
 import ru.nsu.lebedev.snake.game.GamePoint;
 import ru.nsu.lebedev.snake.game.GameSnake;
@@ -21,6 +23,7 @@ public class ModelGame implements ModelContract {
     private static final int INITIAL_SNAKE_SIZE = 1;
     private GameSnake snake;
     private GameAppleList apples;
+    private final IntegerProperty score = new SimpleIntegerProperty(0);
 
     /**
      * Restarts the game model by resetting the field dimensions, constructing the field points,
@@ -43,6 +46,8 @@ public class ModelGame implements ModelContract {
 
         apples = new GameAppleList(this);
         apples.addRandomApples(settingsModel.getApplesCount());
+
+        score.set(snake.getSize());
 
         return this;
     }
@@ -106,7 +111,16 @@ public class ModelGame implements ModelContract {
      * @return The current score of the game (snake size).
      */
     public int getScore() {
-        return snake.getSize();
+        return score.get();
+    }
+
+    /**
+     * Returns the score as an IntegerProperty for binding purposes.
+     *
+     * @return The score property.
+     */
+    public IntegerProperty scoreProperty() {
+        return score;
     }
 
     /**
@@ -118,6 +132,7 @@ public class ModelGame implements ModelContract {
         if (apples.checkSnakeGrowth(snake)) {
             apples.addRandomApple();
         }
+        score.set(snake.getSize());
     }
 
     /**

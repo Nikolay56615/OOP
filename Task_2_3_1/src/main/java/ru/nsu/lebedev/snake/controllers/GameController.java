@@ -1,6 +1,7 @@
 package ru.nsu.lebedev.snake.controllers;
 
 import javafx.animation.AnimationTimer;
+import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
 import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
@@ -59,17 +60,16 @@ public class GameController implements ScenesControllerContract {
     public void setSceneManager(ScenesManager sceneManager) {
         this.sceneManager = sceneManager;
         this.gameModel = ModelEnum.GAME.get().restartModel();
-        double width = sceneManager.getCurrentWidth();
-        double height = sceneManager.getCurrentHeight();
         this.gameView = new GameView(
             fieldGrid,
             gameModel.getCurrentFieldHeight(),
-            gameModel.getCurrentFieldWidth(),
-            width,
-            height
+            gameModel.getCurrentFieldWidth()
         );
 
+        scores.textProperty().bind(Bindings.convert(gameModel.scoreProperty()));
+
         sceneManager.getCurrentScene().setOnKeyPressed(this::keyHandler);
+        sceneManager.getCurrentScene().widthProperty();
         animationTimer.start();
     }
 
@@ -83,26 +83,18 @@ public class GameController implements ScenesControllerContract {
         if (!updatedAfterKeyPressed) {
             return;
         }
-        switch (event.getCode()) {
-            case UP:
-                gameModel.getSnake().setDirection(GameVector.UP);
-                break;
-            case RIGHT:
-                gameModel.getSnake().setDirection(GameVector.RIGHT);
-                break;
-            case DOWN:
-                gameModel.getSnake().setDirection(GameVector.DOWN);
-                break;
-            case LEFT:
-                gameModel.getSnake().setDirection(GameVector.LEFT);
-                break;
-            case ESCAPE:
-                gameOver();
-                break;
-            default:
-                break;
+        GameVector direction = switch (event.getCode()) {
+            case UP -> GameVector.UP;
+            case RIGHT -> GameVector.RIGHT;
+            case DOWN -> GameVector.DOWN;
+            case LEFT -> GameVector.LEFT;
+            default -> null;
+        };
+
+        if (direction != null) {
+            gameModel.getSnake().setDirection(direction);
+            updatedAfterKeyPressed = false;
         }
-        updatedAfterKeyPressed = false;
     }
 
     /**
@@ -111,10 +103,10 @@ public class GameController implements ScenesControllerContract {
      */
     private void updateSnakeCells() {
         GamePoint currentHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(currentHead.getX1(), currentHead.getY1(), GameView.CellColor.SNAKE);
+        gameView.setCellColor(currentHead, GameView.CellColor.SNAKE);
 
         GamePoint tail = gameModel.getSnake().getTail();
-        gameView.setCellColor(tail.getX1(), tail.getY1(), GameView.CellColor.FIELD);
+        gameView.setCellColor(tail, GameView.CellColor.FIELD);
 
         gameModel.update();
         if (gameModel.isGameOver()) {
@@ -126,13 +118,12 @@ public class GameController implements ScenesControllerContract {
             win();
             return;
         }
-        scores.setText(Integer.toString(gameModel.getScore()));
 
         GamePoint newHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(newHead.getX1(), newHead.getY1(), GameView.CellColor.SNAKE_HEAD);
+        gameView.setCellColor(newHead, GameView.CellColor.SNAKE_HEAD);
 
         for (GamePoint apple : gameModel.getApples().getApples()) {
-            gameView.setCellColor(apple.getX1(), apple.getY1(), GameView.CellColor.APPLE);
+            gameView.setCellColor(apple, GameView.CellColor.APPLE);
         }
 
         updatedAfterKeyPressed = true;

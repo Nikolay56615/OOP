@@ -1,7 +1,7 @@
 package ru.nsu.lebedev.snake.models;
 
 /**
- * Enum class for singletones ModelFragments.
+ * Enum class for singletones Models.
  */
 public enum ModelEnum {
     SETTINGS(new ModelSettings()),

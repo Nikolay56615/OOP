@@ -3,19 +3,17 @@ package ru.nsu.lebedev.snake.scenes;
 import java.util.ArrayList;
 import javafx.beans.property.DoubleProperty;
 import javafx.beans.property.SimpleDoubleProperty;
-import javafx.beans.value.ChangeListener;
-import javafx.scene.layout.ColumnConstraints;
 import javafx.scene.layout.GridPane;
-import javafx.scene.layout.RowConstraints;
 import javafx.scene.layout.StackPane;
 import javafx.scene.paint.Color;
 import javafx.scene.paint.Paint;
 import javafx.scene.shape.Circle;
 import javafx.scene.shape.Rectangle;
+import ru.nsu.lebedev.snake.game.GamePoint;
 
 /**
- * Utility class for managing the game view.
- * It builds a grid of cells (Rectangles) inside a GridPane and allows changing cell colors.
+ * Utility class for managing the game view. It builds a grid of cells (Rectangles) inside a
+ * GridPane and allows changing cell colors.
  */
 public class GameView {
 
@@ -56,24 +54,26 @@ public class GameView {
      * @param grid    the GridPane container for the cells.
      * @param numRows the number of rows.
      * @param numCols the number of columns.
-     * @param width   the width of the game area.
-     * @param height  the height of the game area.
      */
-    public GameView(GridPane grid, int numRows, int numCols, double width, double height) {
+    public GameView(GridPane grid, int numRows, int numCols) {
         this.grid = grid;
         this.numRows = numRows;
         this.numCols = numCols;
-        for (int i = 0; i < numCols; i++) {
-            ColumnConstraints colConst = new ColumnConstraints();
-            colConst.setPercentWidth(100.0 / numCols);
-            grid.getColumnConstraints().add(colConst);
-        }
-        for (int i = 0; i < numRows; i++) {
-            RowConstraints rowConst = new RowConstraints();
-            rowConst.setPercentHeight(100.0 / numRows);
-            grid.getRowConstraints().add(rowConst);
-        }
+//        for (int i = 0; i < numCols; i++) {
+//            ColumnConstraints colConst = new ColumnConstraints();
+//            colConst.setPercentWidth(100.0 / numCols);
+//            grid.getColumnConstraints().add(colConst);
+//        }
+//        for (int i = 0; i < numRows; i++) {
+//            RowConstraints rowConst = new RowConstraints();
+//            rowConst.setPercentHeight(100.0 / numRows);
+//            grid.getRowConstraints().add(rowConst);
+//        }
         initializeField();
+//        if (!cellPanes.isEmpty() && !cellPanes.get(0).isEmpty()) {
+//            StackPane firstCell = cellPanes.get(0).get(0);
+//            cellSizeProperty.bind(firstCell.widthProperty());
+//        }
     }
 
     /**
@@ -81,20 +81,23 @@ public class GameView {
      *
      * @return a new StackPane representing a cell.
      */
-    private StackPane createCell() {
-        StackPane cellPane = new StackPane();
-        Rectangle rectangle = new Rectangle();
-        rectangle.widthProperty().bind(cellPane.widthProperty());
-        rectangle.heightProperty().bind(cellPane.heightProperty());
-        rectangle.setFill(Paint.valueOf(CellColor.FIELD.getHex()));
+    private static StackPane createCell() {
+        Rectangle rectangle = new Rectangle(30, 30, Paint.valueOf(CellColor.FIELD.getHex()));
         rectangle.getStyleClass().add("cell");
+//    private StackPane createCell() {
+//
+        StackPane cellPane = new StackPane();
+//        Rectangle rectangle = new Rectangle();
+//        rectangle.widthProperty().bind(cellPane.widthProperty());
+//        rectangle.heightProperty().bind(cellPane.heightProperty());
+//        rectangle.setFill(Paint.valueOf(CellColor.FIELD.getHex()));
+//        rectangle.getStyleClass().add("cell");
         cellPane.getChildren().add(rectangle);
         return cellPane;
     }
 
     /**
-     * Initializes the game field by constructing a grid of StackPanes and adding them to the
-     * GridPane.
+     * Initializes the game field by constructing a grid of StackPanes and adding them to GridPane.
      */
     private void initializeField() {
         cellPanes = new ArrayList<>();
@@ -119,6 +122,8 @@ public class GameView {
      */
     public void setCellColor(int x, int y, CellColor color) {
         StackPane cellPane = cellPanes.get(y).get(x);
+
+        // Удаляем все дочерние элементы, кроме фона (первого элемента)
         if (cellPane.getChildren().size() > 1) {
             cellPane.getChildren().remove(1, cellPane.getChildren().size());
         }
@@ -126,44 +131,93 @@ public class GameView {
         Rectangle background = (Rectangle) cellPane.getChildren().get(0);
 
         if (color == CellColor.SNAKE) {
-            Rectangle snakeBody = new Rectangle();
-            snakeBody.widthProperty().bind(cellSizeProperty);
-            snakeBody.heightProperty().bind(cellSizeProperty);
-            snakeBody.setFill(Paint.valueOf(CellColor.SNAKE.getHex()));
-            snakeBody.arcWidthProperty().bind(cellSizeProperty.multiply(0.5));
-            snakeBody.arcHeightProperty().bind(cellSizeProperty.multiply(0.5));
+            Rectangle snakeBody = new Rectangle(30, 30, Paint.valueOf(CellColor.SNAKE.getHex()));
+            snakeBody.setArcWidth(15);
+            snakeBody.setArcHeight(15);
             cellPane.getChildren().add(snakeBody);
         } else if (color == CellColor.SNAKE_HEAD) {
-            Rectangle snakeHead = new Rectangle();
-            snakeHead.widthProperty().bind(cellSizeProperty);
-            snakeHead.heightProperty().bind(cellSizeProperty);
-            snakeHead.setFill(Paint.valueOf(CellColor.SNAKE_HEAD.getHex()));
-            snakeHead.arcWidthProperty().bind(cellSizeProperty.multiply(0.7));
-            snakeHead.arcHeightProperty().bind(cellSizeProperty.multiply(0.7));
+            Rectangle snakeHead = new Rectangle(30, 30,
+                Paint.valueOf(CellColor.SNAKE_HEAD.getHex()));
+            snakeHead.setArcWidth(20);
+            snakeHead.setArcHeight(20);
             cellPane.getChildren().add(snakeHead);
 
-            Circle leftEye = new Circle();
-            leftEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
-            leftEye.setFill(Color.WHITE);
-            leftEye.translateXProperty().bind(cellSizeProperty.multiply(-0.2));
-            leftEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
+            Circle leftEye = new Circle(4, Color.WHITE);
+            leftEye.setTranslateX(-6);
+            leftEye.setTranslateY(-6);
 
-            Circle rightEye = new Circle();
-            rightEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
-            rightEye.setFill(Color.WHITE);
-            rightEye.translateXProperty().bind(cellSizeProperty.multiply(0.2));
-            rightEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
+            Circle rightEye = new Circle(4, Color.WHITE);
+            rightEye.setTranslateX(6);
+            rightEye.setTranslateY(-6);
 
             cellPane.getChildren().addAll(leftEye, rightEye);
         } else if (color == CellColor.APPLE) {
-            Circle apple = new Circle();
-            apple.radiusProperty().bind(cellSizeProperty.multiply(0.3));
-            apple.setFill(Color.valueOf(CellColor.APPLE.getHex()));
+            Circle apple = new Circle(10, Color.valueOf(CellColor.APPLE.getHex()));
             apple.setStroke(Color.BLACK);
-            apple.strokeWidthProperty().bind(cellSizeProperty.multiply(0.05));
+            apple.setStrokeWidth(2);
             cellPane.getChildren().add(apple);
         } else {
             background.setFill(Paint.valueOf(color.getHex()));
         }
+    }
+
+//    public void setCellColor(int x, int y, CellColor color) {
+//        StackPane cellPane = cellPanes.get(y).get(x);
+//        if (cellPane.getChildren().size() > 1) {
+//            cellPane.getChildren().remove(1, cellPane.getChildren().size());
+//        }
+//
+//        Rectangle background = (Rectangle) cellPane.getChildren().get(0);
+//
+//        if (color == CellColor.SNAKE) {
+//            Rectangle snakeBody = new Rectangle();
+//            snakeBody.widthProperty().bind(cellSizeProperty);
+//            snakeBody.heightProperty().bind(cellSizeProperty);
+//            snakeBody.setFill(Paint.valueOf(CellColor.SNAKE.getHex()));
+//            snakeBody.arcWidthProperty().bind(cellSizeProperty.multiply(0.5));
+//            snakeBody.arcHeightProperty().bind(cellSizeProperty.multiply(0.5));
+//            cellPane.getChildren().add(snakeBody);
+//        } else if (color == CellColor.SNAKE_HEAD) {
+//            Rectangle snakeHead = new Rectangle();
+//            snakeHead.widthProperty().bind(cellSizeProperty);
+//            snakeHead.heightProperty().bind(cellSizeProperty);
+//            snakeHead.setFill(Paint.valueOf(CellColor.SNAKE_HEAD.getHex()));
+//            snakeHead.arcWidthProperty().bind(cellSizeProperty.multiply(0.7));
+//            snakeHead.arcHeightProperty().bind(cellSizeProperty.multiply(0.7));
+//            cellPane.getChildren().add(snakeHead);
+//
+//            Circle leftEye = new Circle();
+//            leftEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
+//            leftEye.setFill(Color.WHITE);
+//            leftEye.translateXProperty().bind(cellSizeProperty.multiply(-0.2));
+//            leftEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
+//
+//            Circle rightEye = new Circle();
+//            rightEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
+//            rightEye.setFill(Color.WHITE);
+//            rightEye.translateXProperty().bind(cellSizeProperty.multiply(0.2));
+//            rightEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
+//
+//            cellPane.getChildren().addAll(leftEye, rightEye);
+//        } else if (color == CellColor.APPLE) {
+//            Circle apple = new Circle();
+//            apple.radiusProperty().bind(cellSizeProperty.multiply(0.3));
+//            apple.setFill(Color.valueOf(CellColor.APPLE.getHex()));
+//            apple.setStroke(Color.BLACK);
+//            apple.strokeWidthProperty().bind(cellSizeProperty.multiply(0.05));
+//            cellPane.getChildren().add(apple);
+//        } else {
+//            background.setFill(Paint.valueOf(color.getHex()));
+//        }
+//    }
+
+    /**
+     * Sets the color of a specific cell using a GamePoint.
+     *
+     * @param point the GamePoint containing the cell coordinates.
+     * @param color the new color from the CellColor enum.
+     */
+    public void setCellColor(GamePoint point, CellColor color) {
+        setCellColor(point.getX1(), point.getY1(), color);
     }
 }

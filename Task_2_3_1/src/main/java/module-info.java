@@ -13,5 +13,5 @@ module ru.nsu.lebedev.snake {
     exports ru.nsu.lebedev.snake.controllers to com.fasterxml.jackson.databind;
     opens ru.nsu.lebedev.snake.controllers to javafx.fxml;
 
-    exports ru.nsu.lebedev.snake.json to com.fasterxml.jackson.databind;
+    opens  ru.nsu.lebedev.snake.json to com.fasterxml.jackson.databind;
 }

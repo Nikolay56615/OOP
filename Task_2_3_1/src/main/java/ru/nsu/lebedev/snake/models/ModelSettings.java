@@ -149,4 +149,20 @@ public class ModelSettings implements ModelContract {
     public void setApplesCount(int applesCount) {
         this.applesCount = applesCount;
     }
+
+    /**
+     * Gets the path to settings.
+     */
+    public String getSettingsPath() {
+        return settingsPath;
+    }
+
+    /**
+     * Sets the path to settings.
+     *
+     * @param settingsPath the new path to settings.
+     */
+    public void setSettingsPath(String settingsPath) {
+        this.settingsPath = settingsPath;
+    }
 }
