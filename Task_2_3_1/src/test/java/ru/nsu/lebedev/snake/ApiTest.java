@@ -23,7 +23,7 @@ public class ApiTest {
         settingsModel.setApplesCount(1);
 
         ModelGame gameModel = ModelEnum.GAME.get().restartModel();
-        Assertions.assertEquals(1, gameModel.getApples().getApples().size());
+        Assertions.assertEquals(1, gameModel.getApples().size());
 
         GamePoint startPoint = gameModel.getSnake().getHead().copy();
         for (int i = 0; i < 5; ++i) {

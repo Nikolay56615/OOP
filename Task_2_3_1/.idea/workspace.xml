@@ -5,30 +5,17 @@
   </component>
   <component name="ChangeListManager">
     <list default="true" id="5d7b8efb-b656-4285-a46a-8d394e01bf73" name="Changes" comment="">
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/ApiTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/game/GameTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/game/PointTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/json/JsonTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/models/SettingsTest.java" afterDir="false" />
-      <change afterPath="$PROJECT_DIR$/src/test/resources/testSettings.json" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/.idea/workspace.xml" beforeDir="false" afterPath="$PROJECT_DIR$/.idea/workspace.xml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/settings.json" beforeDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/module-info.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/module-info.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/AppEntryPoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/AppEntryPoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameOverController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameOverController.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameWinController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameWinController.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GameSnake.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GameSnake.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelEnum.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelEnum.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GamePoint.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/game/GamePoint.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelGame.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelGame.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelSettings.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/models/ModelSettings.java" afterDir="false" />
       <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/GameView.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/GameView.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesManager.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/scenes/ScenesManager.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-scene-view.fxml" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/resources/ru/nsu/lebedev/snake/game-scene-view.fxml" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/EmployeeTest.java" beforeDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/ApiTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/ApiTest.java" afterDir="false" />
+      <change beforePath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/game/GameTest.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/game/GameTest.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -95,6 +82,7 @@
     "Gradle.Task_2_3_1 [:ru.nsu.lebedev.snake.task_2_3_1.AppEntryPoint.main()].executor": "Run",
     "Gradle.Task_2_3_1 [:ru.nsu.lebedev.snake.task_2_3_1.HelloApplication.main()].executor": "Run",
     "Gradle.Task_2_3_1 [clean jlink].executor": "Run",
+    "Gradle.Tests in 'Task_2_3_1.test'.executor": "Run",
     "RunOnceActivity.ShowReadmeOnStart": "true",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrary": "JUnit5",
     "com.intellij.testIntegration.createTest.CreateTestDialog.defaultLibrarySuperClass.JUnit5": "",
@@ -128,7 +116,7 @@
       <command value="gradle clean jlink" />
     </option>
   </component>
-  <component name="RunManager" selected="Gradle.GameTest">
+  <component name="RunManager" selected="Application.AppEntryPoint">
     <configuration name="AppEntryPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.nsu.lebedev.snake.AppEntryPoint" />
       <module name="Task_2_3_1.main" />
@@ -191,30 +179,6 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
-    <configuration name="PointTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
-      <ExternalSystemSettings>
-        <option name="executionName" />
-        <option name="externalProjectPath" value="$PROJECT_DIR$" />
-        <option name="externalSystemIdString" value="GRADLE" />
-        <option name="scriptParameters" value="" />
-        <option name="taskDescriptions">
-          <list />
-        </option>
-        <option name="taskNames">
-          <list>
-            <option value=":test" />
-            <option value="--tests" />
-            <option value="&quot;ru.nsu.lebedev.snake.game.PointTest&quot;" />
-          </list>
-        </option>
-        <option name="vmOptions" />
-      </ExternalSystemSettings>
-      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
-      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
-      <DebugAllEnabled>false</DebugAllEnabled>
-      <RunAsTest>true</RunAsTest>
-      <method v="2" />
-    </configuration>
     <configuration name="SettingsTest" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
       <ExternalSystemSettings>
         <option name="executionName" />
@@ -239,20 +203,42 @@
       <RunAsTest>true</RunAsTest>
       <method v="2" />
     </configuration>
+    <configuration name="Tests in 'Task_2_3_1.test'" type="GradleRunConfiguration" factoryName="Gradle" temporary="true">
+      <ExternalSystemSettings>
+        <option name="executionName" />
+        <option name="externalProjectPath" value="$PROJECT_DIR$" />
+        <option name="externalSystemIdString" value="GRADLE" />
+        <option name="scriptParameters" value="" />
+        <option name="taskDescriptions">
+          <list />
+        </option>
+        <option name="taskNames">
+          <list>
+            <option value=":test" />
+          </list>
+        </option>
+        <option name="vmOptions" />
+      </ExternalSystemSettings>
+      <ExternalSystemDebugServerProcess>false</ExternalSystemDebugServerProcess>
+      <ExternalSystemReattachDebugProcess>true</ExternalSystemReattachDebugProcess>
+      <DebugAllEnabled>false</DebugAllEnabled>
+      <RunAsTest>true</RunAsTest>
+      <method v="2" />
+    </configuration>
     <list>
       <item itemvalue="Application.AppEntryPoint" />
       <item itemvalue="Gradle.GameTest" />
+      <item itemvalue="Gradle.Tests in 'Task_2_3_1.test'" />
       <item itemvalue="Gradle.JsonTest" />
-      <item itemvalue="Gradle.PointTest" />
       <item itemvalue="Gradle.SettingsTest" />
     </list>
     <recent_temporary>
       <list>
+        <item itemvalue="Gradle.Tests in 'Task_2_3_1.test'" />
         <item itemvalue="Gradle.GameTest" />
         <item itemvalue="Application.AppEntryPoint" />
         <item itemvalue="Gradle.SettingsTest" />
         <item itemvalue="Gradle.JsonTest" />
-        <item itemvalue="Gradle.PointTest" />
       </list>
     </recent_temporary>
   </component>
@@ -275,7 +261,7 @@
       <workItem from="1743306616132" duration="6182000" />
       <workItem from="1743388652263" duration="305000" />
       <workItem from="1743693737322" duration="600000" />
-      <workItem from="1743735015196" duration="8117000" />
+      <workItem from="1743735015196" duration="10778000" />
     </task>
     <servers />
   </component>
@@ -287,7 +273,7 @@
       <breakpoints>
         <line-breakpoint enabled="true" type="java-line">
           <url>file://$PROJECT_DIR$/src/test/java/ru/nsu/lebedev/snake/game/GameTest.java</url>
-          <line>12</line>
+          <line>10</line>
           <option name="timeStamp" value="1" />
         </line-breakpoint>
       </breakpoints>

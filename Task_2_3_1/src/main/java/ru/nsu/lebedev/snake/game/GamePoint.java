@@ -1,6 +1,7 @@
 package ru.nsu.lebedev.snake.game;
 
 import java.util.List;
+import java.util.Objects;
 import java.util.Optional;
 
 /**
@@ -125,5 +126,10 @@ public class GamePoint {
         }
         GamePoint point = (GamePoint) obj;
         return x1.equals(point.x1) && y1.equals(point.y1);
+    }
+
+    @Override
+    public int hashCode() {
+        return Objects.hash(x1, y1);
     }
 }

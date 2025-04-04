@@ -9,6 +9,9 @@ import ru.nsu.lebedev.snake.scenes.SceneEnum;
 import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
 import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
+/**
+ * Controller for the Game Win scene.
+ */
 public class GameWinController implements ScenesControllerContract {
 
     private ScenesManager sceneManager;

@@ -1,6 +1,7 @@
 package ru.nsu.lebedev.snake.models;
 
 import java.util.ArrayList;
+import java.util.LinkedList;
 import java.util.List;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
@@ -178,7 +179,7 @@ public class ModelGame implements ModelContract {
      *
      * @return The apples object containing all apples on the field.
      */
-    public GameAppleList getApples() {
-        return apples;
+    public LinkedList<GamePoint> getApples() {
+        return apples.getApples();
     }
 }

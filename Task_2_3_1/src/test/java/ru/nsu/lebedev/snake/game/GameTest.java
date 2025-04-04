@@ -49,7 +49,7 @@ public class GameTest {
         ModelGame game = ModelEnum.GAME.get().restartModel();
         GamePoint applePosition = game.getSnake().getHead().copy();
         applePosition.move(game.getSnake().getDirection());
-        game.getApples().getApples().add(applePosition);
+        game.getApples().add(applePosition);
 
         Assertions.assertEquals(1, game.getScore());
         Assertions.assertEquals(game.getSnake().getHead(), game.getSnake().getTail());
@@ -60,7 +60,7 @@ public class GameTest {
 
         applePosition = game.getSnake().getHead().copy();
         applePosition.move(game.getSnake().getDirection());
-        game.getApples().getApples().add(applePosition);
+        game.getApples().add(applePosition);
 
         game.update();
         Assertions.assertEquals(3, game.getScore());

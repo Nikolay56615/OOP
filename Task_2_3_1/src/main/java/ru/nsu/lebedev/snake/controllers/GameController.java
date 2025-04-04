@@ -122,7 +122,7 @@ public class GameController implements ScenesControllerContract {
         GamePoint newHead = gameModel.getSnake().getHead();
         gameView.setCellColor(newHead, GameView.CellColor.SNAKE_HEAD);
 
-        for (GamePoint apple : gameModel.getApples().getApples()) {
+        for (GamePoint apple : gameModel.getApples()) {
             gameView.setCellColor(apple, GameView.CellColor.APPLE);
         }
 

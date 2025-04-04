@@ -56,10 +56,10 @@ public class ScenesManager {
         ScenesControllerContract controller = loader.getController();
         controller.setSceneManager(this);
 
-//        scene.widthProperty()
-//            .addListener((obs, oldVal, newVal) -> updateSize(newVal.intValue(), currentHeight));
-//        scene.heightProperty()
-//            .addListener((obs, oldVal, newVal) -> updateSize(currentWidth, newVal.intValue()));
+        // scene.widthProperty()
+        //     .addListener((obs, oldVal, newVal) -> updateSize(newVal.intValue(), currentHeight));
+        // scene.heightProperty()
+        //     .addListener((obs, oldVal, newVal) -> updateSize(currentWidth, newVal.intValue()));
     }
 
     /**
@@ -95,35 +95,35 @@ public class ScenesManager {
         }
     }
 
-//    /**
-//     * Updates the current width and height.
-//     *
-//     * @param width  the new width.
-//     * @param height the new height.
-//     */
-//    private void updateSize(int width, int height) {
-//        this.currentWidth = width;
-//        this.currentHeight = height;
-//    }
-//
-//    /**
-//     * Returns the current width of the scene.
-//     *
-//     * @return the current width.
-//     */
-//    public int getCurrentWidth() {
-//        return currentWidth;
-//    }
-//
-//    /**
-//     * Returns the current height of the scene.
-//     *
-//     * @return the current height.
-//     */
-//    public int getCurrentHeight() {
-//        return currentHeight;
-//    }
-//
+    //    /**
+    //     * Updates the current width and height.
+    //     *
+    //     * @param width  the new width.
+    //     * @param height the new height.
+    //     */
+    //    private void updateSize(int width, int height) {
+    //        this.currentWidth = width;
+    //        this.currentHeight = height;
+    //    }
+    //
+    //    /**
+    //     * Returns the current width of the scene.
+    //     *
+    //     * @return the current width.
+    //     */
+    //    public int getCurrentWidth() {
+    //        return currentWidth;
+    //    }
+    //
+    //    /**
+    //     * Returns the current height of the scene.
+    //     *
+    //     * @return the current height.
+    //     */
+    //    public int getCurrentHeight() {
+    //        return currentHeight;
+    //    }
+
     /**
      * Returns the current scene displayed in the primary stage.
      *
