@@ -60,6 +60,18 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Adds a specified number of apples at random locations.</div>
 </dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html#AI_SNAKE_1" class="member-name-link">AI_SNAKE_1</a> - Enum constant in enum class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html#AI_SNAKE_2" class="member-name-link">AI_SNAKE_2</a> - Enum constant in enum class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html#AI_SNAKE_HEAD_1" class="member-name-link">AI_SNAKE_HEAD_1</a> - Enum constant in enum class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html#AI_SNAKE_HEAD_2" class="member-name-link">AI_SNAKE_HEAD_2</a> - Enum constant in enum class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AiSnakeContract.html" class="type-name-link" title="interface in ru.nsu.lebedev.snake.ai">AiSnakeContract</a> - Interface in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/package-summary.html">ru.nsu.lebedev.snake.ai</a></dt>
+<dd>
+<div class="block">Contract for Ai snakes.</div>
+</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/AppEntryPoint.html" class="type-name-link" title="class in ru.nsu.lebedev.snake">AppEntryPoint</a> - Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/package-summary.html">ru.nsu.lebedev.snake</a></dt>
 <dd>
 <div class="block">Entry point for all game.</div>
@@ -67,6 +79,12 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/AppEntryPoint.html#%3Cinit%3E()" class="member-name-link">AppEntryPoint()</a> - Constructor for class ru.nsu.lebedev.snake.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/AppEntryPoint.html" title="class in ru.nsu.lebedev.snake">AppEntryPoint</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html#APPLE" class="member-name-link">APPLE</a> - Enum constant in enum class ru.nsu.lebedev.snake.scenes.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/scenes/GameView.CellColor.html" title="enum class in ru.nsu.lebedev.snake.scenes">GameView.CellColor</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AppleChaserAiSnake.html" class="type-name-link" title="class in ru.nsu.lebedev.snake.ai">AppleChaserAiSnake</a> - Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/package-summary.html">ru.nsu.lebedev.snake.ai</a></dt>
+<dd>
+<div class="block">AI snake that chases the nearest apple.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AppleChaserAiSnake.html#%3Cinit%3E()" class="member-name-link">AppleChaserAiSnake()</a> - Constructor for class ru.nsu.lebedev.snake.ai.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AppleChaserAiSnake.html" title="class in ru.nsu.lebedev.snake.ai">AppleChaserAiSnake</a></dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/json/SettingsRecord.html#applesCount()" class="member-name-link">applesCount()</a> - Method in record class ru.nsu.lebedev.snake.json.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/json/SettingsRecord.html" title="class in ru.nsu.lebedev.snake.json">SettingsRecord</a></dt>
 <dd>
@@ -262,7 +280,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getFreeFieldCells()" class="member-name-link">getFreeFieldCells()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Retrieves a list of free cells on the field where objects (like apples) can be placed.</div>
+<div class="block">Retrieves a list of free cells on the field where objects can be placed.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html#getHead()" class="member-name-link">getHead()</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></dt>
 <dd>
@@ -278,16 +296,19 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getNonKillingCells(ru.nsu.lebedev.snake.game.GameSnake)" class="member-name-link">getNonKillingCells(GameSnake)</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Retrieves a list of non-lethal points on the field, i.e., points that are not occupied by the
- snake's body.</div>
+<div class="block">Retrieves a list of non-lethal points for a specific snake.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameVector.html#getOffset()" class="member-name-link">getOffset()</a> - Method in enum class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameVector.html" title="enum class in ru.nsu.lebedev.snake.game">GameVector</a></dt>
 <dd>
 <div class="block">Gets the vector's displacement as a point.</div>
 </dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getPlayerSnake()" class="member-name-link">getPlayerSnake()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
+<dd>
+<div class="block">Retrieves the player snake.</div>
+</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getScore()" class="member-name-link">getScore()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Retrieves the current score, which is equivalent to the snake's current size.</div>
+<div class="block">Retrieves the current score (player snake's size).</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html#getSettingsPath()" class="member-name-link">getSettingsPath()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html" title="class in ru.nsu.lebedev.snake.models">ModelSettings</a></dt>
 <dd>
@@ -297,9 +318,9 @@ loadScripts(document, 'script');</script>
 <dd>
 <div class="block">Gets the total size of the snake.</div>
 </dd>
-<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getSnake()" class="member-name-link">getSnake()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#getSnakes()" class="member-name-link">getSnakes()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Retrieves the current snake object in the game.</div>
+<div class="block">Retrieves all snakes in the game.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html#getTail()" class="member-name-link">getTail()</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></dt>
 <dd>
@@ -347,7 +368,11 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#isGameOver()" class="member-name-link">isGameOver()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Checks whether the game is over.</div>
+<div class="block">Checks whether the game is over (player snake is dead).</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#isGameWon()" class="member-name-link">isGameWon()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
+<dd>
+<div class="block">Checks if any snake has won by filling the field.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GamePoint.html#isInList(java.util.List)" class="member-name-link">isInList(List&lt;GamePoint&gt;)</a> - Method in class ru.nsu.lebedev.snake.game.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a></dt>
 <dd>
@@ -394,7 +419,7 @@ loadScripts(document, 'script');</script>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" class="type-name-link" title="class in ru.nsu.lebedev.snake.models">ModelGame</a> - Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/package-summary.html">ru.nsu.lebedev.snake.models</a></dt>
 <dd>
-<div class="block">Represents the game model, managing the game state, including the snake, apples, and field.</div>
+<div class="block">Represents the game model, managing the game state, including multiple snakes, apples, and field.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#%3Cinit%3E()" class="member-name-link">ModelGame()</a> - Constructor for class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>&nbsp;</dd>
@@ -436,6 +461,12 @@ loadScripts(document, 'script');</script>
 </dl>
 <h2 class="title" id="I:R">R</h2>
 <dl class="index">
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/RandomAiSnake.html" class="type-name-link" title="class in ru.nsu.lebedev.snake.ai">RandomAiSnake</a> - Class in <a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/package-summary.html">ru.nsu.lebedev.snake.ai</a></dt>
+<dd>
+<div class="block">AI snake that moves randomly.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/RandomAiSnake.html#%3Cinit%3E()" class="member-name-link">RandomAiSnake()</a> - Constructor for class ru.nsu.lebedev.snake.ai.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/RandomAiSnake.html" title="class in ru.nsu.lebedev.snake.ai">RandomAiSnake</a></dt>
+<dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelContract.html#restartModel()" class="member-name-link">restartModel()</a> - Method in interface ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelContract.html" title="interface in ru.nsu.lebedev.snake.models">ModelContract</a></dt>
 <dd>
 <div class="block">Restarts the model instance.</div>
@@ -443,7 +474,7 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#restartModel()" class="member-name-link">restartModel()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
 <div class="block">Restarts the game model by resetting the field dimensions, constructing the field points,
- creating the snake, and adding apples.</div>
+ creating snakes, and adding apples.</div>
 </dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html#restartModel()" class="member-name-link">restartModel()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelSettings.html" title="class in ru.nsu.lebedev.snake.models">ModelSettings</a></dt>
 <dd>
@@ -454,6 +485,8 @@ loadScripts(document, 'script');</script>
 <dt><a href="ru.nsu.lebedev.snake/module-summary.html">ru.nsu.lebedev.snake</a> - module ru.nsu.lebedev.snake</dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/package-summary.html">ru.nsu.lebedev.snake</a> - package ru.nsu.lebedev.snake</dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/package-summary.html">ru.nsu.lebedev.snake.ai</a> - package ru.nsu.lebedev.snake.ai</dt>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/controllers/package-summary.html">ru.nsu.lebedev.snake.controllers</a> - package ru.nsu.lebedev.snake.controllers</dt>
 <dd>&nbsp;</dd>
@@ -598,9 +631,16 @@ loadScripts(document, 'script');</script>
 <dd>&nbsp;</dd>
 <dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html#update()" class="member-name-link">update()</a> - Method in class ru.nsu.lebedev.snake.models.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/models/ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></dt>
 <dd>
-<div class="block">Updates the game state, executing necessary actions such as moving the snake and checking for
- apple collisions.</div>
+<div class="block">Updates the game state for all snakes.</div>
 </dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AiSnakeContract.html#updateDirection(ru.nsu.lebedev.snake.models.ModelGame)" class="member-name-link">updateDirection(ModelGame)</a> - Method in interface ru.nsu.lebedev.snake.ai.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AiSnakeContract.html" title="interface in ru.nsu.lebedev.snake.ai">AiSnakeContract</a></dt>
+<dd>
+<div class="block">Behavior of the ai snake.</div>
+</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AppleChaserAiSnake.html#updateDirection(ru.nsu.lebedev.snake.models.ModelGame)" class="member-name-link">updateDirection(ModelGame)</a> - Method in class ru.nsu.lebedev.snake.ai.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/AppleChaserAiSnake.html" title="class in ru.nsu.lebedev.snake.ai">AppleChaserAiSnake</a></dt>
+<dd>&nbsp;</dd>
+<dt><a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/RandomAiSnake.html#updateDirection(ru.nsu.lebedev.snake.models.ModelGame)" class="member-name-link">updateDirection(ModelGame)</a> - Method in class ru.nsu.lebedev.snake.ai.<a href="ru.nsu.lebedev.snake/ru/nsu/lebedev/snake/ai/RandomAiSnake.html" title="class in ru.nsu.lebedev.snake.ai">RandomAiSnake</a></dt>
+<dd>&nbsp;</dd>
 </dl>
 <h2 class="title" id="I:V">V</h2>
 <dl class="index">

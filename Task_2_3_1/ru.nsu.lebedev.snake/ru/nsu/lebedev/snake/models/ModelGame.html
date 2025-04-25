@@ -83,10 +83,7 @@ loadScripts(document, 'script');</script>
 <div class="type-signature"><span class="modifiers">public class </span><span class="element-name type-name-label">ModelGame</span>
 <span class="extends-implements">extends <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Object.html" title="class or interface in java.lang" class="external-link">Object</a>
 implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake.models">ModelContract</a></span></div>
-<div class="block">Represents the game model, managing the game state, including the snake, apples, and field.
- This class is responsible for updating the game state, handling game logic such as snake
- movement, apple spawning, and checking if the game is over. It also provides methods to retrieve
- game data like score and available field cells.</div>
+<div class="block">Represents the game model, managing the game state, including multiple snakes, apples, and field.</div>
 </section>
 <section class="summary">
 <ul class="summary-list">
@@ -149,45 +146,53 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&gt;</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getFreeFieldCells()" class="member-name-link">getFreeFieldCells</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves a list of free cells on the field where objects (like apples) can be placed.</div>
+<div class="block">Retrieves a list of free cells on the field where objects can be placed.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getNonKillingCells(ru.nsu.lebedev.snake.game.GameSnake)" class="member-name-link">getNonKillingCells</a><wbr>(<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&nbsp;snake)</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves a list of non-lethal points on the field, i.e., points that are not occupied by the
- snake's body.</div>
+<div class="block">Retrieves a list of non-lethal points for a specific snake.</div>
 </div>
-<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getScore()" class="member-name-link">getScore</a>()</code></div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getPlayerSnake()" class="member-name-link">getPlayerSnake</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves the current score, which is equivalent to the snake's current size.</div>
+<div class="block">Retrieves the player snake.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></code></div>
-<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnake()" class="member-name-link">getSnake</a>()</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>int</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getScore()" class="member-name-link">getScore</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Retrieves the current snake object in the game.</div>
+<div class="block">Retrieves the current score (player snake's size).</div>
+</div>
+<div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&gt;</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#getSnakes()" class="member-name-link">getSnakes</a>()</code></div>
+<div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Retrieves all snakes in the game.</div>
+</div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
+<div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isGameOver()" class="member-name-link">isGameOver</a>()</code></div>
+<div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
+<div class="block">Checks whether the game is over (player snake is dead).</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>boolean</code></div>
-<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isGameOver()" class="member-name-link">isGameOver</a>()</code></div>
+<div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#isGameWon()" class="member-name-link">isGameWon</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Checks whether the game is over.</div>
+<div class="block">Checks if any snake has won by filling the field.</div>
 </div>
 <div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#restartModel()" class="member-name-link">restartModel</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Restarts the game model by resetting the field dimensions, constructing the field points,
- creating the snake, and adding apples.</div>
+ creating snakes, and adding apples.</div>
 </div>
 <div class="col-first odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>javafx.beans.property.IntegerProperty</code></div>
 <div class="col-second odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#scoreProperty()" class="member-name-link">scoreProperty</a>()</code></div>
 <div class="col-last odd-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
 <div class="block">Returns the score as an IntegerProperty for binding purposes.</div>
 </div>
-<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code>void</code></div>
+<div class="col-first even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&gt;</code></div>
 <div class="col-second even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4"><code><a href="#update()" class="member-name-link">update</a>()</code></div>
 <div class="col-last even-row-color method-summary-table method-summary-table-tab2 method-summary-table-tab4">
-<div class="block">Updates the game state, executing necessary actions such as moving the snake and checking for
- apple collisions.</div>
+<div class="block">Updates the game state for all snakes.</div>
 </div>
 </div>
 </div>
@@ -248,7 +253,7 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <h3>restartModel</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="ModelGame.html" title="class in ru.nsu.lebedev.snake.models">ModelGame</a></span>&nbsp;<span class="element-name">restartModel</span>()</div>
 <div class="block">Restarts the game model by resetting the field dimensions, constructing the field points,
- creating the snake, and adding apples.</div>
+ creating snakes, and adding apples.</div>
 <dl class="notes">
 <dt>Specified by:</dt>
 <dd><code><a href="ModelContract.html#restartModel()">restartModel</a></code>&nbsp;in interface&nbsp;<code><a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake.models">ModelContract</a></code></dd>
@@ -261,8 +266,7 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <section class="detail" id="getNonKillingCells(ru.nsu.lebedev.snake.game.GameSnake)">
 <h3>getNonKillingCells</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&gt;</span>&nbsp;<span class="element-name">getNonKillingCells</span><wbr><span class="parameters">(<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&nbsp;snake)</span></div>
-<div class="block">Retrieves a list of non-lethal points on the field, i.e., points that are not occupied by the
- snake's body.</div>
+<div class="block">Retrieves a list of non-lethal points for a specific snake.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
 <dd><code>snake</code> - The snake to check against.</dd>
@@ -275,11 +279,10 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <section class="detail" id="getFreeFieldCells()">
 <h3>getFreeFieldCells</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GamePoint.html" title="class in ru.nsu.lebedev.snake.game">GamePoint</a>&gt;</span>&nbsp;<span class="element-name">getFreeFieldCells</span>()</div>
-<div class="block">Retrieves a list of free cells on the field where objects (like apples) can be placed.
- Free cells are those that are not occupied by the snake or apples.</div>
+<div class="block">Retrieves a list of free cells on the field where objects can be placed.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>A list of available cells for object placement.</dd>
+<dd>A list of available cells.</dd>
 </dl>
 </section>
 </li>
@@ -287,10 +290,10 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <section class="detail" id="getScore()">
 <h3>getScore</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">int</span>&nbsp;<span class="element-name">getScore</span>()</div>
-<div class="block">Retrieves the current score, which is equivalent to the snake's current size.</div>
+<div class="block">Retrieves the current score (player snake's size).</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The current score of the game (snake size).</dd>
+<dd>The current score of the game.</dd>
 </dl>
 </section>
 </li>
@@ -312,19 +315,33 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 <li>
 <section class="detail" id="update()">
 <h3>update</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">void</span>&nbsp;<span class="element-name">update</span>()</div>
-<div class="block">Updates the game state, executing necessary actions such as moving the snake and checking for
- apple collisions.</div>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&gt;</span>&nbsp;<span class="element-name">update</span>()</div>
+<div class="block">Updates the game state for all snakes.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>List of dead snakes.</dd>
+</dl>
 </section>
 </li>
 <li>
 <section class="detail" id="isGameOver()">
 <h3>isGameOver</h3>
 <div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isGameOver</span>()</div>
-<div class="block">Checks whether the game is over. The game ends if the snake dies.</div>
+<div class="block">Checks whether the game is over (player snake is dead).</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>True if the game is over (i.e., the snake is dead), otherwise false.</dd>
+<dd>True if the game is over, otherwise false.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="isGameWon()">
+<h3>isGameWon</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type">boolean</span>&nbsp;<span class="element-name">isGameWon</span>()</div>
+<div class="block">Checks if any snake has won by filling the field.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>True if a snake has won.</dd>
 </dl>
 </section>
 </li>
@@ -351,13 +368,24 @@ implements <a href="ModelContract.html" title="interface in ru.nsu.lebedev.snake
 </section>
 </li>
 <li>
-<section class="detail" id="getSnake()">
-<h3>getSnake</h3>
-<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></span>&nbsp;<span class="element-name">getSnake</span>()</div>
-<div class="block">Retrieves the current snake object in the game.</div>
+<section class="detail" id="getSnakes()">
+<h3>getSnakes</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/util/List.html" title="class or interface in java.util" class="external-link">List</a>&lt;<a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a>&gt;</span>&nbsp;<span class="element-name">getSnakes</span>()</div>
+<div class="block">Retrieves all snakes in the game.</div>
 <dl class="notes">
 <dt>Returns:</dt>
-<dd>The snake object.</dd>
+<dd>The list of snakes.</dd>
+</dl>
+</section>
+</li>
+<li>
+<section class="detail" id="getPlayerSnake()">
+<h3>getPlayerSnake</h3>
+<div class="member-signature"><span class="modifiers">public</span>&nbsp;<span class="return-type"><a href="../game/GameSnake.html" title="class in ru.nsu.lebedev.snake.game">GameSnake</a></span>&nbsp;<span class="element-name">getPlayerSnake</span>()</div>
+<div class="block">Retrieves the player snake.</div>
+<dl class="notes">
+<dt>Returns:</dt>
+<dd>The player snake.</dd>
 </dl>
 </section>
 </li>
