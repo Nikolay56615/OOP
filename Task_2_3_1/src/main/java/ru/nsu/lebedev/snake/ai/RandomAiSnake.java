@@ -1,9 +1,9 @@
 package ru.nsu.lebedev.snake.ai;
 
 import java.util.Random;
+import ru.nsu.lebedev.snake.game.GameSnake;
 import ru.nsu.lebedev.snake.game.GameVector;
 import ru.nsu.lebedev.snake.models.ModelGame;
-import ru.nsu.lebedev.snake.game.GameSnake;
 
 /**
  * AI snake that moves randomly.
@@ -18,7 +18,9 @@ public class RandomAiSnake implements AiSnakeContract {
             .filter(s -> !s.equals(model.getPlayerSnake()))
             .findFirst()
             .orElse(null);
-        if (snake == null) return;
+        if (snake == null) {
+            return;
+        }
 
         GameVector[] directions = GameVector.values();
         GameVector currentDirection = snake.getDirection();

@@ -8,12 +8,12 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import ru.nsu.lebedev.snake.game.GamePoint;
+import ru.nsu.lebedev.snake.game.GameSnake;
 import ru.nsu.lebedev.snake.game.GameVector;
 import ru.nsu.lebedev.snake.models.ModelEnum;
 import ru.nsu.lebedev.snake.models.ModelGame;
 import ru.nsu.lebedev.snake.scenes.GameView;
 import ru.nsu.lebedev.snake.scenes.SceneEnum;
-import ru.nsu.lebedev.snake.game.GameSnake;
 import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
 import ru.nsu.lebedev.snake.scenes.ScenesManager;
 

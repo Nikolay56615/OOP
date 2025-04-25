@@ -2,8 +2,8 @@ package ru.nsu.lebedev.snake.ai;
 
 import java.util.Comparator;
 import ru.nsu.lebedev.snake.game.GamePoint;
-import ru.nsu.lebedev.snake.game.GameVector;
 import ru.nsu.lebedev.snake.game.GameSnake;
+import ru.nsu.lebedev.snake.game.GameVector;
 import ru.nsu.lebedev.snake.models.ModelGame;
 
 /**
@@ -18,14 +18,18 @@ public class AppleChaserAiSnake implements AiSnakeContract {
             .skip(1) // Skip the first AI snake (RandomAiSnake)
             .findFirst()
             .orElse(null);
-        if (snake == null) return;
+        if (snake == null) {
+            return;
+        }
 
         GamePoint head = snake.getHead();
         GamePoint nearestApple = model.getApples().stream()
             .min(Comparator.comparingInt(p ->
                 Math.abs(p.getX1() - head.getX1()) + Math.abs(p.getY1() - head.getY1())))
             .orElse(null);
-        if (nearestApple == null) return;
+        if (nearestApple == null) {
+            return;
+        }
 
         int dx = nearestApple.getX1() - head.getX1();
         int dy = nearestApple.getY1() - head.getY1();
