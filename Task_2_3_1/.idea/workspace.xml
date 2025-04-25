@@ -8,7 +8,6 @@
       <change beforePath="$PROJECT_DIR$/../Task_1_2_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_3_1/.gitignore" beforeDir="false" />
       <change beforePath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" beforeDir="false" afterPath="$PROJECT_DIR$/../Task_1_4_1/src/main/java/ru/nsu/lebedev/examination/StudentCreditBook.java" afterDir="false" />
-      <change beforePath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" beforeDir="false" afterPath="$PROJECT_DIR$/src/main/java/ru/nsu/lebedev/snake/controllers/GameController.java" afterDir="false" />
     </list>
     <option name="SHOW_DIALOG" value="false" />
     <option name="HIGHLIGHT_CONFLICTS" value="true" />
@@ -110,7 +109,7 @@
       <command value="gradle clean jlink" />
     </option>
   </component>
-  <component name="RunManager" selected="Application.AppEntryPoint">
+  <component name="RunManager" selected="Gradle.Tests in 'Task_2_3_1.test'">
     <configuration name="AppEntryPoint" type="Application" factoryName="Application" temporary="true" nameIsGenerated="true">
       <option name="MAIN_CLASS_NAME" value="ru.nsu.lebedev.snake.AppEntryPoint" />
       <module name="Task_2_3_1.main" />
@@ -269,7 +268,7 @@
       <workItem from="1745246332997" duration="2784000" />
       <workItem from="1745287931908" duration="235000" />
       <workItem from="1745502300357" duration="1072000" />
-      <workItem from="1745542412973" duration="3709000" />
+      <workItem from="1745542412973" duration="4056000" />
     </task>
     <servers />
   </component>
