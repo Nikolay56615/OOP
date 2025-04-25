@@ -3,18 +3,19 @@ package ru.nsu.lebedev.snake.models;
 import java.util.ArrayList;
 import java.util.LinkedList;
 import java.util.List;
+import java.util.Random;
 import javafx.beans.property.IntegerProperty;
 import javafx.beans.property.SimpleIntegerProperty;
+import ru.nsu.lebedev.snake.ai.AiSnakeContract;
+import ru.nsu.lebedev.snake.ai.AppleChaserAiSnake;
+import ru.nsu.lebedev.snake.ai.RandomAiSnake;
 import ru.nsu.lebedev.snake.game.GameAppleList;
 import ru.nsu.lebedev.snake.game.GamePoint;
 import ru.nsu.lebedev.snake.game.GameSnake;
 import ru.nsu.lebedev.snake.game.GameVector;
 
 /**
- * Represents the game model, managing the game state, including the snake, apples, and field.
- * This class is responsible for updating the game state, handling game logic such as snake
- * movement, apple spawning, and checking if the game is over. It also provides methods to retrieve
- * game data like score and available field cells.
+ * Represents the game model, managing the game state, including multiple snakes, apples, and field.
  */
 public class ModelGame implements ModelContract {
 
@@ -22,13 +23,14 @@ public class ModelGame implements ModelContract {
     private int currentFieldHeight;
     private final List<GamePoint> fieldPoints = new ArrayList<>();
     private static final int INITIAL_SNAKE_SIZE = 1;
-    private GameSnake snake;
+    private List<GameSnake> snakes; // All snakes (player + AI)
+    private List<AiSnakeContract> aiControllers; // AI controllers for AI snakes
     private GameAppleList apples;
     private final IntegerProperty score = new SimpleIntegerProperty(0);
 
     /**
      * Restarts the game model by resetting the field dimensions, constructing the field points,
-     * creating the snake, and adding apples.
+     * creating snakes, and adding apples.
      *
      * @return the current instance of the ModelGame with the restarted state.
      */
@@ -39,16 +41,42 @@ public class ModelGame implements ModelContract {
         currentFieldHeight = settingsModel.getFieldHeight();
         constructFieldPoints();
 
-        snake = new GameSnake(
-            INITIAL_SNAKE_SIZE,
-            new GamePoint(currentFieldWidth / 2, currentFieldHeight / 2),
-            GameVector.RIGHT, this
-        );
+        snakes = new ArrayList<>();
+        aiControllers = new ArrayList<>();
 
         apples = new GameAppleList(this);
         apples.addRandomApples(settingsModel.getApplesCount());
 
-        score.set(snake.getSize());
+        GameSnake playerSnake = new GameSnake(
+            INITIAL_SNAKE_SIZE,
+            new GamePoint(currentFieldWidth / 2, currentFieldHeight / 2),
+            GameVector.RIGHT, this
+        );
+        snakes.add(playerSnake);
+
+        Random random = new Random();
+        List<GamePoint> freeCells = getFreeFieldCells();
+        int aiSnakeCount = Math.min(2, freeCells.size());
+        for (int i = 0; i < aiSnakeCount; i++) {
+            if (freeCells.isEmpty()) {
+                break;
+            }
+            int index = random.nextInt(freeCells.size());
+            GamePoint startPoint = freeCells.get(index);
+            freeCells.remove(index);
+            GameSnake aiSnake = new GameSnake(
+                INITIAL_SNAKE_SIZE,
+                startPoint,
+                GameVector.values()[random.nextInt(GameVector.values().length)],
+                this
+            );
+            snakes.add(aiSnake);
+
+            AiSnakeContract ai = (i % 2 == 0) ? new RandomAiSnake() : new AppleChaserAiSnake();
+            aiControllers.add(ai);
+        }
+
+        score.set(playerSnake.getSize());
 
         return this;
     }
@@ -66,9 +94,9 @@ public class ModelGame implements ModelContract {
     }
 
     /**
-     * Returns a copy of the list of all field points.
-     * This method provides a duplicate of the current field points list, ensuring that changes to
-     * the copy do not affect the original list.
+     * Returns a copy of the list of all field points. This method provides a duplicate of the
+     * current field points list, ensuring that changes to the copy do not affect the original
+     * list.
      *
      * @return A list containing copies of all field points.
      */
@@ -81,35 +109,40 @@ public class ModelGame implements ModelContract {
     }
 
     /**
-     * Retrieves a list of non-lethal points on the field, i.e., points that are not occupied by the
-     * snake's body.
+     * Retrieves a list of non-lethal points for a specific snake.
      *
      * @param snake The snake to check against.
      * @return A list of points that are safe for the snake to move into.
      */
     public List<GamePoint> getNonKillingCells(GameSnake snake) {
         List<GamePoint> fieldCopy = getFieldPointsCopy();
+        for (GameSnake otherSnake : snakes) {
+            if (otherSnake != snake) {
+                fieldCopy.removeAll(otherSnake.getBody());
+            }
+        }
         fieldCopy.removeAll(snake.getBody());
         return fieldCopy;
     }
 
     /**
-     * Retrieves a list of free cells on the field where objects (like apples) can be placed.
-     * Free cells are those that are not occupied by the snake or apples.
+     * Retrieves a list of free cells on the field where objects can be placed.
      *
-     * @return A list of available cells for object placement.
+     * @return A list of available cells.
      */
     public List<GamePoint> getFreeFieldCells() {
         List<GamePoint> fieldCopy = getFieldPointsCopy();
-        fieldCopy.removeAll(snake.getWholeBody());
+        for (GameSnake snake : snakes) {
+            fieldCopy.removeAll(snake.getWholeBody());
+        }
         fieldCopy.removeAll(apples.getApples());
         return fieldCopy;
     }
 
     /**
-     * Retrieves the current score, which is equivalent to the snake's current size.
+     * Retrieves the current score (player snake's size).
      *
-     * @return The current score of the game (snake size).
+     * @return The current score of the game.
      */
     public int getScore() {
         return score.get();
@@ -125,27 +158,113 @@ public class ModelGame implements ModelContract {
     }
 
     /**
-     * Updates the game state, executing necessary actions such as moving the snake and checking for
-     * apple collisions.
+     * Handles collisions for a given snake.
+     *
+     * @param i      The index of the current snake in the snakes list.
+     * @param snakes The list of all snakes.
+     * @return A list of snakes to be removed due to collisions.
      */
-    public void update() {
-        snake.move();
-        if (apples.checkSnakeGrowth(snake)) {
-            apples.addRandomApple();
+    private List<GameSnake> handleCollisions(List<GameSnake> snakes) {
+        List<GameSnake> snakesToRemove = new ArrayList<>();
+        for (int i = 0; i < snakes.size(); i++) {
+            GameSnake snake = snakes.get(i);
+            if (snake.isDead()) {
+                snakesToRemove.add(snake);
+                continue;
+            }
+            GamePoint head = snake.getHead();
+
+            for (int j = i + 1; j < snakes.size(); j++) {
+                GameSnake otherSnake = snakes.get(j);
+                if (head.equals(otherSnake.getHead())) {
+                    if (snake == snakes.get(0)) {
+                        snakesToRemove.add(otherSnake);
+                        score.set(score.get() + 5);
+                    } else if (otherSnake == snakes.get(0)) {
+                        snakesToRemove.add(snake);
+                        score.set(score.get() + 5);
+                    } else {
+                        snakesToRemove.add(snake);
+                        snakesToRemove.add(otherSnake);
+                    }
+                }
+            }
+
+            for (GameSnake otherSnake : snakes) {
+                if (otherSnake != snake && head.isInList(otherSnake.getBody())) {
+                    if (otherSnake == snakes.get(0) && snake != snakes.get(0)) {
+                        snakesToRemove.add(snake);
+                        score.set(score.get() + 5);
+                    } else if (snake == snakes.get(0) && otherSnake != snakes.get(0)) {
+                        snakesToRemove.add(snake);
+                    } else {
+                        snakesToRemove.add(snake);
+                    }
+                }
+            }
         }
-        score.set(snake.getSize());
+
+        return snakesToRemove;
     }
 
     /**
-     * Checks whether the game is over. The game ends if the snake dies.
+     * Updates the game state for all snakes.
      *
-     * @return True if the game is over (i.e., the snake is dead), otherwise false.
+     * @return List of dead snakes.
      */
-    public boolean isGameOver() {
-        return snake.isDead();
+    public List<GameSnake> update() {
+        for (int i = 0; i < aiControllers.size(); i++) {
+            aiControllers.get(i).updateDirection(this);
+        }
+
+        for (GameSnake snake : snakes) {
+            snake.move();
+        }
+
+        List<GameSnake> snakesToRemove = handleCollisions(snakes);
+
+        for (GameSnake deadSnake : snakesToRemove) {
+            snakes.remove(deadSnake);
+            int aiIndex = snakes.indexOf(deadSnake) - 1; // -1 because player snake has no AI
+            if (aiIndex >= 0 && aiIndex < aiControllers.size()) {
+                aiControllers.remove(aiIndex);
+            }
+        }
+
+        for (GameSnake snake : snakes) {
+            if (apples.checkSnakeGrowth(snake)) {
+                apples.addRandomApple();
+            }
+            if (snake == snakes.get(0)) {
+                score.set(snake.getSize());
+            }
+        }
+
+        return snakesToRemove;
     }
 
-    // Getters for the fields
+    /**
+     * Checks whether the game is over (player snake is dead).
+     *
+     * @return True if the game is over, otherwise false.
+     */
+    public boolean isGameOver() {
+        return snakes.isEmpty() || snakes.get(0).isDead();
+    }
+
+    /**
+     * Checks if any snake has won by filling the field.
+     *
+     * @return True if a snake has won.
+     */
+    public boolean isGameWon() {
+        for (GameSnake snake : snakes) {
+            if (snake.getSize() == currentFieldWidth * currentFieldHeight) {
+                return true;
+            }
+        }
+        return false;
+    }
 
     /**
      * Retrieves the current width of the game field.
@@ -166,12 +285,21 @@ public class ModelGame implements ModelContract {
     }
 
     /**
-     * Retrieves the current snake object in the game.
+     * Retrieves all snakes in the game.
      *
-     * @return The snake object.
+     * @return The list of snakes.
      */
-    public GameSnake getSnake() {
-        return snake;
+    public List<GameSnake> getSnakes() {
+        return snakes;
+    }
+
+    /**
+     * Retrieves the player snake.
+     *
+     * @return The player snake.
+     */
+    public GameSnake getPlayerSnake() {
+        return snakes.isEmpty() ? null : snakes.get(0);
     }
 
     /**
