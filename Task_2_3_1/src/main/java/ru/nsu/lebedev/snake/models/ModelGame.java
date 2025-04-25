@@ -160,7 +160,6 @@ public class ModelGame implements ModelContract {
     /**
      * Handles collisions for a given snake.
      *
-     * @param i      The index of the current snake in the snakes list.
      * @param snakes The list of all snakes.
      * @return A list of snakes to be removed due to collisions.
      */

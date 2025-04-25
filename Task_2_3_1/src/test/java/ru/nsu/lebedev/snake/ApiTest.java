@@ -25,10 +25,10 @@ public class ApiTest {
         ModelGame gameModel = ModelEnum.GAME.get().restartModel();
         Assertions.assertEquals(1, gameModel.getApples().size());
 
-        GamePoint startPoint = gameModel.getSnake().getHead().copy();
+        GamePoint startPoint = gameModel.getPlayerSnake().getHead().copy();
         for (int i = 0; i < 5; ++i) {
             gameModel.update();
         }
-        Assertions.assertEquals(startPoint, gameModel.getSnake().getHead());
+        Assertions.assertEquals(startPoint, gameModel.getPlayerSnake().getHead());
     }
 }
