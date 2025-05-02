@@ -21,6 +21,7 @@ public class ModelGame implements ModelContract {
 
     private int currentFieldWidth;
     private int currentFieldHeight;
+    private final int PRIZE = 5;
     private final List<GamePoint> fieldPoints = new ArrayList<>();
     private static final int INITIAL_SNAKE_SIZE = 1;
     private List<GameSnake> snakes; // All snakes (player + AI)
@@ -178,10 +179,10 @@ public class ModelGame implements ModelContract {
                 if (head.equals(otherSnake.getHead())) {
                     if (snake == snakes.get(0)) {
                         snakesToRemove.add(otherSnake);
-                        score.set(score.get() + 5);
+                        score.set(score.get() + PRIZE);
                     } else if (otherSnake == snakes.get(0)) {
                         snakesToRemove.add(snake);
-                        score.set(score.get() + 5);
+                        score.set(score.get() + PRIZE);
                     } else {
                         snakesToRemove.add(snake);
                         snakesToRemove.add(otherSnake);
@@ -193,7 +194,7 @@ public class ModelGame implements ModelContract {
                 if (otherSnake != snake && head.isInList(otherSnake.getBody())) {
                     if (otherSnake == snakes.get(0) && snake != snakes.get(0)) {
                         snakesToRemove.add(snake);
-                        score.set(score.get() + 5);
+                        score.set(score.get() + PRIZE);
                     } else if (snake == snakes.get(0) && otherSnake != snakes.get(0)) {
                         snakesToRemove.add(snake);
                     } else {
