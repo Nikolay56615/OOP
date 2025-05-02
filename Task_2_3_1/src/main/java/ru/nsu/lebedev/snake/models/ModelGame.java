@@ -21,7 +21,7 @@ public class ModelGame implements ModelContract {
 
     private int currentFieldWidth;
     private int currentFieldHeight;
-    private final int PRIZE = 5;
+    private static final int PRIZE = 5;
     private final List<GamePoint> fieldPoints = new ArrayList<>();
     private static final int INITIAL_SNAKE_SIZE = 1;
     private List<GameSnake> snakes; // All snakes (player + AI)
