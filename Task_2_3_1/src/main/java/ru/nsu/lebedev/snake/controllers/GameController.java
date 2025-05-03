@@ -1,5 +1,6 @@
 package ru.nsu.lebedev.snake.controllers;
 
+import java.util.List;
 import javafx.animation.AnimationTimer;
 import javafx.beans.binding.Bindings;
 import javafx.fxml.FXML;
@@ -7,6 +8,7 @@ import javafx.scene.control.Label;
 import javafx.scene.input.KeyEvent;
 import javafx.scene.layout.GridPane;
 import ru.nsu.lebedev.snake.game.GamePoint;
+import ru.nsu.lebedev.snake.game.GameSnake;
 import ru.nsu.lebedev.snake.game.GameVector;
 import ru.nsu.lebedev.snake.models.ModelEnum;
 import ru.nsu.lebedev.snake.models.ModelGame;
@@ -16,8 +18,8 @@ import ru.nsu.lebedev.snake.scenes.ScenesControllerContract;
 import ru.nsu.lebedev.snake.scenes.ScenesManager;
 
 /**
- * Controller for the Game scene. This class manages the game loop, handles key input events for
- * controlling the snake, and updates the game view accordingly.
+ * Controller for the Game scene.
+ * Manages the game loop, handles key input for the player snake, and updates the game view.
  */
 public class GameController implements ScenesControllerContract {
 
@@ -74,8 +76,7 @@ public class GameController implements ScenesControllerContract {
     }
 
     /**
-     * Handles key events for controlling the snake. Arrow keys change the snake's direction; the
-     * ESC key ends the game.
+     * Handles key events for controlling the player snake.
      *
      * @param event the key event.
      */
@@ -92,35 +93,47 @@ public class GameController implements ScenesControllerContract {
         };
 
         if (direction != null) {
-            gameModel.getSnake().setDirection(direction);
+            gameModel.getPlayerSnake().setDirection(direction);
             updatedAfterKeyPressed = false;
         }
     }
 
     /**
-     * Updates the game state: repaints cells, updates the model, and checks for game over
-     * condition.
+     * Updates the game state: repaints cells, updates the model, and checks for game over or win.
      */
     private void updateSnakeCells() {
-        GamePoint currentHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(currentHead, GameView.CellColor.SNAKE);
+        for (GameSnake snake : gameModel.getSnakes()) {
+            GamePoint tail = snake.getTail();
+            gameView.setCellColor(tail, GameView.CellColor.FIELD);
+        }
 
-        GamePoint tail = gameModel.getSnake().getTail();
-        gameView.setCellColor(tail, GameView.CellColor.FIELD);
-
-        gameModel.update();
+        List<GameSnake> deadSnakes = gameModel.update();
         if (gameModel.isGameOver()) {
             gameOver();
             return;
         }
-        if (gameModel.getSnake().getSize()
-            == gameModel.getCurrentFieldWidth() * gameModel.getCurrentFieldHeight()) {
+        if (gameModel.isGameWon()) {
             win();
             return;
         }
 
-        GamePoint newHead = gameModel.getSnake().getHead();
-        gameView.setCellColor(newHead, GameView.CellColor.SNAKE_HEAD);
+        for (GameSnake deadSnake : deadSnakes) {
+            for (GamePoint point : deadSnake.getWholeBody()) {
+                gameView.setCellColor(point, GameView.CellColor.FIELD);
+            }
+        }
+
+        for (int i = 0; i < gameModel.getSnakes().size(); i++) {
+            GameSnake snake = gameModel.getSnakes().get(i);
+            GameView.CellColor snakeColor = (i == 0) ? GameView.CellColor.SNAKE :
+                (i == 1) ? GameView.CellColor.AI_SNAKE_1 : GameView.CellColor.AI_SNAKE_2;
+            GameView.CellColor headColor = (i == 0) ? GameView.CellColor.SNAKE_HEAD :
+                (i == 1) ? GameView.CellColor.AI_SNAKE_HEAD_1 : GameView.CellColor.AI_SNAKE_HEAD_2;
+            for (GamePoint point : snake.getBody()) {
+                gameView.setCellColor(point, snakeColor);
+            }
+            gameView.setCellColor(snake.getHead(), headColor);
+        }
 
         for (GamePoint apple : gameModel.getApples()) {
             gameView.setCellColor(apple, GameView.CellColor.APPLE);

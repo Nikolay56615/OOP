@@ -24,7 +24,11 @@ public class GameView {
         FIELD("#A8E6CF"),
         SNAKE("#4A90E2"),
         SNAKE_HEAD("#003366"),
-        APPLE("#FF4F4F");
+        APPLE("#FF4F4F"),
+        AI_SNAKE_1("#FF0000"),
+        AI_SNAKE_HEAD_1("#CC0000"),
+        AI_SNAKE_2("#00FF00"),
+        AI_SNAKE_HEAD_2("#00CC00");
 
         private final String hex;
 
@@ -59,21 +63,7 @@ public class GameView {
         this.grid = grid;
         this.numRows = numRows;
         this.numCols = numCols;
-        // for (int i = 0; i < numCols; i++) {
-        //     ColumnConstraints colConst = new ColumnConstraints();
-        //     colConst.setPercentWidth(100.0 / numCols);
-        //     grid.getColumnConstraints().add(colConst);
-        // }
-        // for (int i = 0; i < numRows; i++) {
-        //     RowConstraints rowConst = new RowConstraints();
-        //     rowConst.setPercentHeight(100.0 / numRows);
-        //     grid.getRowConstraints().add(rowConst);
-        // }
         initializeField();
-        // if (!cellPanes.isEmpty() && !cellPanes.get(0).isEmpty()) {
-        //     StackPane firstCell = cellPanes.get(0).get(0);
-        //     cellSizeProperty.bind(firstCell.widthProperty());
-        // }
     }
 
     /**
@@ -84,13 +74,7 @@ public class GameView {
     private static StackPane createCell() {
         Rectangle rectangle = new Rectangle(30, 30, Paint.valueOf(CellColor.FIELD.getHex()));
         rectangle.getStyleClass().add("cell");
-        // private StackPane createCell() {
         StackPane cellPane = new StackPane();
-        // Rectangle rectangle = new Rectangle();
-        // rectangle.widthProperty().bind(cellPane.widthProperty());
-        // rectangle.heightProperty().bind(cellPane.heightProperty());
-        // rectangle.setFill(Paint.valueOf(CellColor.FIELD.getHex()));
-        // rectangle.getStyleClass().add("cell");
         cellPane.getChildren().add(rectangle);
         return cellPane;
     }
@@ -157,56 +141,6 @@ public class GameView {
             background.setFill(Paint.valueOf(color.getHex()));
         }
     }
-
-    //    public void setCellColor(int x, int y, CellColor color) {
-    //        StackPane cellPane = cellPanes.get(y).get(x);
-    //        if (cellPane.getChildren().size() > 1) {
-    //            cellPane.getChildren().remove(1, cellPane.getChildren().size());
-    //        }
-    //
-    //        Rectangle background = (Rectangle) cellPane.getChildren().get(0);
-    //
-    //        if (color == CellColor.SNAKE) {
-    //            Rectangle snakeBody = new Rectangle();
-    //            snakeBody.widthProperty().bind(cellSizeProperty);
-    //            snakeBody.heightProperty().bind(cellSizeProperty);
-    //            snakeBody.setFill(Paint.valueOf(CellColor.SNAKE.getHex()));
-    //            snakeBody.arcWidthProperty().bind(cellSizeProperty.multiply(0.5));
-    //            snakeBody.arcHeightProperty().bind(cellSizeProperty.multiply(0.5));
-    //            cellPane.getChildren().add(snakeBody);
-    //        } else if (color == CellColor.SNAKE_HEAD) {
-    //            Rectangle snakeHead = new Rectangle();
-    //            snakeHead.widthProperty().bind(cellSizeProperty);
-    //            snakeHead.heightProperty().bind(cellSizeProperty);
-    //            snakeHead.setFill(Paint.valueOf(CellColor.SNAKE_HEAD.getHex()));
-    //            snakeHead.arcWidthProperty().bind(cellSizeProperty.multiply(0.7));
-    //            snakeHead.arcHeightProperty().bind(cellSizeProperty.multiply(0.7));
-    //            cellPane.getChildren().add(snakeHead);
-    //
-    //            Circle leftEye = new Circle();
-    //            leftEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
-    //            leftEye.setFill(Color.WHITE);
-    //            leftEye.translateXProperty().bind(cellSizeProperty.multiply(-0.2));
-    //            leftEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
-    //
-    //            Circle rightEye = new Circle();
-    //            rightEye.radiusProperty().bind(cellSizeProperty.multiply(0.13));
-    //            rightEye.setFill(Color.WHITE);
-    //            rightEye.translateXProperty().bind(cellSizeProperty.multiply(0.2));
-    //            rightEye.translateYProperty().bind(cellSizeProperty.multiply(-0.2));
-    //
-    //            cellPane.getChildren().addAll(leftEye, rightEye);
-    //        } else if (color == CellColor.APPLE) {
-    //            Circle apple = new Circle();
-    //            apple.radiusProperty().bind(cellSizeProperty.multiply(0.3));
-    //            apple.setFill(Color.valueOf(CellColor.APPLE.getHex()));
-    //            apple.setStroke(Color.BLACK);
-    //            apple.strokeWidthProperty().bind(cellSizeProperty.multiply(0.05));
-    //            cellPane.getChildren().add(apple);
-    //        } else {
-    //            background.setFill(Paint.valueOf(color.getHex()));
-    //        }
-    //    }
 
     /**
      * Sets the color of a specific cell using a GamePoint.
