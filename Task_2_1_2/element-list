@@ -1,0 +1,9 @@
+ru.nsu.lebedev.primes
+ru.nsu.lebedev.primes.checkers
+ru.nsu.lebedev.primes.clients
+ru.nsu.lebedev.primes.errors
+ru.nsu.lebedev.primes.jobs
+ru.nsu.lebedev.primes.json
+ru.nsu.lebedev.primes.server
+ru.nsu.lebedev.primes.socket
+ru.nsu.lebedev.primes.workers
