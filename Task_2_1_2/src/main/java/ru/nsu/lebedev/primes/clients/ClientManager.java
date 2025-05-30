@@ -145,8 +145,8 @@ public class ClientManager implements Runnable {
             TcpSocket.postJsonObject(sessionSocket, errorMessage);
         } catch (IOException e) {
             System.err.println(
-                logMessage + " for client " + sessionSocket.getRemoteSocketAddress() +
-                    ": " + e.getMessage()
+                logMessage + " for client " + sessionSocket.getRemoteSocketAddress()
+                    + ": " + e.getMessage()
             );
         }
     }

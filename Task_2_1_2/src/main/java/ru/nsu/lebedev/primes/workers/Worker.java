@@ -11,6 +11,8 @@ import java.util.ArrayList;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.atomic.AtomicBoolean;
+import ru.nsu.lebedev.primes.checkers.SimpleChecker;
+import ru.nsu.lebedev.primes.checkers.UnprimeChecker;
 import ru.nsu.lebedev.primes.errors.ErrorParsingJson;
 import ru.nsu.lebedev.primes.errors.ErrorSocketStreamEnd;
 import ru.nsu.lebedev.primes.errors.ErrorWorkerCreation;
@@ -20,13 +22,12 @@ import ru.nsu.lebedev.primes.socket.DatagramUtils;
 import ru.nsu.lebedev.primes.socket.MulticastContract;
 import ru.nsu.lebedev.primes.socket.MulticastSocketManager;
 import ru.nsu.lebedev.primes.socket.TcpSocket;
-import ru.nsu.lebedev.primes.checkers.SimpleChecker;
-import ru.nsu.lebedev.primes.checkers.UnprimeChecker;
 
 /**
  * Worker node for processing jobs received via TCP connections.
  */
 public class Worker implements Runnable {
+
     private static final int WORKER_TIMEOUT = 1200;
     private static final int THREAD_POOL_SIZE = 4;
     private final Integer workerPort;
@@ -39,7 +40,7 @@ public class Worker implements Runnable {
     /**
      * Constructor for Worker.
      *
-     * @param workerPort port for the TCP server socket
+     * @param workerPort          port for the TCP server socket
      * @param groupCastController controller for registering multicast packet processor
      * @throws ErrorWorkerCreation if an error occurs during worker initialization
      */
@@ -157,8 +158,8 @@ public class Worker implements Runnable {
             jobData = TcpSocket.getJsonObject(socket, JobDataRecord.class);
         } catch (IOException | ErrorSocketStreamEnd e) {
             System.err.println(
-                "Failed to receive job data on port " + workerPort +
-                    " from " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
+                "Failed to receive job data on port " + workerPort
+                    + " from " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
             );
             return;
         } catch (ErrorParsingJson e) {
@@ -175,8 +176,8 @@ public class Worker implements Runnable {
             System.out.println("Sent result to " + socket.getRemoteSocketAddress());
         } catch (IOException e) {
             System.err.println(
-                "Failed to send result from worker on port " + workerPort +
-                    " to " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
+                "Failed to send result from worker on port " + workerPort
+                    + " to " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
             );
         }
     }

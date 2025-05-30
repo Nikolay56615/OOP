@@ -6,17 +6,18 @@ import java.util.ArrayList;
 import java.util.concurrent.Callable;
 import ru.nsu.lebedev.primes.errors.ErrorMessageRecord;
 import ru.nsu.lebedev.primes.errors.ErrorParsingJson;
+import ru.nsu.lebedev.primes.jobs.JobDataRecord;
+import ru.nsu.lebedev.primes.jobs.JobResultRecord;
 import ru.nsu.lebedev.primes.json.Json;
 import ru.nsu.lebedev.primes.json.JsonSerializable;
 import ru.nsu.lebedev.primes.socket.TcpSocket;
-import ru.nsu.lebedev.primes.jobs.JobDataRecord;
-import ru.nsu.lebedev.primes.jobs.JobResultRecord;
 
 /**
  * Client class for sending jobs to a server and receiving results.
  * Implements Callable to allow execution in a separate thread.
  */
 public class Client implements Callable<JsonSerializable> {
+
     private final JobDataRecord jobData;
     private final String hostname;
     private final int serverPort;
@@ -24,8 +25,8 @@ public class Client implements Callable<JsonSerializable> {
     /**
      * Constructs a new Client with the given job data, server hostname, and port.
      *
-     * @param list the list of integers for the job
-     * @param hostname the server's hostname or IP address
+     * @param list       the list of integers for the job
+     * @param hostname   the server's hostname or IP address
      * @param serverPort the server's port number
      */
     public Client(ArrayList<Integer> list, String hostname, int serverPort) {
@@ -35,8 +36,8 @@ public class Client implements Callable<JsonSerializable> {
     }
 
     /**
-     * Receives the job result from the server.
-     * Attempts to deserialize the response as JobResultRecord.
+     * Receives the job result from the server. Attempts to deserialize the response as
+     * JobResultRecord.
      *
      * @param socket the socket to receive from
      * @return the deserialized job result or an error message

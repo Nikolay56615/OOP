@@ -15,8 +15,8 @@ import ru.nsu.lebedev.primes.errors.ErrorSocketStreamEnd;
  * <strong>Single Responsibility Principle</strong> by focusing solely on JSON conversion.
  * Moreover,
  * by relying on the abstract marker interface {@code JsonSerializable}, it observes the
- * <strong>Dependency Inversion Principle</strong>. Note: The parameter type {@code JsonSerializable}
- * is
+ * <strong>Dependency Inversion Principle</strong>.
+ * Note: The parameter type {@code JsonSerializable} is
  * a marker interface used to indicate that an object for JSON.
  */
 public final class Json {
@@ -32,7 +32,7 @@ public final class Json {
     /**
      * Serializes an object to its JSON string representation.
      *
-     * @param object an instance of a class implementing {@code Serializable}.
+     * @param object an instance of a class implementing {@code JsonSerializable}.
      * @return the JSON string representation of the object.
      * @throws IOException if an error occurs during serialization.
      */
@@ -59,8 +59,8 @@ public final class Json {
     }
 
     /**
-     * Deserializes JSON data from an input stream into an object of the specified type. The method
-     * reads the input stream using UTF-8 encoding and converts it into the target object.
+     * Deserializes JSON data from an input stream into an object of the specified type.
+     * The method reads the input stream using UTF-8 and converts it into the target object.
      *
      * @param inputStream the input stream containing JSON data
      * @param type        the target class type

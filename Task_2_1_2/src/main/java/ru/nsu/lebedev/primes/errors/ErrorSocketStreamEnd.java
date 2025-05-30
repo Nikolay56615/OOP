@@ -14,6 +14,7 @@ public class ErrorSocketStreamEnd extends Exception {
     /**
      * Constructs a new ErrorSocketStreamEnd with the specified cause.
      * The cause is an exception produced by JsonParse - MismatchedInputException.
+     *
      * @param cause the cause of the exception
      */
     public ErrorSocketStreamEnd(Throwable cause) {

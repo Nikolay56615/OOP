@@ -9,13 +9,14 @@ import ru.nsu.lebedev.primes.errors.ErrorParsingJson;
 import ru.nsu.lebedev.primes.errors.ErrorSocketStreamEnd;
 import ru.nsu.lebedev.primes.errors.ErrorWorkerCalculation;
 import ru.nsu.lebedev.primes.errors.ErrorWorkerNotFound;
-import ru.nsu.lebedev.primes.socket.TcpSocket;
 import ru.nsu.lebedev.primes.socket.MulticastUtils;
+import ru.nsu.lebedev.primes.socket.TcpSocket;
 
 /**
  * Coordinator for managing jobs distributed across workers.
  */
 public class JobManager {
+
     private final JobDataRecord jobData;
     private final int workersPerJob;
     private final int coordinatorPort;
@@ -24,9 +25,9 @@ public class JobManager {
     /**
      * Constructor for JobCoordinator.
      *
-     * @param jobData data for the job to be processed
-     * @param workersPerJob number of workers needed to process the job
-     * @param groupCastPort port for discovering workers via multicast
+     * @param jobData         data for the job to be processed
+     * @param workersPerJob   number of workers needed to process the job
+     * @param groupCastPort   port for discovering workers via multicast
      * @param coordinatorPort port of the clientManager's socket
      */
     public JobManager(
@@ -43,7 +44,7 @@ public class JobManager {
      * Executes the job by distributing sub-jobs to workers and collecting results.
      *
      * @return the result of the job execution wrapped in an Optional
-     * @throws ErrorWorkerNotFound if not enough workers are available
+     * @throws ErrorWorkerNotFound    if not enough workers are available
      * @throws ErrorWorkerCalculation if a worker fails and cannot be replaced
      */
     public Optional<JobResultRecord> executeJob()
@@ -121,7 +122,7 @@ public class JobManager {
     /**
      * Divides the job data into a specified number of segments.
      *
-     * @param jobData the job data to be segmented
+     * @param jobData  the job data to be segmented
      * @param segments the number of segments desired
      * @return a list of TaskData segments
      */
