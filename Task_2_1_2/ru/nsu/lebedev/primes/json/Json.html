@@ -81,8 +81,8 @@ loadScripts(document, 'script');</script>
  <strong>Single Responsibility Principle</strong> by focusing solely on JSON conversion.
  Moreover,
  by relying on the abstract marker interface <code>JsonSerializable</code>, it observes the
- <strong>Dependency Inversion Principle</strong>. Note: The parameter type <code>JsonSerializable</code>
- is
+ <strong>Dependency Inversion Principle</strong>.
+ Note: The parameter type <code>JsonSerializable</code> is
  a marker interface used to indicate that an object for JSON.</div>
 </section>
 <section class="summary">
@@ -140,7 +140,7 @@ loadScripts(document, 'script');</script>
 <div class="block">Serializes an object to its JSON string representation.</div>
 <dl class="notes">
 <dt>Parameters:</dt>
-<dd><code>object</code> - an instance of a class implementing <code>Serializable</code>.</dd>
+<dd><code>object</code> - an instance of a class implementing <code>JsonSerializable</code>.</dd>
 <dt>Returns:</dt>
 <dd>the JSON string representation of the object.</dd>
 <dt>Throws:</dt>
@@ -175,8 +175,8 @@ loadScripts(document, 'script');</script>
  <a href="https://docs.oracle.com/en/java/javase/17/docs/api/java.base/java/lang/Class.html" title="class or interface in java.lang" class="external-link">Class</a>&lt;T&gt;&nbsp;type)</span>
                                                   throws <span class="exceptions"><a href="../errors/ErrorParsingJson.html" title="class in ru.nsu.lebedev.primes.errors">ErrorParsingJson</a>,
 <a href="../errors/ErrorSocketStreamEnd.html" title="class in ru.nsu.lebedev.primes.errors">ErrorSocketStreamEnd</a></span></div>
-<div class="block">Deserializes JSON data from an input stream into an object of the specified type. The method
- reads the input stream using UTF-8 encoding and converts it into the target object.</div>
+<div class="block">Deserializes JSON data from an input stream into an object of the specified type.
+ The method reads the input stream using UTF-8 and converts it into the target object.</div>
 <dl class="notes">
 <dt>Type Parameters:</dt>
 <dd><code>T</code> - the type of the returned object</dd>
