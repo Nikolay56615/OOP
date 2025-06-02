@@ -12,7 +12,7 @@ import ru.nsu.lebedev.primes.socket.MulticastSocketManager;
  *
  */
 public final class WorkerPool {
-    private static final int MAX_PORT_LIMIT = 32000;
+    public static final int MAX_PORT_LIMIT = 32000;
     private static final int THREAD_POOL_SIZE = 5;
     private final MulticastSocketManager groupCastCoordinator;
     private final ExecutorService workerExecutor;

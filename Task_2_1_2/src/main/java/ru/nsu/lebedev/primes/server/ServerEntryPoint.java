@@ -18,7 +18,7 @@ public class ServerEntryPoint implements Runnable {
 
     private static final int THREAD_POOL_SIZE = 6;
     private static final int SOCKET_BACKLOG = 50;
-    private static final int CONNECTION_TIMEOUT = 1200;
+    public static final int CONNECTION_TIMEOUT = 1200;
     private final int serverPort;
     private final int groupCastPort;
     private final int maxConnections;

@@ -28,7 +28,7 @@ import ru.nsu.lebedev.primes.socket.TcpSocket;
  */
 public class Worker implements Runnable {
 
-    private static final int WORKER_TIMEOUT = 1200;
+    public static final int WORKER_TIMEOUT = 1200;
     private static final int THREAD_POOL_SIZE = 4;
     private final Integer workerPort;
     private final AtomicBoolean isAvailable = new AtomicBoolean(true);
@@ -164,8 +164,8 @@ public class Worker implements Runnable {
             return;
         } catch (ErrorParsingJson e) {
             System.err.println(
-                "Failed to parse job data on port " + workerPort +
-                    " from " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
+                "Failed to parse job data on port " + workerPort
+                    + " from " + socket.getRemoteSocketAddress() + ": " + e.getMessage()
             );
             return;
         }
