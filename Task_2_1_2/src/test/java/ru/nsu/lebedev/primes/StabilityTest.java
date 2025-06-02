@@ -2,6 +2,7 @@ package ru.nsu.lebedev.primes;
 
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertNotNull;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
@@ -20,6 +21,8 @@ import ru.nsu.lebedev.primes.errors.ErrorMessageRecord;
 import ru.nsu.lebedev.primes.errors.ErrorMessages;
 import ru.nsu.lebedev.primes.errors.ErrorParsingJson;
 import ru.nsu.lebedev.primes.errors.ErrorSocketStreamEnd;
+import ru.nsu.lebedev.primes.errors.ErrorWorkerCalculation;
+import ru.nsu.lebedev.primes.errors.ErrorWorkerCreation;
 import ru.nsu.lebedev.primes.jobs.JobResultRecord;
 import ru.nsu.lebedev.primes.json.JsonSerializable;
 import ru.nsu.lebedev.primes.server.ServerEntryPoint;
@@ -144,6 +147,28 @@ public class StabilityTest {
             fail("Test failed: " + e.getMessage());
         }
     }
+
+    @Test
+    void testErrorWorkerCalculationDefaultConstructor() {
+        ErrorWorkerCalculation exception = new ErrorWorkerCalculation();
+        assertNotNull(exception, "Exception should be instantiated");
+    }
+
+
+    @Test
+    void testErrorWorkerCreationDefaultConstructor() {
+        ErrorWorkerCreation exception = new ErrorWorkerCreation();
+        assertNotNull(exception, "Exception should be instantiated");
+    }
+
+    @Test
+    void testErrorWorkerCreationWithCause() {
+        Throwable cause = new IOException("Failed to create worker");
+        ErrorWorkerCreation exception = new ErrorWorkerCreation(cause);
+        assertEquals(cause.toString(), exception.getMessage(),
+            "Message should match cause's toString");
+    }
+
 
     private WorkerPool initializeWorkerPool(int multicastPort) {
         try {

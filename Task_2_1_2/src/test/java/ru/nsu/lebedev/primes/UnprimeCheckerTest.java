@@ -158,7 +158,7 @@ public class UnprimeCheckerTest {
 
     @Test
     void splitDataZeroRest() {
-        ArrayList<Integer> numbers = new ArrayList<>();
+        final ArrayList<Integer> numbers = new ArrayList<>();
         numbers.add(6);
         numbers.add(8);
         numbers.add(7);
@@ -167,8 +167,8 @@ public class UnprimeCheckerTest {
         numbers.add(9);
         numbers.add(4);
         numbers.add(8);
-        JobDataRecord originTaskData = new JobDataRecord(numbers);
-        ArrayList<JobDataRecord> expectedTasks = new ArrayList<>();
+        final JobDataRecord originTaskData = new JobDataRecord(numbers);
+        final ArrayList<JobDataRecord> expectedTasks = new ArrayList<>();
         ArrayList<Integer> sublist1 = new ArrayList<>();
         sublist1.add(6);
         sublist1.add(8);
@@ -188,7 +188,7 @@ public class UnprimeCheckerTest {
 
     @Test
     void splitDataNonZeroRest() {
-        ArrayList<Integer> numbers = new ArrayList<>();
+        final ArrayList<Integer> numbers = new ArrayList<>();
         numbers.add(6);
         numbers.add(8);
         numbers.add(7);
@@ -196,8 +196,8 @@ public class UnprimeCheckerTest {
         numbers.add(5);
         numbers.add(9);
         numbers.add(4);
-        JobDataRecord originTaskData = new JobDataRecord(numbers);
-        ArrayList<JobDataRecord> expectedTasks = new ArrayList<>();
+        final JobDataRecord originTaskData = new JobDataRecord(numbers);
+        final ArrayList<JobDataRecord> expectedTasks = new ArrayList<>();
         ArrayList<Integer> sublist1 = new ArrayList<>();
         sublist1.add(6);
         sublist1.add(8);
