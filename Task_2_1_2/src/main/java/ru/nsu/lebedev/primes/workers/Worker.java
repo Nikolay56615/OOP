@@ -147,6 +147,12 @@ public class Worker implements Runnable {
     }
 
     /**
+     * Getting worker port.
+     * For test usage.
+     */
+    public int getPort() { return workerPort; }
+
+    /**
      * Processes a job received from a client socket.
      *
      * @param socket the socket for receiving job data and sending results
@@ -173,7 +179,8 @@ public class Worker implements Runnable {
         JobResultRecord result = new JobResultRecord(checker.isAnyUnprime());
         try {
             TcpSocket.postJsonObject(socket, result);
-            System.out.println("Sent result to " + socket.getRemoteSocketAddress());
+            System.out.println("Sent result to " + socket.getRemoteSocketAddress()
+                + " from " + workerPort);
         } catch (IOException e) {
             System.err.println(
                 "Failed to send result from worker on port " + workerPort

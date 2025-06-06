@@ -59,7 +59,7 @@ public class JobManager {
                 JobResultRecord workerResult = TcpSocket.getJsonObject(
                     activeJob.workerConnection(), JobResultRecord.class
                 );
-                if (workerResult.result()) {
+                if (workerResult.result() && workerResult.result() != null) {
                     finalResult = workerResult;
                     break;
                 }

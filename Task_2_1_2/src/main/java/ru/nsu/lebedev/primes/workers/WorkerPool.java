@@ -2,28 +2,33 @@ package ru.nsu.lebedev.primes.workers;
 
 import java.io.IOException;
 import java.util.ArrayList;
+import java.util.HashMap;
+import java.util.Map;
 import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
+import java.util.concurrent.Future;
+import java.util.concurrent.TimeUnit;
 import ru.nsu.lebedev.primes.errors.ErrorWorkerCreation;
 import ru.nsu.lebedev.primes.socket.MulticastSocketManager;
 
 /**
  * Manages a pool of worker nodes.
- *
  */
 public final class WorkerPool {
+
     public static final int MAX_PORT_LIMIT = 32000;
     private static final int THREAD_POOL_SIZE = 5;
     private final MulticastSocketManager groupCastCoordinator;
     private final ExecutorService workerExecutor;
     private final ArrayList<Worker> activeWorkers = new ArrayList<>();
     private final ArrayList<Runnable> workerJobs = new ArrayList<>();
+    private final Map<Integer, Future<?>> workerFutures = new HashMap<>();
 
     /**
      * Constructor for WorkerPool.
      *
      * @param multicastAddress address for the multicast group
-     * @param multicastPort port for the multicast group
+     * @param multicastPort    port for the multicast group
      * @throws IOException if multicast coordinator initialization fails
      */
     public WorkerPool(String multicastAddress, int multicastPort) throws IOException {
@@ -51,7 +56,8 @@ public final class WorkerPool {
                 worker = new Worker(currentPort, groupCastCoordinator);
             } catch (ErrorWorkerCreation e) {
                 System.err.println(
-                    "Unable to initialize worker on port " + currentPort + ": " + e.getMessage()
+                    "Unable to initialize worker on port " + currentPort + ": "
+                        + e.getMessage()
                 );
                 currentPort++;
             }
@@ -60,7 +66,8 @@ public final class WorkerPool {
             return -1;
         }
         activeWorkers.add(worker);
-        workerExecutor.submit(worker);
+        Future<?> future = workerExecutor.submit(worker);
+        workerFutures.put(currentPort, future);
         workerJobs.add(worker);
         System.out.println("Worker on port " + currentPort + " initialized and started");
         return currentPort + 1;
@@ -71,18 +78,38 @@ public final class WorkerPool {
      *
      * @param initialPort the starting port for worker creation
      * @param workerCount the desired number of workers to create
-     * @return the number of workers successfully created and started
+     * @return the next available port after creating workers
      */
     public int startWorkers(int initialPort, int workerCount) {
         int currentPort = initialPort;
-        int workersStarted = 0;
-        for (; workersStarted < workerCount; workersStarted++) {
+        for (int i = 0; i < workerCount; i++) {
             currentPort = startWorker(currentPort);
             if (currentPort == -1) {
                 break;
             }
         }
-        return workersStarted;
+        return currentPort;
+    }
+
+    /**
+     * Terminates a specific worker by its port.
+     *
+     * @param port the port of the worker to terminate
+     */
+    public void terminateWorker(int port) {
+        Future<?> future = workerFutures.get(port);
+        if (future != null) {
+            future.cancel(true);
+            workerFutures.remove(port);
+            activeWorkers.removeIf(worker -> {
+                try {
+                    return worker.getPort() == port;
+                } catch (Exception e) {
+                    return false;
+                }
+            });
+            System.out.println("Worker on port " + port + " terminated");
+        }
     }
 
     /**
@@ -94,7 +121,16 @@ public final class WorkerPool {
         }
         activeWorkers.clear();
         workerJobs.clear();
+        groupCastCoordinator.terminate();
         workerExecutor.shutdown();
+        try {
+            if (!workerExecutor.awaitTermination(10, TimeUnit.SECONDS)) {
+                workerExecutor.shutdownNow();
+            }
+        } catch (InterruptedException e) {
+            workerExecutor.shutdownNow();
+            Thread.currentThread().interrupt();
+        }
     }
 
     /**
@@ -104,5 +140,6 @@ public final class WorkerPool {
         workerExecutor.shutdownNow();
         activeWorkers.clear();
         workerJobs.clear();
+        groupCastCoordinator.terminate();
     }
 }

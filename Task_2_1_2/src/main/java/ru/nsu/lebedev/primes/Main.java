@@ -7,6 +7,7 @@ import java.util.concurrent.FutureTask;
 import ru.nsu.lebedev.primes.clients.Client;
 import ru.nsu.lebedev.primes.json.JsonSerializable;
 import ru.nsu.lebedev.primes.server.ServerEntryPoint;
+import ru.nsu.lebedev.primes.workers.Worker;
 import ru.nsu.lebedev.primes.workers.WorkerPool;
 
 /**
@@ -23,12 +24,13 @@ public class Main {
      */
     public static void main(String[] args) {
         ServerEntryPoint entry = new ServerEntryPoint(
-            SERVER_PORT, SERVER_PORT, 3, 1
+            SERVER_PORT, SERVER_PORT, 2, 1
         );
-        new Thread(entry, "ServerThread").start();
+        Thread serverThread = new Thread(entry, "ServerThread");
+        serverThread.start();
         WorkerPool workersPool;
         try {
-            workersPool = new WorkerPool("230.0.0.0", SERVER_PORT);
+            workersPool = new WorkerPool("230.1.1.1", SERVER_PORT);
         } catch (IOException e) {
             System.err.println("Couldn't create workers' pool: " + e.getMessage());
             return;
@@ -45,7 +47,7 @@ public class Main {
         FutureTask<JsonSerializable> task = new FutureTask<>(new Client(
             list, entry.getHostName(), entry.getPort()
         ));
-        var clientThread = new Thread(task);
+        Thread clientThread = new Thread(task);
         clientThread.start();
 
         ArrayList<Integer> nunPrimeList = new ArrayList<>(list);
@@ -61,6 +63,18 @@ public class Main {
             System.out.println(secondTask.get());
         } catch (InterruptedException | ExecutionException ignored) {
             System.err.println("Interrupted while waiting for client task");
+        }
+        workersPool.terminateGracefully();
+        try {
+            Thread.sleep((Worker.WORKER_TIMEOUT + ServerEntryPoint.CONNECTION_TIMEOUT) * 2);
+            entry.shutdown();
+            if (serverThread.isAlive()) {
+                System.err.println("Server thread still alive after shutdown timeout");
+                serverThread.interrupt();
+            }
+        } catch (InterruptedException e) {
+            System.err.println("Interrupted during cleanup: " + e.getMessage());
+            Thread.currentThread().interrupt();
         }
     }
 }

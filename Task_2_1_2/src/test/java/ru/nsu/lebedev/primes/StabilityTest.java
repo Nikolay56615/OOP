@@ -3,6 +3,7 @@ package ru.nsu.lebedev.primes;
 import static org.junit.jupiter.api.Assertions.assertEquals;
 import static org.junit.jupiter.api.Assertions.assertFalse;
 import static org.junit.jupiter.api.Assertions.assertNotNull;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 import static org.junit.jupiter.api.Assertions.fail;
 
 import java.io.IOException;
@@ -15,6 +16,8 @@ import java.util.concurrent.ExecutorService;
 import java.util.concurrent.Executors;
 import java.util.concurrent.Future;
 import java.util.concurrent.FutureTask;
+import java.util.concurrent.TimeUnit;
+import java.util.concurrent.TimeoutException;
 import org.junit.jupiter.api.Test;
 import ru.nsu.lebedev.primes.clients.Client;
 import ru.nsu.lebedev.primes.errors.ErrorMessageRecord;
@@ -145,6 +148,50 @@ public class StabilityTest {
             assertFalse(serverThread.isAlive());
         } catch (InterruptedException | ExecutionException e) {
             fail("Test failed: " + e.getMessage());
+        }
+    }
+
+    @Test
+    void testWorkerDisconnectDuringTask() {
+        int testPort = BASE_PORT + 4;
+        ServerEntryPoint server = new ServerEntryPoint(testPort, testPort, 1, 10);
+        Thread serverThread = new Thread(server, "ServerThread");
+        serverThread.start();
+
+        WorkerPool workerPool = initializeWorkerPool(testPort);
+        if (workerPool != null) {
+            int nextPort = workerPool.startWorkers(testPort + 1, 2);
+            assertEquals(testPort + 3, nextPort, "Can not start worker");
+        }
+
+        ArrayList<Integer> numbers = new ArrayList<>();
+        for (int i = 0; i < LARGE_LIST_SIZE; i++) {
+            numbers.add(PRIME_NUMBER);
+        }
+        FutureTask<JsonSerializable> task = new FutureTask<>(
+            new Client(numbers, server.getHostName(), server.getPort())
+        );
+        Thread clientThread = new Thread(task);
+        clientThread.start();
+
+        try {
+            Thread.sleep(500);
+            assert workerPool != null;
+            workerPool.terminateWorker(testPort + 1);
+
+            JsonSerializable result = task.get(20, TimeUnit.SECONDS);
+            assertTrue(result instanceof JobResultRecord,
+                "Should be JobResultRecord");
+            JobResultRecord jobResult = (JobResultRecord) result;
+            assertFalse(jobResult.result(),
+                "There is not composite numbers");
+
+            workerPool.terminateGracefully();
+            server.shutdown();
+            serverThread.join(5000);
+            assertFalse(serverThread.isAlive(), "Server thread still alive");
+        } catch (InterruptedException | ExecutionException | TimeoutException e) {
+            fail("Test is failed: " + e.getMessage());
         }
     }
 
