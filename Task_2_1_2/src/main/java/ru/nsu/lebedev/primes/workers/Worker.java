@@ -150,7 +150,9 @@ public class Worker implements Runnable {
      * Getting worker port.
      * For test usage.
      */
-    public int getPort() { return workerPort; }
+    public int getPort() {
+        return workerPort;
+    }
 
     /**
      * Processes a job received from a client socket.

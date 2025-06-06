@@ -175,7 +175,7 @@ public class StabilityTest {
         clientThread.start();
 
         try {
-            Thread.sleep(500);
+            Thread.sleep(500); // waiting for receiving multicast from workers.
             assert workerPool != null;
             workerPool.terminateWorker(testPort + 1);
 
